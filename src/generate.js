@@ -13,26 +13,45 @@ ${sortProperties(obj)
 }
 `
 
-// const toMediaQuery = (breakpoint, entries) => `
-// @media screen and (min-width: ${(breakpoint, entries)}){
-//   ${entries.join('')}
-// }
-// `
+const propertyDeclaration = ([property, val]) => `${property}: ${val};`
 
-const findBreakpoints = config => {
-  const keys = Object.values(config)
+const propertyDeclarations = properties => properties.map(propertyDeclaration)
+
+const toMediaQuery = breakpoint =>
+  `@media screen and (min-width: ${breakpoint})`
+
+const findBreakpoints = typographyOptions => {
+  const keys = Object.values(typographyOptions)
     .map(obj => Object.keys(obj))
     .flatMap(key => key)
   return [...new Set(keys)]
 }
 
+const findBreakpointValueInConfigByName = (config, name) =>
+  config.breakpoints[name]
+
 function generate(config) {
   const { typography } = config
-  const entries = Object.entries(typography)
+  const breakpoints = findBreakpoints(typography)
+  const mediaQueries = breakpoints
+    .filter(breakpoint => breakpoint !== 'default')
+    .map(breakpoint =>
+      toMediaQuery(findBreakpointValueInConfigByName[breakpoint])
+    )
+  const defaultRules = Object.entries(typography)
     .map(([key, val]) => [key, val.default])
-    .map(toDeclaration)
-    .join('')
-  return entries
+    .map(([key, properties]) => sortProperties(properties))
+    .map(propertyDeclaration)
+  console.log(breakpoints, mediaQueries, defaultRules)
+  return null
 }
 
-module.exports = { generate, toDeclaration, sortProperties, findBreakpoints }
+module.exports = {
+  generate,
+  toDeclaration,
+  sortProperties,
+  propertyDeclarations,
+  findBreakpoints,
+  toMediaQuery,
+  findBreakpointValueInConfigByName,
+}

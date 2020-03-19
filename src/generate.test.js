@@ -2,10 +2,13 @@ const {
   generate,
   sortProperties,
   toDeclaration,
+  propertyDeclarations,
   findBreakpoints,
+  toMediaQuery,
+  findBreakpointValueInConfigByName,
 } = require('./generate')
 
-const FULL_IN = {
+const SAMPLE_CONFIG = {
   breakpoints: {
     large: '768px',
   },
@@ -31,25 +34,25 @@ const FULL_IN = {
   },
 }
 
-const FULL_OUT = `
-.heading-1 {
-  font-size: 2rem;
-  font-weight: bold;
-  line-height: 1.4;
-}
-.heading-2 {
-  font-size: 18px;
-  line-height: 18px;
-  font-weight: 500;
-}
+// const FULL_OUT = `
+// .heading-1 {
+//   font-size: 2rem;
+//   font-weight: bold;
+//   line-height: 1.4;
+// }
+// .heading-2 {
+//   font-size: 18px;
+//   line-height: 18px;
+//   font-weight: 500;
+// }
 
-@media screen and (min-width: 768px){
-  .heading-1 {
-    font-size: 2.5rem;
-    line-height: 1.2;
-  }
-}
-`
+// @media screen and (min-width: 768px){
+//   .heading-1 {
+//     font-size: 2.5rem;
+//     line-height: 1.2;
+//   }
+// }
+// `
 
 describe('Convert parsed JSON to CSS', () => {
   test('Single rule, no breakpoints', () => {
@@ -104,7 +107,7 @@ describe('Convert parsed JSON to CSS', () => {
 `)
   })
   // test('Multiple rules, single breakpoint', () => {
-  //   expect(generate(FULL_IN)).toEqual(FULL_OUT)
+  //   expect(generate(SAMPLE_CONFIG)).toEqual(FULL_OUT)
   // })
 })
 
@@ -133,6 +136,24 @@ describe('Sort object properties', () => {
   })
 })
 
+describe('propertyDeclarations(properties)', () => {
+  test('Convert array of [property, value] pairs into declarations', () => {
+    expect(
+      propertyDeclarations([
+        ['a', 1],
+        ['b', 2],
+      ])
+    ).toEqual(['a: 1;', 'b: 2;'])
+    expect(
+      propertyDeclarations([
+        ['font-size', '18px'],
+        ['font-weight', 500],
+        ['line-height', 1],
+      ])
+    ).toEqual(['font-size: 18px;', 'font-weight: 500;', 'line-height: 1;'])
+  })
+})
+
 describe('Generate CSS declaration from [key, obj] pair', () => {
   test('Write rule', () => {
     expect(
@@ -154,8 +175,8 @@ describe('Generate CSS declaration from [key, obj] pair', () => {
   })
 })
 
-describe('Parse config and identify breakpoints', () => {
-  test('Find em', () => {
+describe('findBreakpoints()', () => {
+  test('Parse config and identify breakpoints', () => {
     expect(
       findBreakpoints({
         'heading-1': {
@@ -178,5 +199,24 @@ describe('Parse config and identify breakpoints', () => {
         },
       })
     ).toEqual(['default', 'large'])
+  })
+})
+
+describe('toMediaQuery(value)', () => {
+  test('Convert breakpoint value to screen media query', () => {
+    expect(toMediaQuery('768px')).toEqual(
+      '@media screen and (min-width: 768px)'
+    )
+    expect(toMediaQuery('100rem')).toEqual(
+      '@media screen and (min-width: 100rem)'
+    )
+  })
+})
+
+describe('findBreakpointValueInConfigByName(config, name)', () => {
+  test('Convert breakpoint value to screen media query', () => {
+    expect(findBreakpointValueInConfigByName(SAMPLE_CONFIG, 'large')).toEqual(
+      '768px'
+    )
   })
 })
