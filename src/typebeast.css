@@ -1,0 +1,98 @@
+.h1-xxl {
+  letter: -0.03125em;
+  line: 46.2;
+  size: 42;
+  weight: bold;
+}
+.h1-xl {
+  letter: -0.03125em;
+  line: 39.6;
+  size: 36;
+  weight: bold;
+}
+.h1 {
+  letter: -0.03125em;
+  line: 35.2;
+  size: 32;
+  weight: bold;
+}
+.h2 {
+  line: 30.8;
+  size: 28;
+  weight: bold;
+}
+.h3 {
+  line: 22;
+  size: 20;
+  weight: bold;
+}
+.h4 {
+  line: 19.2;
+  size: 16;
+  weight: bold;
+}
+.h5 {
+  line: 15.6;
+  size: 13;
+  weight: bold;
+}
+.h6 {
+  line: 12;
+  size: 10;
+  transform: uppercase;
+  weight: bold;
+}
+.lede {
+  line: 27;
+  size: 18;
+}
+.para {
+  line: 27.2;
+  size: 16;
+}
+.small {
+  line: 23.8;
+  size: 14;
+}
+.caption {
+  line: 15;
+  size: 10;
+}
+@media screen and (min-width: 768px) {
+  .h1-xxl {
+    size: 80;
+  }
+  .h1-xl {
+    size: 64;
+  }
+  .h1 {
+    size: 48;
+  }
+  .h2 {
+    size: 32;
+  }
+  .h3 {
+    size: 24;
+  }
+  .h4 {
+    size: 20;
+  }
+  .h5 {
+    size: 16;
+  }
+  .h6 {
+    size: 12;
+  }
+  .lede {
+    size: 24;
+  }
+  .para {
+    size: 18;
+  }
+  .small {
+    size: 16;
+  }
+  .caption {
+    size: 12;
+  }
+}
