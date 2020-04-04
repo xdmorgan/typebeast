@@ -34,30 +34,13 @@ const SAMPLE_CONFIG = {
   },
 }
 
-// const FULL_OUT = `
-// .heading-1 {
-//   font-size: 2rem;
-//   font-weight: bold;
-//   line-height: 1.4;
-// }
-// .heading-2 {
-//   font-size: 18px;
-//   line-height: 18px;
-//   font-weight: 500;
-// }
-
-// @media screen and (min-width: 768px){
-//   .heading-1 {
-//     font-size: 2.5rem;
-//     line-height: 1.2;
-//   }
-// }
-// `
-
 describe('Convert parsed JSON to CSS', () => {
   test('Single rule, no breakpoints', () => {
     expect(
       generate({
+        breakpoints: {
+          large: '768px',
+        },
         typography: {
           'heading-1': {
             default: {
@@ -68,17 +51,21 @@ describe('Convert parsed JSON to CSS', () => {
           },
         },
       })
-    ).toEqual(`
-.heading-1 {
-  font-size: 2rem;
-  font-weight: bold;
-  line-height: 1.4;
-}
-`)
+    ).toMatchInlineSnapshot(`
+      ".heading-1 {
+        font-size: 2rem;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      "
+    `)
   })
   test('Single rule, no breakpoints', () => {
     expect(
       generate({
+        breakpoints: {
+          large: '768px',
+        },
         typography: {
           'heading-1': {
             default: {
@@ -94,21 +81,39 @@ describe('Convert parsed JSON to CSS', () => {
           },
         },
       })
-    ).toEqual(`
-.heading-1 {
+    ).toMatchInlineSnapshot(`
+      ".heading-1 {
+        font-size: 2rem;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      .heading-2 {
+        font-size: 18px;
+      }
+      "
+    `)
+  })
+  test('Multiple rules, single breakpoint', () => {
+    expect(generate(SAMPLE_CONFIG)).toMatchInlineSnapshot(`
+".heading-1 {
   font-size: 2rem;
   font-weight: bold;
   line-height: 1.4;
 }
-
 .heading-2 {
   font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
 }
+@media screen and (min-width: 768px) {
+  .heading-1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+}
+"
 `)
   })
-  // test('Multiple rules, single breakpoint', () => {
-  //   expect(generate(SAMPLE_CONFIG)).toEqual(FULL_OUT)
-  // })
 })
 
 describe('Sort object properties', () => {
@@ -165,12 +170,12 @@ describe('Generate CSS declaration from [key, obj] pair', () => {
           'font-size': '18px',
         },
       ])
-    ).toEqual(`
-.heading-1 {
+    ).toMatchInlineSnapshot(`
+".heading-1 {
   font-size: 18px;
   font-weight: 500;
   line-height: 1;
-}
+}"
 `)
   })
 })
