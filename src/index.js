@@ -1,7 +1,8 @@
 const path = require('path')
 const fs = require('fs').promises
 const { parse } = require('./parse-config')
-const { generate } = require('./generate')
+const { transform } = require('./transform-config')
+// const { generate } = require('./generate')
 
 async function main({
   input = path.join(__dirname, 'typebeast.yml'),
@@ -9,8 +10,8 @@ async function main({
 } = {}) {
   const config = await parse(input)
   // TODO: assert validation of config file before proceeding
-  const generated = await generate(config)
-  await fs.writeFile(output, generated)
+  // const generated = await generate(config)
+  await fs.writeFile(output, JSON.stringify(config))
 }
 
 main()

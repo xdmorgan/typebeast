@@ -98,13 +98,14 @@ wysiwyg: # optional, 1.0
     h4: h4
     h5: h5
     h6: h6
-    p: para
-    ul: para
-    ol: para
-    dl: para
-    blockquote: para
+    para:
+      - p
+      - ul
+      - ol
+      - dl
+      - blockquote
     small: small
-    figcaption: caption
+    caption: figcaption
   rhythm:
     default:
       before: 16px
