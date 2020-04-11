@@ -98,13 +98,14 @@ wysiwyg: # optional, 1.0
     h4: h4
     h5: h5
     h6: h6
-    p: para
-    ul: para
-    ol: para
-    dl: para
-    blockquote: para
+    para:
+      - p
+      - ul
+      - ol
+      - dl
+      - blockquote
     small: small
-    figcaption: caption
+    caption: figcaption
   rhythm:
     default:
       before: 16px
@@ -137,7 +138,7 @@ outputs: # optional, 1.0
   sass-tokens: true
   css-variables: true
 
-prefix: # optional, 1.0
+prefixes: # optional, 1.0
   typography: type
   custom-properties: type
   sass-mixins: type

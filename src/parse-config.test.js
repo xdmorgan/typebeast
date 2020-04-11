@@ -20,7 +20,7 @@ describe('Load and parse yml config as json', () => {
           "sass-mixins": true,
           "sass-tokens": true,
         },
-        "prefix": Object {
+        "prefixes": Object {
           "custom-properties": "type",
           "sass-mixins": "type",
           "sass-tokens": "type",
@@ -150,19 +150,21 @@ describe('Load and parse yml config as json', () => {
         },
         "wysiwyg": Object {
           "elements": Object {
-            "blockquote": "para",
-            "dl": "para",
-            "figcaption": "caption",
+            "caption": "figcaption",
             "h1": "h1",
             "h2": "h2",
             "h3": "h3",
             "h4": "h4",
             "h5": "h5",
             "h6": "h6",
-            "ol": "para",
-            "p": "para",
+            "para": Array [
+              "p",
+              "ul",
+              "ol",
+              "dl",
+              "blockquote",
+            ],
             "small": "small",
-            "ul": "para",
           },
           "rhythm": Object {
             "default": Object {
