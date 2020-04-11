@@ -21,42 +21,11 @@ ${selectors.join(', ')} {
   @include ${mixin.name};
 }`
 
-/*
-{
-    para: {
-      breakpoints: {
-        // pre-render
-        default: {
-          settings: { size: 14, line: 18, weight: 'bold' },
-          mixin: {
-            name: 'type-para-default',
-            definition: 'writeDefinition(...)',
-          },
-        },
-        // post render
-        large: {
-          settings: { size: 18 },
-          mixin: {
-            name: 'type-para-default',
-            definition: `
-               @mixin type-para-large($size: 18){
-                 @include typebeast($size);
-               }
-             `,
-          },
-        },
-        selectors: ['.type-para', '.wysiwyg p', '.wysiwyg ol', '.wysiwyg ul'],
-      },
-    },
-  }
-*/
-
-function getBlockDataGenerator(config) {
+function createGetBlockDataGenerator(config) {
   return ({ styleName, breakpointName }) => {
     const settings = config.typography[styleName][breakpointName]
     const mixinName = `type-${styleName}-${breakpointName}`
-    const mixinDefinition = writeMixinDefinition({ name: styleName, settings })
-    console.log(styleName, breakpointName, settings)
+    const mixinDefinition = writeMixinDefinition({ name: mixinName, settings })
     return {
       settings,
       mixin: {
@@ -65,6 +34,35 @@ function getBlockDataGenerator(config) {
       },
     }
   }
+}
+
+// for ease of config, these may be strings (single value) or arrays (multiple)
+function ensureSelectorsAreArrays(selectors) {
+  return Array.isArray(selectors)
+    ? // if its an array use it
+      selectors
+    : selectors
+    ? // if its truthy its likely a string
+      [selectors]
+    : // otherwise who knows, forget it
+      []
+}
+
+function createSelectorScopeFormatter(scope) {
+  return sel => `.${scope} .${sel}`
+}
+
+function createGetListOfSelectors(config) {
+  const wizzyScope = config.wysiwyg.scope
+  const typePrefix = config.prefixes.typography
+  const selectorScopeFormatter = createSelectorScopeFormatter(wizzyScope)
+  const getSelectorsByName = name => config.wysiwyg.elements[name]
+  return ({ styleName }) => [
+    `.${typePrefix}-${styleName}`,
+    ...ensureSelectorsAreArrays(getSelectorsByName(styleName)).map(
+      selectorScopeFormatter
+    ),
+  ]
 }
 
 function transform(config) {
@@ -77,16 +75,42 @@ function transform(config) {
     (acc, cur) => ({ ...acc, [cur]: Object.keys(config.typography[cur]) }),
     {}
   )
-  const blockDataGenerator = getBlockDataGenerator(config)
-  const styleDataByName = Object.entries(styleBreakpointsByName).reduce(
+  // partially apply the config and return the function to create breakpoints key
+  const getBlockDataGenerator = createGetBlockDataGenerator(config)
+  // partially apply the config and return the function to create selectors key
+  const getListOfSelectors = createGetListOfSelectors(config)
+  /* generate and return the transformed style data object 
+  {
+      para: {
+        breakpoints: {
+          large: {
+            settings: { size: 18 },
+            mixin: {
+              name: 'type-para-default',
+              definition: `
+                @mixin type-para-large($size: 18){
+                  @include typebeast($size);
+                }
+              `,
+            },
+          },
+          selectors: ['.type-para', '.wysiwyg p', '.wysiwyg ol', '.wysiwyg ul'],
+        },
+      },
+    }
+  */
+  return Object.entries(styleBreakpointsByName).reduce(
     (acc, [styleName, breakpointNames]) => ({
       ...acc,
       [styleName]: {
-        selectors: [], //config.wysiwyg.elements[styleName]
+        selectors: getListOfSelectors({ styleName }),
         breakpoints: breakpointNames.reduce(
           (acc, breakpointName) => ({
             ...acc,
-            [breakpointName]: blockDataGenerator({ styleName, breakpointName }),
+            [breakpointName]: getBlockDataGenerator({
+              styleName,
+              breakpointName,
+            }),
           }),
           {}
         ),
@@ -94,8 +118,6 @@ function transform(config) {
     }),
     {}
   )
-  out = styleDataByName
-  return out
 }
 
 module.exports = { transform }

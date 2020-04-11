@@ -138,7 +138,7 @@ outputs: # optional, 1.0
   sass-tokens: true
   css-variables: true
 
-prefix: # optional, 1.0
+prefixes: # optional, 1.0
   typography: type
   custom-properties: type
   sass-mixins: type

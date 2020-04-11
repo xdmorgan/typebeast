@@ -90,7 +90,7 @@
     "sass-tokens": true,
     "css-variables": true
   },
-  "prefix": {
+  "prefixes": {
     "typography": "type",
     "custom-properties": "type",
     "sass-mixins": "type",
