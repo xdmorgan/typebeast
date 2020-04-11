@@ -20,7 +20,7 @@ describe('Load and parse yml config as json', () => {
           "sass-mixins": true,
           "sass-tokens": true,
         },
-        "prefix": Object {
+        "prefixes": Object {
           "custom-properties": "type",
           "sass-mixins": "type",
           "sass-tokens": "type",
