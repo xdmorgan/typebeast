@@ -39,7 +39,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-caption",
-            ".wysiwyg .figcaption",
+            ".wysiwyg figcaption",
           ],
         },
         "h1": Object {
@@ -76,7 +76,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-h1",
-            ".wysiwyg .h1",
+            ".wysiwyg h1",
           ],
         },
         "h1-xl": Object {
@@ -184,7 +184,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-h2",
-            ".wysiwyg .h2",
+            ".wysiwyg h2",
           ],
         },
         "h3": Object {
@@ -220,7 +220,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-h3",
-            ".wysiwyg .h3",
+            ".wysiwyg h3",
           ],
         },
         "h4": Object {
@@ -256,7 +256,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-h4",
-            ".wysiwyg .h4",
+            ".wysiwyg h4",
           ],
         },
         "h5": Object {
@@ -292,7 +292,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-h5",
-            ".wysiwyg .h5",
+            ".wysiwyg h5",
           ],
         },
         "h6": Object {
@@ -329,7 +329,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-h6",
-            ".wysiwyg .h6",
+            ".wysiwyg h6",
           ],
         },
         "lede": Object {
@@ -398,11 +398,11 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-para",
-            ".wysiwyg .p",
-            ".wysiwyg .ul",
-            ".wysiwyg .ol",
-            ".wysiwyg .dl",
-            ".wysiwyg .blockquote",
+            ".wysiwyg p",
+            ".wysiwyg ul",
+            ".wysiwyg ol",
+            ".wysiwyg dl",
+            ".wysiwyg blockquote",
           ],
         },
         "small": Object {
@@ -437,7 +437,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-small",
-            ".wysiwyg .small",
+            ".wysiwyg small",
           ],
         },
       }

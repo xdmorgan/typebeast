@@ -26,6 +26,8 @@ function createDeclarationWriter({ data }) {
 }
 
 function write({ data, config }) {
+  // first write _every_ mixin
+  // then write the classes that reference them (by breakpoint, unless defalt)
   const declarationWriter = createDeclarationWriter({ data })
   const defaultDeclarations = declarationWriter('default')
   const breakpointDeclarations = Object.keys(config.breakpoints).reduce(
