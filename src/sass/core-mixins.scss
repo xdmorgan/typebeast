@@ -1,0 +1,36 @@
+/* rem conversions
+----------------------------------*/
+
+@function to-rem($px) {
+  @return ($px / $REM_BASE) * 1rem;
+}
+
+/* base mixin
+----------------------------------*/
+
+@mixin typebeast(
+  $family: null,
+  $size: null,
+  $line: null,
+  $weight: null,
+  $style: null,
+  $letter: null,
+  $transform: null
+) {
+  font-family: $family;
+  @if $CALCULATE_REM {
+    @if $size {
+      font-size: $size;
+    }
+    @if $size and $line {
+      line-height: $line;
+    }
+  } @else {
+    font-size: $size;
+    line-height: $line;
+  }
+  font-weight: $weight;
+  font-style: $style;
+  letter-spacing: $letter;
+  text-transform: $transform;
+}

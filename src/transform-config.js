@@ -14,13 +14,6 @@ const writeMixinDefinition = ({ name, settings }) => `
   }
 `
 
-const writeCSSBlock = ({ breakpoint, mixin, selectors }) => `
-${mixin.definition}
-
-${selectors.join(', ')} {
-  @include ${mixin.name};
-}`
-
 function createGetBlockDataGenerator(config) {
   return ({ styleName, breakpointName }) => {
     const settings = config.typography[styleName][breakpointName]
@@ -49,7 +42,7 @@ function ensureSelectorsAreArrays(selectors) {
 }
 
 function createSelectorScopeFormatter(scope) {
-  return sel => `.${scope} .${sel}`
+  return sel => `.${scope} ${sel}`
 }
 
 function createGetListOfSelectors(config) {

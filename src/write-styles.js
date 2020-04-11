@@ -3,10 +3,8 @@ const { format } = require('./prettier-format')
 const toMediaQuery = breakpoint =>
   `@media screen and (min-width: ${breakpoint})`
 
-const writeStyleDeclaration = ({ mixinName, mixinDefinition, selectors }) => {
+const writeStyleDeclaration = ({ mixinName, selectors }) => {
   return `
-  ${mixinDefinition}
-  
   ${selectors.join(', ')} {
     @include ${mixinName};
   }`
@@ -19,8 +17,6 @@ function createDeclarationWriter({ data }) {
       .map(styleName => ({
         selectors: data[styleName].selectors,
         mixinName: data[styleName].breakpoints[breakpointName].mixin.name,
-        mixinDefinition:
-          data[styleName].breakpoints[breakpointName].mixin.definition,
       }))
       .map(writeStyleDeclaration)
 }
