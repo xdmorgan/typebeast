@@ -23,6 +23,7 @@
   "homepage": "https://github.com/xdmorgan/typebeast#readme",
   "dependencies": {
     "fs-extra": "^9.0.0",
+    "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "yaml": "^1.8.2"
   },
