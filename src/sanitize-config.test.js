@@ -402,8 +402,6 @@ function getMockConfig() {
     prefixes: {
       typography: 'type',
       'custom-properties': 'type',
-      'sass-mixins': 'type',
-      'sass-tokens': 'type',
     },
     'custom-fonts': {
       helvetica: { url: 'path', weight: 'str', style: 'str' },

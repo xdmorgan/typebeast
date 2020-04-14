@@ -32,7 +32,7 @@ async function main({ config, output, compression } = {}) {
   await fs.copy(srcDir, tmpDirSass)
   await fs.writeFile(generatedSassMixinsPath, mixins)
   // write classes that refer to the mixins
-  const styles = writeStyles({ data: transformed, config: parsed })
+  const styles = writeStyles({ data: transformed, config: sanitized })
   await fs.writeFile(generatedSassStylesPath, styles)
   const result = sass.renderSync({
     file: sassRenderEntryPoint,
