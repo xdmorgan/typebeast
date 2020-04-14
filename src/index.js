@@ -8,45 +8,41 @@ const { transform } = require('./transform-config')
 const { write: writeMixins } = require('./write-mixins')
 const { write: writeStyles } = require('./write-styles')
 
-async function main({
-  input = path.join(__dirname, 'typebeast.yml'),
-  outFile = 'typebeast.css',
-  outDir = path.join(__dirname, '../public/typebeast'),
-  sassOutputStyle = 'compact',
-} = {}) {
+async function main({ config, output, compression } = {}) {
   const srcDir = path.join(__dirname, 'sass')
-  const tempDir = path.join(__dirname, 'temp')
-  const generatedSassMixinsPath = path.join(tempDir, 'generated-mixins.scss')
-  const generatedSassStylesPath = path.join(tempDir, 'generated-styles.scss')
-  const sassRenderEntryPoint = path.join(tempDir, 'main.scss')
-  const sassRenderOutFile = path.join(tempDir, outFile)
+  const tmpDir = path.join(__dirname, '../build')
+  const tmpDirSass = path.join(tmpDir, 'sass')
+  const generatedSassMixinsPath = path.join(tmpDirSass, 'generated-mixins.scss')
+  const generatedSassStylesPath = path.join(tmpDirSass, 'generated-styles.scss')
+  const sassRenderEntryPoint = path.join(tmpDirSass, 'main.scss')
+  const sassRenderOutFile = path.join(tmpDir, 'typebeast.css')
 
   // parse config
-  const config = await parse(input)
+  const parsed = await parse(config)
   // TODO: assert validation of config file before attempting merge
-  // validateConfigorThrow(config)
+  // validateConfigorThrow(parsed)
   // since config is valid, clean intermediate target for built files
-  await fs.remove(tempDir)
+  await fs.remove(tmpDir)
 
   // TODO: merge custom config onto defaults for things like prefixes
-  const sanitized = await sanitize(config)
+  const sanitized = await sanitize(parsed)
   const transformed = await transform(sanitized)
   // write mixin definitions
   const mixins = writeMixins({ data: transformed })
-  await fs.copy(srcDir, tempDir)
+  await fs.copy(srcDir, tmpDirSass)
   await fs.writeFile(generatedSassMixinsPath, mixins)
   // write classes that refer to the mixins
-  const styles = writeStyles({ data: transformed, config })
+  const styles = writeStyles({ data: transformed, config: parsed })
   await fs.writeFile(generatedSassStylesPath, styles)
   const result = sass.renderSync({
     file: sassRenderEntryPoint,
     outFile: sassRenderOutFile,
-    outputStyle: sassOutputStyle,
+    outputStyle: compression,
     sourceMap: true, // or an absolute or relative (to outFile) path
   })
   await fs.writeFile(sassRenderOutFile, result.css)
-  await fs.copy(tempDir, outDir)
-  await fs.remove(tempDir)
+  await fs.copy(tmpDir, output)
+  await fs.remove(tmpDir)
 }
 
-main()
+module.exports = main

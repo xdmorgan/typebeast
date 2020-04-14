@@ -1,8 +1,9 @@
+const path = require('path')
 const { parse } = require('./parse-config')
 
 describe('Load and parse yml config as json', () => {
   test('Read sample config', async () => {
-    const file = __dirname + '/typebeast.yml'
+    const file = path.join(__dirname, '../typebeast.yml')
     expect(await parse(file)).toMatchInlineSnapshot(`
       Object {
         "breakpoints": Object {

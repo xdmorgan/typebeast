@@ -1,6 +1,6 @@
 {
   "name": "typebeast",
-  "version": "0.0.1",
+  "version": "0.1.2",
   "main": "index.js",
   "license": "MIT",
   "description": "Work in progress, see docs for more information.",
@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "node src",
+    "cli": "node cli",
     "test": "jest"
   },
   "repository": {
@@ -16,13 +17,17 @@
     "url": "git+https://github.com/xdmorgan/typebeast.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Dan Morgan",
+  "bin": {
+    "typebeast": "./cli/index.js"
+  },
   "bugs": {
     "url": "https://github.com/xdmorgan/typebeast/issues"
   },
   "homepage": "https://github.com/xdmorgan/typebeast#readme",
   "dependencies": {
     "fs-extra": "^9.0.0",
+    "meow": "^6.1.0",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "yaml": "^1.8.2"
