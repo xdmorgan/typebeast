@@ -11,3 +11,4 @@ build/
 .github
 .prettierrc.yml
 *.test.js
+typebeast.yml
