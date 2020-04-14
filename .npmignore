@@ -10,3 +10,4 @@ build/
 .nvmrc
 .github
 .prettierrc.yml
+*.test.js
