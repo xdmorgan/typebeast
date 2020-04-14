@@ -1,0 +1,12 @@
+node_modules/
+public/
+build/
+.sass-cache/
+*.css.map
+*.log
+.DS_Store
+.temp
+.npmrc
+.nvmrc
+.github
+.prettierrc.yml
