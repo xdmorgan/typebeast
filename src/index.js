@@ -12,11 +12,16 @@ async function main({ config, output, compression } = {}) {
   const srcDir = path.join(__dirname, 'sass')
   const tmpDir = path.join(__dirname, '../build')
   const tmpDirSass = path.join(tmpDir, 'sass')
-  const generatedSassMixinsPath = path.join(tmpDirSass, 'generated-mixins.scss')
-  const generatedSassStylesPath = path.join(tmpDirSass, 'generated-styles.scss')
+  const generatedSassMixinsPath = path.join(
+    tmpDirSass,
+    'core/_generated-mixins.scss'
+  )
+  const generatedSassStylesPath = path.join(
+    tmpDirSass,
+    'styles/_generated-styles.scss'
+  )
   const sassRenderEntryPoint = path.join(tmpDirSass, 'main.scss')
   const sassRenderOutFile = path.join(tmpDir, 'typebeast.css')
-
   // parse config
   const parsed = await parse(config)
   // TODO: assert validation of config file before attempting merge
