@@ -1,15 +1,25 @@
 const path = require('path')
 const { parse } = require('./parse-config')
+const { merge } = require('./merge-objects')
 
-describe('Load and parse yml config as json', () => {
-  test('Read sample config', async () => {
-    const file = path.join(__dirname, '../typebeast.yml')
-    expect(await parse(file)).toMatchInlineSnapshot(`
+describe('merge-objects', () => {
+  test('Deep merge custom config onto defaults', async () => {
+    const defaultsPath = path.join(__dirname, './defaults.yml')
+    const configPath = path.join(__dirname, '../typebeast.yml')
+    const defaults = await parse(defaultsPath)
+    const config = await parse(configPath)
+    expect(merge(defaults, config)).toMatchInlineSnapshot(`
       Object {
         "breakpoints": Object {
           "large": "768px",
         },
         "format-version": 1,
+        "prefixes": Object {
+          "custom-properties": "type",
+          "sass-mixins": "type",
+          "sass-tokens": "type",
+          "typography": "type",
+        },
         "typography": Object {
           "caption": Object {
             "default": Object {

@@ -1,0 +1,36 @@
+# breakpoints: # required, mvp
+#   large: 768px
+
+# typography: # required, mvp
+#   h1-xxl:
+#     default:
+#       size: 100
+#     large:
+#       size: 200
+
+wysiwyg:
+  scope: 'wysiwyg'
+  rhythm:
+    default:
+      before: 1rem
+      after: 1rem
+    large:
+      before: 1.5rem
+      after: 1.5rem
+
+# outputs: # optional, 1.0
+#   sass-mixins: true
+#   sass-tokens: true
+#   css-variables: true
+
+prefixes: # optional, 1.0
+  typography: type
+  custom-properties: type
+  sass-mixins: type
+  sass-tokens: type
+####
+# custom-fonts: # optional (backlog)
+#   helvetica:
+#     url: path
+#     weight: str
+#     style: str

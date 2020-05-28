@@ -5,12 +5,14 @@ const sass = require('node-sass')
 const { parse } = require('./parse-config')
 const { sanitize } = require('./sanitize-config')
 const { transform } = require('./transform-config')
+const { merge } = require('./merge-objects')
 const { write: writeMixins } = require('./write-mixins')
 const { write: writeStyles } = require('./write-styles')
 
 async function main({ config, output, compression } = {}) {
   const srcDir = path.join(__dirname, 'sass')
   const tmpDir = path.join(__dirname, '../build')
+  const defaultsPath = path.join(__dirname, './defaults.yml')
   const tmpDirSass = path.join(tmpDir, 'sass')
   const generatedSassMixinsPath = path.join(
     tmpDirSass,
@@ -24,13 +26,14 @@ async function main({ config, output, compression } = {}) {
   const sassRenderOutFile = path.join(tmpDir, 'typebeast.css')
   // parse config
   const parsed = await parse(config)
+  const defaults = await parse(defaultsPath)
   // TODO: assert validation of config file before attempting merge
   // validateConfigorThrow(parsed)
   // since config is valid, clean intermediate target for built files
   await fs.remove(tmpDir)
-
-  // TODO: merge custom config onto defaults for things like prefixes
-  const sanitized = await sanitize(parsed)
+  // TODO: deep merge custom config onto defaults for things like prefixes
+  const merged = merge(defaults, parsed)
+  const sanitized = await sanitize(merged)
   const transformed = await transform(sanitized)
   // write mixin definitions
   const mixins = writeMixins({ data: transformed })
