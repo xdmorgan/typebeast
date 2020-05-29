@@ -1,4 +1,5 @@
 # hello, world
+format-version: 1
 
 breakpoints: # required, mvp
   large: 768px
@@ -113,39 +114,3 @@ wysiwyg: # optional, 1.0
     large:
       before: 24px
       after: 24px
-
-######
-######
-######
-######
-######
-######
-######
-######
-######
-######
-######
-######
-######
-######
-######
-######
-######
-######
-
-outputs: # optional, 1.0
-  sass-mixins: true
-  sass-tokens: true
-  css-variables: true
-
-prefixes: # optional, 1.0
-  typography: type
-  custom-properties: type
-  sass-mixins: type
-  sass-tokens: type
-
-custom-fonts: # optional (backlog)
-  helvetica:
-    url: path
-    weight: str
-    style: str
