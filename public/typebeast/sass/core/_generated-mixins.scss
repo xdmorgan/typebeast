@@ -2,7 +2,7 @@
 // ---------------------------------------------------------
 
 @mixin type-h1-xxl-default(
-  $family: var(--font-heading),
+  $family: Poppins,
   $letter: -0.0125em,
   $line: 46.2,
   $size: 42,
@@ -45,7 +45,7 @@
 // ---------------------------------------------------------
 
 @mixin type-h1-xl-default(
-  $family: var(--font-heading),
+  $family: Poppins,
   $letter: -0.0125em,
   $line: 39.6,
   $size: 36,
@@ -88,7 +88,7 @@
 // ---------------------------------------------------------
 
 @mixin type-h1-default(
-  $family: var(--font-heading),
+  $family: Poppins,
   $letter: -0.0125em,
   $line: 35.2,
   $size: 32,
@@ -131,7 +131,7 @@
 // ---------------------------------------------------------
 
 @mixin type-h2-default(
-  $family: var(--font-heading),
+  $family: Poppins,
   $letter: null,
   $line: 30.8,
   $size: 28,
@@ -174,7 +174,7 @@
 // ---------------------------------------------------------
 
 @mixin type-h3-default(
-  $family: var(--font-heading),
+  $family: Poppins,
   $letter: null,
   $line: 22,
   $size: 20,
@@ -217,7 +217,7 @@
 // ---------------------------------------------------------
 
 @mixin type-h4-default(
-  $family: var(--font-heading),
+  $family: Poppins,
   $letter: null,
   $line: 19.2,
   $size: 16,
@@ -260,7 +260,7 @@
 // ---------------------------------------------------------
 
 @mixin type-h5-default(
-  $family: var(--font-heading),
+  $family: Poppins,
   $letter: null,
   $line: 15.6,
   $size: 13,
@@ -303,7 +303,7 @@
 // ---------------------------------------------------------
 
 @mixin type-h6-default(
-  $family: var(--font-heading),
+  $family: null,
   $letter: null,
   $line: 12,
   $size: 10,

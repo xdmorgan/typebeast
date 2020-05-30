@@ -13,7 +13,7 @@ settings:
 typography:
   h1-xxl:
     default:
-      family: var(--font-heading)
+      family: Poppins
       size: 42
       line: 46.2
       weight: normal
@@ -22,7 +22,7 @@ typography:
       size: 80
   h1-xl:
     default:
-      family: var(--font-heading)
+      family: Poppins
       size: 36
       line: 39.6
       weight: normal
@@ -31,7 +31,7 @@ typography:
       size: 64
   h1:
     default:
-      family: var(--font-heading)
+      family: Poppins
       size: 32
       line: 35.2
       weight: normal
@@ -40,7 +40,7 @@ typography:
       size: 48
   h2:
     default:
-      family: var(--font-heading)
+      family: Poppins
       size: 28
       line: 30.8
       weight: normal
@@ -48,7 +48,7 @@ typography:
       size: 32
   h3:
     default:
-      family: var(--font-heading)
+      family: Poppins
       size: 20
       line: 22
       weight: normal
@@ -56,7 +56,7 @@ typography:
       size: 24
   h4:
     default:
-      family: var(--font-heading)
+      family: Poppins
       size: 16
       line: 19.2
       weight: bold
@@ -64,7 +64,7 @@ typography:
       size: 20
   h5:
     default:
-      family: var(--font-heading)
+      family: Poppins
       size: 13
       line: 15.6
       weight: bold
@@ -72,7 +72,6 @@ typography:
       size: 16
   h6:
     default:
-      family: var(--font-heading)
       size: 10
       line: 12
       weight: bold
@@ -112,8 +111,7 @@ typography:
 
 spacing:
   breakpoints:
-    default: 1rem
-    large: 2rem
+    default: 0
 
 wysiwyg: # optional, 1.0
   scope: wysiwyg
@@ -124,6 +122,7 @@ wysiwyg: # optional, 1.0
     h4: h4
     h5: h5
     h6: h6
+    lede: '.with-lede p:first-child'
     para:
       - p
       - ul
@@ -135,11 +134,14 @@ wysiwyg: # optional, 1.0
   spacing:
     h1:
       default:
-        before: 3rem
+        block-start: 3rem
       large:
-        before: 5rem
-        after: 2rem
+        block-start: 5rem
+        block-end: 2rem
     h3:
       large:
-        before: 4rem
-        after: 2rem
+        block-start: 4rem
+        block-end: 2rem
+    figure:
+      default:
+        inline: 0
