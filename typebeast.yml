@@ -11,6 +11,7 @@ typography:
       size: 42
       line: 46.2
       weight: normal
+      letter: -0.0125em
     large:
       size: 80
   h1-xl:
@@ -19,6 +20,7 @@ typography:
       size: 36
       line: 39.6
       weight: normal
+      letter: -0.0125em
     large:
       size: 64
   h1:
@@ -27,6 +29,7 @@ typography:
       size: 32
       line: 35.2
       weight: normal
+      letter: -0.0125em
     large:
       size: 48
   h2:
