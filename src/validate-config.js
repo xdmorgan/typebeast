@@ -9,6 +9,15 @@ function validate(config, currentFormatVersion) {
     ]
   }
   version = config['format-version']
+  if (version !== currentFormatVersion) {
+    return [
+      false,
+      {
+        message: `Unexpected config version (yours: ${version}, expected: ${currentFormatVersion}) please see docs for instructions on how to upgrade.`,
+        version,
+      },
+    ]
+  }
   return [true, { message: null, version }]
 }
 
