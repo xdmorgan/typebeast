@@ -1,6 +1,6 @@
 const { validate } = require('./validate-config')
 
-describe('validate-config', () => {
+describe('validate()', () => {
   test('Fails without a format-version', () => {
     const expectedVersion = 1
     const [valid, { message, version }] = validate({}, expectedVersion)

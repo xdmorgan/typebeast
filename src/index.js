@@ -9,6 +9,7 @@ const { merge } = require('./merge-objects')
 const { write: writeMixins } = require('./write-mixins')
 const { write: writeStyles } = require('./write-styles')
 const { validate } = require('./validate-config')
+const { get: getSassSettingsMap } = require('./get-sass-settings-map')
 
 const { CURRENT_FORMAT_VERSION = 1 } = process.env
 
@@ -18,6 +19,10 @@ async function main({ config, output, compression } = {}) {
   const tmpDir = path.join(__dirname, '../build')
   const defaultsPath = path.join(__dirname, './defaults.yml')
   const tmpDirSass = path.join(tmpDir, 'sass')
+  const generatedSassSettingsPath = path.join(
+    tmpDirSass,
+    'core/_generated-settings.scss'
+  )
   const generatedSassMixinsPath = path.join(
     tmpDirSass,
     'core/_generated-mixins.scss'
@@ -41,6 +46,8 @@ async function main({ config, output, compression } = {}) {
   if (!valid) throw new Error(message)
   // since config is valid, clean intermediate target for built files
   await fs.remove(tmpDir)
+  // convert config settings to a sass map
+  const settings = getSassSettingsMap(merged)
   // fill in blanks for styles (i.e. use null instead of undefined for
   // omitted mixin properties)
   const sanitized = await sanitize(merged)
@@ -52,6 +59,8 @@ async function main({ config, output, compression } = {}) {
   // copy the source sass dir to its temp destination before we start
   // to mutate it with custom generated code
   await fs.copy(srcDir, tmpDirSass)
+  // write the generated settings to the temp sass dir
+  await fs.writeFile(generatedSassSettingsPath, settings)
   // write the generated mixins to the temp sass dir
   await fs.writeFile(generatedSassMixinsPath, mixins)
   // write the classes that refer to the generated mixins (as string)

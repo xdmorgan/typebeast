@@ -11,9 +11,9 @@
   $weight: null
 ) {
   font-family: $family;
-  @if $TYPEBEAST_CALCULATE_REM {
+  @if typebeast-setting('calculate-rem-size') {
     @if $size {
-      font-size: to-rem($size);
+      font-size: typebeast-to-rem($size);
     }
     @if $size and $line {
       line-height: ($line / $size);
