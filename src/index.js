@@ -8,6 +8,9 @@ const { transform } = require('./transform-config')
 const { merge } = require('./merge-objects')
 const { write: writeMixins } = require('./write-mixins')
 const { write: writeStyles } = require('./write-styles')
+const { validate } = require('./validate-config')
+
+const { CURRENT_FORMAT_VERSION = 1 } = process.env
 
 async function main({ config, output, compression } = {}) {
   // messy entry paths — TODO: tidy/structure
@@ -29,13 +32,15 @@ async function main({ config, output, compression } = {}) {
   const parsed = await parse(config)
   // parse the deafults (internal shadow config file)
   const defaults = await parse(defaultsPath)
-  // TODO: assert validation of config file before attempting merge
-  // validateConfigorThrow(parsed)
-  // since config is valid, clean intermediate target for built files
-  await fs.remove(tmpDir)
   // merge custom config onto necessary but optional defaults (e.g.
   // prefixes and vertical rhythm settings)
   const merged = merge(defaults, parsed)
+  // Validate the combined config to ensure any assumed values are
+  // set
+  const [valid, { message }] = validate(merged, CURRENT_FORMAT_VERSION)
+  if (!valid) throw new Error(message)
+  // since config is valid, clean intermediate target for built files
+  await fs.remove(tmpDir)
   // fill in blanks for styles (i.e. use null instead of undefined for
   // omitted mixin properties)
   const sanitized = await sanitize(merged)

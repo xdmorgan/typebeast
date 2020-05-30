@@ -27,8 +27,7 @@ describe('merge-objects', () => {
         },
         "spacing": Object {
           "breakpoints": Object {
-            "default": "1rem",
-            "large": "2rem",
+            "default": 0,
           },
           "include": Array [
             "h1",
@@ -58,7 +57,7 @@ describe('merge-objects', () => {
           },
           "h1": Object {
             "default": Object {
-              "family": "var(--font-heading)",
+              "family": "Poppins",
               "letter": "-0.0125em",
               "line": 35.2,
               "size": 32,
@@ -70,7 +69,7 @@ describe('merge-objects', () => {
           },
           "h1-xl": Object {
             "default": Object {
-              "family": "var(--font-heading)",
+              "family": "Poppins",
               "letter": "-0.0125em",
               "line": 39.6,
               "size": 36,
@@ -82,7 +81,7 @@ describe('merge-objects', () => {
           },
           "h1-xxl": Object {
             "default": Object {
-              "family": "var(--font-heading)",
+              "family": "Poppins",
               "letter": "-0.0125em",
               "line": 46.2,
               "size": 42,
@@ -94,7 +93,7 @@ describe('merge-objects', () => {
           },
           "h2": Object {
             "default": Object {
-              "family": "var(--font-heading)",
+              "family": "Poppins",
               "line": 30.8,
               "size": 28,
               "weight": "normal",
@@ -105,7 +104,7 @@ describe('merge-objects', () => {
           },
           "h3": Object {
             "default": Object {
-              "family": "var(--font-heading)",
+              "family": "Poppins",
               "line": 22,
               "size": 20,
               "weight": "normal",
@@ -116,7 +115,7 @@ describe('merge-objects', () => {
           },
           "h4": Object {
             "default": Object {
-              "family": "var(--font-heading)",
+              "family": "Poppins",
               "line": 19.2,
               "size": 16,
               "weight": "bold",
@@ -127,7 +126,7 @@ describe('merge-objects', () => {
           },
           "h5": Object {
             "default": Object {
-              "family": "var(--font-heading)",
+              "family": "Poppins",
               "line": 15.6,
               "size": 13,
               "weight": "bold",
@@ -138,7 +137,6 @@ describe('merge-objects', () => {
           },
           "h6": Object {
             "default": Object {
-              "family": "var(--font-heading)",
               "line": 12,
               "size": 10,
               "transform": "uppercase",
@@ -194,6 +192,7 @@ describe('merge-objects', () => {
             "h4": "h4",
             "h5": "h5",
             "h6": "h6",
+            "lede": ".with-lede p:first-child",
             "para": Array [
               "p",
               "ul",
@@ -205,19 +204,24 @@ describe('merge-objects', () => {
           },
           "scope": "wysiwyg",
           "spacing": Object {
+            "figure": Object {
+              "default": Object {
+                "inline": 0,
+              },
+            },
             "h1": Object {
               "default": Object {
-                "before": "3rem",
+                "block-start": "3rem",
               },
               "large": Object {
-                "after": "2rem",
-                "before": "5rem",
+                "block-end": "2rem",
+                "block-start": "5rem",
               },
             },
             "h3": Object {
               "large": Object {
-                "after": "2rem",
-                "before": "4rem",
+                "block-end": "2rem",
+                "block-start": "4rem",
               },
             },
           },
