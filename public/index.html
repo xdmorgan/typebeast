@@ -1,17 +1,27 @@
 <html>
   <head>
-    <title>Skeletor (dev)</title>
-    <link rel="stylesheet" href="/dist/skeletor.css" />
+    <title>Typebeast (dev)</title>
+    <link rel="stylesheet" href="/typebeast/typebeast.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       body {
         margin: 0;
-        padding: 0;
+        padding: 32px;
+        --font-heading: Poppins, -apple-system, system-ui, BlinkMacSystemFont,
+          Segoe UI, Helvetica, Arial, sans-serif;
+        --font-body: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI,
+          Helvetica, Arial, sans-serif;
+
+        font-family: var(--font-body);
       }
     </style>
   </head>
 
-  <body class="bg-green md:bg-purple lg:bg-blue xl:bg-red">
-    <div id="wrapper">
+  <body>
+    <div id="wrapper" class="wysiwyg">
       <h1>
         This is the primary heading and there should only be one of these per
         page

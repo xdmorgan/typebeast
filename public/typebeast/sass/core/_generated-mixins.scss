@@ -2,13 +2,13 @@
 // ---------------------------------------------------------
 
 @mixin type-h1-xxl-default(
-  $family: null,
-  $letter: -0.03125em,
+  $family: Poppins,
+  $letter: -0.0125em,
   $line: 46.2,
   $size: 42,
   $style: null,
   $transform: null,
-  $weight: bold
+  $weight: normal
 ) {
   @include typebeast(
     $family,
@@ -45,13 +45,13 @@
 // ---------------------------------------------------------
 
 @mixin type-h1-xl-default(
-  $family: null,
-  $letter: -0.03125em,
+  $family: Poppins,
+  $letter: -0.0125em,
   $line: 39.6,
   $size: 36,
   $style: null,
   $transform: null,
-  $weight: bold
+  $weight: normal
 ) {
   @include typebeast(
     $family,
@@ -88,13 +88,13 @@
 // ---------------------------------------------------------
 
 @mixin type-h1-default(
-  $family: null,
-  $letter: -0.03125em,
+  $family: Poppins,
+  $letter: -0.0125em,
   $line: 35.2,
   $size: 32,
   $style: null,
   $transform: null,
-  $weight: bold
+  $weight: normal
 ) {
   @include typebeast(
     $family,
@@ -131,13 +131,13 @@
 // ---------------------------------------------------------
 
 @mixin type-h2-default(
-  $family: null,
+  $family: Poppins,
   $letter: null,
   $line: 30.8,
   $size: 28,
   $style: null,
   $transform: null,
-  $weight: bold
+  $weight: normal
 ) {
   @include typebeast(
     $family,
@@ -174,13 +174,13 @@
 // ---------------------------------------------------------
 
 @mixin type-h3-default(
-  $family: null,
+  $family: Poppins,
   $letter: null,
   $line: 22,
   $size: 20,
   $style: null,
   $transform: null,
-  $weight: bold
+  $weight: normal
 ) {
   @include typebeast(
     $family,
@@ -217,7 +217,7 @@
 // ---------------------------------------------------------
 
 @mixin type-h4-default(
-  $family: null,
+  $family: Poppins,
   $letter: null,
   $line: 19.2,
   $size: 16,
@@ -260,7 +260,7 @@
 // ---------------------------------------------------------
 
 @mixin type-h5-default(
-  $family: null,
+  $family: Poppins,
   $letter: null,
   $line: 15.6,
   $size: 13,
@@ -456,6 +456,49 @@
   $letter: null,
   $line: null,
   $size: 16,
+  $style: null,
+  $transform: null,
+  $weight: null
+) {
+  @include typebeast(
+    $family,
+    $letter,
+    $line,
+    $size,
+    $style,
+    $transform,
+    $weight
+  );
+}
+
+// ui
+// ---------------------------------------------------------
+
+@mixin type-ui-default(
+  $family: null,
+  $letter: null,
+  $line: 18.2,
+  $size: 13,
+  $style: null,
+  $transform: null,
+  $weight: null
+) {
+  @include typebeast(
+    $family,
+    $letter,
+    $line,
+    $size,
+    $style,
+    $transform,
+    $weight
+  );
+}
+
+@mixin type-ui-large(
+  $family: null,
+  $letter: null,
+  $line: null,
+  $size: 14,
   $style: null,
   $transform: null,
   $weight: null

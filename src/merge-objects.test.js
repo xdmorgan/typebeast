@@ -20,6 +20,31 @@ describe('merge-objects', () => {
           "sass-tokens": "type",
           "typography": "type",
         },
+        "settings": Object {
+          "calculate-rem-size": true,
+          "include-utility-classes": true,
+          "rem-base": 16,
+        },
+        "spacing": Object {
+          "breakpoints": Object {
+            "default": 0,
+          },
+          "include": Array [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "p",
+            "ul",
+            "ol",
+            "dl",
+            "blockquote",
+            "figure",
+            "pre",
+          ],
+        },
         "typography": Object {
           "caption": Object {
             "default": Object {
@@ -32,10 +57,11 @@ describe('merge-objects', () => {
           },
           "h1": Object {
             "default": Object {
-              "letter": "-0.03125em",
+              "family": "Poppins",
+              "letter": "-0.0125em",
               "line": 35.2,
               "size": 32,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "size": 48,
@@ -43,10 +69,11 @@ describe('merge-objects', () => {
           },
           "h1-xl": Object {
             "default": Object {
-              "letter": "-0.03125em",
+              "family": "Poppins",
+              "letter": "-0.0125em",
               "line": 39.6,
               "size": 36,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "size": 64,
@@ -54,10 +81,11 @@ describe('merge-objects', () => {
           },
           "h1-xxl": Object {
             "default": Object {
-              "letter": "-0.03125em",
+              "family": "Poppins",
+              "letter": "-0.0125em",
               "line": 46.2,
               "size": 42,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "size": 80,
@@ -65,9 +93,10 @@ describe('merge-objects', () => {
           },
           "h2": Object {
             "default": Object {
+              "family": "Poppins",
               "line": 30.8,
               "size": 28,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "size": 32,
@@ -75,9 +104,10 @@ describe('merge-objects', () => {
           },
           "h3": Object {
             "default": Object {
+              "family": "Poppins",
               "line": 22,
               "size": 20,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "size": 24,
@@ -85,6 +115,7 @@ describe('merge-objects', () => {
           },
           "h4": Object {
             "default": Object {
+              "family": "Poppins",
               "line": 19.2,
               "size": 16,
               "weight": "bold",
@@ -95,6 +126,7 @@ describe('merge-objects', () => {
           },
           "h5": Object {
             "default": Object {
+              "family": "Poppins",
               "line": 15.6,
               "size": 13,
               "weight": "bold",
@@ -141,6 +173,15 @@ describe('merge-objects', () => {
               "size": 16,
             },
           },
+          "ui": Object {
+            "default": Object {
+              "line": 18.2,
+              "size": 13,
+            },
+            "large": Object {
+              "size": 14,
+            },
+          },
         },
         "wysiwyg": Object {
           "elements": Object {
@@ -151,6 +192,7 @@ describe('merge-objects', () => {
             "h4": "h4",
             "h5": "h5",
             "h6": "h6",
+            "lede": ".with-lede p:first-child",
             "para": Array [
               "p",
               "ul",
@@ -160,17 +202,29 @@ describe('merge-objects', () => {
             ],
             "small": "small",
           },
-          "rhythm": Object {
-            "default": Object {
-              "after": "16px",
-              "before": "16px",
+          "scope": "wysiwyg",
+          "spacing": Object {
+            "figure": Object {
+              "default": Object {
+                "inline": 0,
+              },
             },
-            "large": Object {
-              "after": "24px",
-              "before": "24px",
+            "h1": Object {
+              "default": Object {
+                "block-start": "3rem",
+              },
+              "large": Object {
+                "block-end": "2rem",
+                "block-start": "5rem",
+              },
+            },
+            "h3": Object {
+              "large": Object {
+                "block-end": "2rem",
+                "block-start": "4rem",
+              },
             },
           },
-          "scope": "wysiwyg",
         },
       }
     `)

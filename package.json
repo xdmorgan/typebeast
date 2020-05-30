@@ -8,6 +8,7 @@
     "doc": "docs"
   },
   "scripts": {
+    "serve": "serve -s public -p 3000",
     "start": "node cli --output public/typebeast",
     "test": "jest --verbose"
   },
@@ -36,6 +37,7 @@
     "yaml": "^1.8.2"
   },
   "devDependencies": {
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "serve": "^11.3.1"
   }
 }
