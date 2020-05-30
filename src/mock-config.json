@@ -208,10 +208,7 @@
       ],
       "breakpoints": {
         "default": {
-          "block": "1rem"
-        },
-        "large": {
-          "block": "2rem"
+          "block": 0
         }
       }
     },
@@ -220,6 +217,17 @@
       "breakpoints": {
         "default": {
           "inline": 0
+        }
+      }
+    },
+    "horizontal-rule": {
+      "include": ["hr"],
+      "breakpoints": {
+        "default": {
+          "block": "3rem"
+        },
+        "large": {
+          "block": "4rem"
         }
       }
     }

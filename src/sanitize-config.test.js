@@ -35,13 +35,23 @@ describe('Sanitize parsed config file to set default values', () => {
               "dd",
             ],
           },
+          "horizontal-rule": Object {
+            "breakpoints": Object {
+              "default": Object {
+                "block": "3rem",
+              },
+              "large": Object {
+                "block": "4rem",
+              },
+            },
+            "include": Array [
+              "hr",
+            ],
+          },
           "vertical-rhythm": Object {
             "breakpoints": Object {
               "default": Object {
-                "block": "1rem",
-              },
-              "large": Object {
-                "block": "2rem",
+                "block": 0,
               },
             },
             "include": Array [

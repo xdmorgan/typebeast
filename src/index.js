@@ -10,6 +10,8 @@ const { write: writeMixins } = require('./write-mixins')
 const { write: writeStyles } = require('./write-styles')
 const { validate } = require('./validate-config')
 const { get: getSassSettingsMap } = require('./get-sass-settings-map')
+const { transform: transformSpacing } = require('./transform-spacing')
+const { write: writeSpacing } = require('./write-spacing')
 
 const { CURRENT_FORMAT_VERSION = 1 } = process.env
 
@@ -28,9 +30,13 @@ async function main({ config, output, compression } = {}) {
     tmpDirSass,
     'core/_generated-mixins.scss'
   )
-  const generatedSassStylesPath = path.join(
+  const generatedSassTypographyPath = path.join(
     tmpDirSass,
-    'styles/_generated-styles.scss'
+    'styles/_generated-typography.scss'
+  )
+  const generatedSassSpacingPath = path.join(
+    tmpDirSass,
+    'styles/_generated-spacing.scss'
   )
   const sassRenderEntryPoint = path.join(tmpDirSass, 'main.scss')
   const sassRenderOutFile = path.join(tmpDir, 'typebeast.css')
@@ -66,9 +72,14 @@ async function main({ config, output, compression } = {}) {
   // write the generated mixins to the temp sass dir
   await fs.writeFile(generatedSassMixinsPath, mixins)
   // write the classes that refer to the generated mixins (as string)
-  const styles = writeStyles({ data: transformed, config: sanitized })
+  const typography = writeStyles({ data: transformed, config: sanitized })
+  const spacing = writeSpacing({
+    transformed: transformSpacing(sanitized),
+    config: sanitized,
+  })
   // write the styles to the temp dir
-  await fs.writeFile(generatedSassStylesPath, styles)
+  await fs.writeFile(generatedSassTypographyPath, typography)
+  await fs.writeFile(generatedSassSpacingPath, spacing)
   // render the temp dir with the main entry point
   const result = sass.renderSync({
     file: sassRenderEntryPoint,

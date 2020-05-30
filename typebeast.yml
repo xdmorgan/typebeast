@@ -127,9 +127,7 @@ spacing:
       - pre
     breakpoints:
       default:
-        block: 1rem
-      large:
-        block: 2rem
+        block: 0
   horizontal-reset:
     include:
       - figure
@@ -138,6 +136,14 @@ spacing:
     breakpoints:
       default:
         inline: 0
+  horizontal-rule:
+    include:
+      - hr
+    breakpoints:
+      default:
+        block: 3rem
+      large:
+        block: 4rem
 
 wysiwyg: # optional, 1.0
   scope: wysiwyg
