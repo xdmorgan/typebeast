@@ -1,9 +1,15 @@
 # hello, world
 format-version: 1
 
-breakpoints: # required, mvp
+# technicallyy not required, but should it be?
+breakpoints:
   large: 768px
 
+settings:
+  calculate-rem-size: true
+  include-utility-classes: true
+
+# technicallyy not required, but should it be?
 typography:
   h1-xxl:
     default:
@@ -104,6 +110,11 @@ typography:
     large:
       size: 12
 
+spacing:
+  breakpoints:
+    default: 1rem
+    large: 2rem
+
 wysiwyg: # optional, 1.0
   scope: wysiwyg
   elements:
@@ -121,21 +132,14 @@ wysiwyg: # optional, 1.0
       - blockquote
     small: small
     caption: figcaption
-  rhythm:
-    defaults:
-      default:
-        before: 16px
-        after: 16px
-      large:
-        before: 24px
-        after: 24px
+  spacing:
     h1:
       default:
         before: 3rem
       large:
         before: 5rem
         after: 2rem
-    h2:
+    h3:
       large:
         before: 4rem
         after: 2rem

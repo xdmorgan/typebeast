@@ -1,35 +1,44 @@
-# breakpoints: # required, mvp
-#   large: 768px
+# ideally, running cli with defaults and no custom config
+# would yield an empty output as there's no styles, utils
+# breakpoints, or wysiwyg whatever
 
-# typography: # required, mvp
-#   h1-xxl:
-#     default:
-#       size: 100
-#     large:
-#       size: 200
+settings:
+  rem-base: 16
+  calculate-rem-size: false
+  include-utility-classes: false
 
 wysiwyg:
   scope: 'wysiwyg'
-  rhythm:
-    defaults:
-      default:
-        before: 16px
-        after: 16px
-      large:
-        before: 24px
-        after: 24px
+
+spacing:
+  include:
+    - h1
+    - h2
+    - h3
+    - h4
+    - h5
+    - h6
+    - p
+    - ul
+    - ol
+    - dl
+    - blockquote
+    - figure
+    - pre
+  breakpoints:
+    default: 1rem
+    large: 2rem
 
 # outputs: # optional, 1.0
 #   sass-mixins: true
 #   sass-tokens: true
 #   css-variables: true
 
-prefixes: # optional, 1.0
+prefixes:
   typography: type
   custom-properties: type
   sass-mixins: type
   sass-tokens: type
-####
 # custom-fonts: # optional (backlog)
 #   helvetica:
 #     url: path

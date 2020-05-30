@@ -20,6 +20,32 @@ describe('merge-objects', () => {
           "sass-tokens": "type",
           "typography": "type",
         },
+        "settings": Object {
+          "calculate-rem-size": true,
+          "include-utility-classes": true,
+          "rem-base": 16,
+        },
+        "spacing": Object {
+          "breakpoints": Object {
+            "default": "1rem",
+            "large": "2rem",
+          },
+          "include": Array [
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "p",
+            "ul",
+            "ol",
+            "dl",
+            "blockquote",
+            "figure",
+            "pre",
+          ],
+        },
         "typography": Object {
           "caption": Object {
             "default": Object {
@@ -33,6 +59,7 @@ describe('merge-objects', () => {
           "h1": Object {
             "default": Object {
               "family": "var(--font-heading)",
+              "letter": "-0.0125em",
               "line": 35.2,
               "size": 32,
               "weight": "normal",
@@ -44,6 +71,7 @@ describe('merge-objects', () => {
           "h1-xl": Object {
             "default": Object {
               "family": "var(--font-heading)",
+              "letter": "-0.0125em",
               "line": 39.6,
               "size": 36,
               "weight": "normal",
@@ -55,6 +83,7 @@ describe('merge-objects', () => {
           "h1-xxl": Object {
             "default": Object {
               "family": "var(--font-heading)",
+              "letter": "-0.0125em",
               "line": 46.2,
               "size": 42,
               "weight": "normal",
@@ -174,17 +203,8 @@ describe('merge-objects', () => {
             ],
             "small": "small",
           },
-          "rhythm": Object {
-            "defaults": Object {
-              "default": Object {
-                "after": "16px",
-                "before": "16px",
-              },
-              "large": Object {
-                "after": "24px",
-                "before": "24px",
-              },
-            },
+          "scope": "wysiwyg",
+          "spacing": Object {
             "h1": Object {
               "default": Object {
                 "before": "3rem",
@@ -194,14 +214,13 @@ describe('merge-objects', () => {
                 "before": "5rem",
               },
             },
-            "h2": Object {
+            "h3": Object {
               "large": Object {
                 "after": "2rem",
                 "before": "4rem",
               },
             },
           },
-          "scope": "wysiwyg",
         },
       }
     `)
