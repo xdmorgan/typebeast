@@ -25,9 +25,6 @@ spacing:
     - blockquote
     - figure
     - pre
-  breakpoints:
-    default: 1rem
-    large: 2rem
 
 # outputs: # optional, 1.0
 #   sass-mixins: true
