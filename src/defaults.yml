@@ -11,12 +11,13 @@
 wysiwyg:
   scope: 'wysiwyg'
   rhythm:
-    default:
-      before: 1rem
-      after: 1rem
-    large:
-      before: 1.5rem
-      after: 1.5rem
+    defaults:
+      default:
+        before: 16px
+        after: 16px
+      large:
+        before: 24px
+        after: 24px
 
 # outputs: # optional, 1.0
 #   sass-mixins: true

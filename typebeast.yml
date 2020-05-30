@@ -4,47 +4,50 @@ format-version: 1
 breakpoints: # required, mvp
   large: 768px
 
-typography: # required, mvp
+typography:
   h1-xxl:
     default:
+      family: var(--font-heading)
       size: 42
       line: 46.2
-      weight: bold
-      letter: -0.03125em
+      weight: normal
     large:
       size: 80
   h1-xl:
     default:
+      family: var(--font-heading)
       size: 36
       line: 39.6
-      weight: bold
-      letter: -0.03125em
+      weight: normal
     large:
       size: 64
   h1:
     default:
+      family: var(--font-heading)
       size: 32
       line: 35.2
-      weight: bold
-      letter: -0.03125em
+      weight: normal
     large:
       size: 48
   h2:
     default:
+      family: var(--font-heading)
       size: 28
       line: 30.8
-      weight: bold
+      weight: normal
     large:
       size: 32
   h3:
     default:
+      family: var(--font-heading)
       size: 20
       line: 22
-      weight: bold
+      weight: normal
     large:
       size: 24
   h4:
     default:
+      family: var(--font-heading)
       size: 16
       line: 19.2
       weight: bold
@@ -52,6 +55,7 @@ typography: # required, mvp
       size: 20
   h5:
     default:
+      family: var(--font-heading)
       size: 13
       line: 15.6
       weight: bold
@@ -59,6 +63,7 @@ typography: # required, mvp
       size: 16
   h6:
     default:
+      family: var(--font-heading)
       size: 10
       line: 12
       weight: bold
@@ -83,6 +88,12 @@ typography: # required, mvp
       line: 23.8
     large:
       size: 16
+  ui:
+    default:
+      size: 13
+      line: 18.2
+    large:
+      size: 14
   caption:
     default:
       size: 10
@@ -91,7 +102,7 @@ typography: # required, mvp
       size: 12
 
 wysiwyg: # optional, 1.0
-  scope: 'wysiwyg'
+  scope: wysiwyg
   elements:
     h1: h1
     h2: h2
@@ -108,9 +119,20 @@ wysiwyg: # optional, 1.0
     small: small
     caption: figcaption
   rhythm:
-    default:
-      before: 16px
-      after: 16px
-    large:
-      before: 24px
-      after: 24px
+    defaults:
+      default:
+        before: 16px
+        after: 16px
+      large:
+        before: 24px
+        after: 24px
+    h1:
+      default:
+        before: 3rem
+      large:
+        before: 5rem
+        after: 2rem
+    h2:
+      large:
+        before: 4rem
+        after: 2rem

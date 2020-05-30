@@ -32,10 +32,10 @@ describe('merge-objects', () => {
           },
           "h1": Object {
             "default": Object {
-              "letter": "-0.03125em",
+              "family": "var(--font-heading)",
               "line": 35.2,
               "size": 32,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "size": 48,
@@ -43,10 +43,10 @@ describe('merge-objects', () => {
           },
           "h1-xl": Object {
             "default": Object {
-              "letter": "-0.03125em",
+              "family": "var(--font-heading)",
               "line": 39.6,
               "size": 36,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "size": 64,
@@ -54,10 +54,10 @@ describe('merge-objects', () => {
           },
           "h1-xxl": Object {
             "default": Object {
-              "letter": "-0.03125em",
+              "family": "var(--font-heading)",
               "line": 46.2,
               "size": 42,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "size": 80,
@@ -65,9 +65,10 @@ describe('merge-objects', () => {
           },
           "h2": Object {
             "default": Object {
+              "family": "var(--font-heading)",
               "line": 30.8,
               "size": 28,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "size": 32,
@@ -75,9 +76,10 @@ describe('merge-objects', () => {
           },
           "h3": Object {
             "default": Object {
+              "family": "var(--font-heading)",
               "line": 22,
               "size": 20,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "size": 24,
@@ -85,6 +87,7 @@ describe('merge-objects', () => {
           },
           "h4": Object {
             "default": Object {
+              "family": "var(--font-heading)",
               "line": 19.2,
               "size": 16,
               "weight": "bold",
@@ -95,6 +98,7 @@ describe('merge-objects', () => {
           },
           "h5": Object {
             "default": Object {
+              "family": "var(--font-heading)",
               "line": 15.6,
               "size": 13,
               "weight": "bold",
@@ -105,6 +109,7 @@ describe('merge-objects', () => {
           },
           "h6": Object {
             "default": Object {
+              "family": "var(--font-heading)",
               "line": 12,
               "size": 10,
               "transform": "uppercase",
@@ -141,6 +146,15 @@ describe('merge-objects', () => {
               "size": 16,
             },
           },
+          "ui": Object {
+            "default": Object {
+              "line": 18.2,
+              "size": 13,
+            },
+            "large": Object {
+              "size": 14,
+            },
+          },
         },
         "wysiwyg": Object {
           "elements": Object {
@@ -161,13 +175,30 @@ describe('merge-objects', () => {
             "small": "small",
           },
           "rhythm": Object {
-            "default": Object {
-              "after": "16px",
-              "before": "16px",
+            "defaults": Object {
+              "default": Object {
+                "after": "16px",
+                "before": "16px",
+              },
+              "large": Object {
+                "after": "24px",
+                "before": "24px",
+              },
             },
-            "large": Object {
-              "after": "24px",
-              "before": "24px",
+            "h1": Object {
+              "default": Object {
+                "before": "3rem",
+              },
+              "large": Object {
+                "after": "2rem",
+                "before": "5rem",
+              },
+            },
+            "h2": Object {
+              "large": Object {
+                "after": "2rem",
+                "before": "4rem",
+              },
             },
           },
           "scope": "wysiwyg",
