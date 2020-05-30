@@ -9,7 +9,7 @@ const abstract = {
     }
   }
 }
-*/.
+*/
 
 function wrapInSelectors(selectors, body) {
   return `${selectors.join(', ')} {
