@@ -1,10 +1,9 @@
 const { transform } = require('./transform-config')
-
-const MOCK_CONFIG = getMockConfig()
+const mock = require('./mock-config.json')
 
 describe('Transform parsed config file to desired structure', () => {
   test('Transform config', () => {
-    const transformed = transform(MOCK_CONFIG)
+    const transformed = transform(mock)
     expect(transformed).toMatchInlineSnapshot(`
       Object {
         "caption": Object {
@@ -47,17 +46,18 @@ describe('Transform parsed config file to desired structure', () => {
             "default": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h1-default($size: 32,$line: 35.2,$weight: bold,$letter: -0.03125em){
-          @include typebeast($size,$line,$weight,$letter);
+        @mixin type-h1-default($family: Poppins,$size: 32,$line: 35.2,$weight: normal,$letter: -0.0125em){
+          @include typebeast($family,$size,$line,$weight,$letter);
         }
       ",
                 "name": "type-h1-default",
               },
               "settings": Object {
-                "letter": "-0.03125em",
+                "family": "Poppins",
+                "letter": "-0.0125em",
                 "line": 35.2,
                 "size": 32,
-                "weight": "bold",
+                "weight": "normal",
               },
             },
             "large": Object {
@@ -84,17 +84,18 @@ describe('Transform parsed config file to desired structure', () => {
             "default": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h1-xl-default($size: 36,$line: 39.6,$weight: bold,$letter: -0.03125em){
-          @include typebeast($size,$line,$weight,$letter);
+        @mixin type-h1-xl-default($family: Poppins,$size: 36,$line: 39.6,$weight: normal,$letter: -0.0125em){
+          @include typebeast($family,$size,$line,$weight,$letter);
         }
       ",
                 "name": "type-h1-xl-default",
               },
               "settings": Object {
-                "letter": "-0.03125em",
+                "family": "Poppins",
+                "letter": "-0.0125em",
                 "line": 39.6,
                 "size": 36,
-                "weight": "bold",
+                "weight": "normal",
               },
             },
             "large": Object {
@@ -120,17 +121,18 @@ describe('Transform parsed config file to desired structure', () => {
             "default": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h1-xxl-default($size: 42,$line: 46.2,$weight: bold,$letter: -0.03125em){
-          @include typebeast($size,$line,$weight,$letter);
+        @mixin type-h1-xxl-default($family: Poppins,$size: 42,$line: 46.2,$weight: normal,$letter: -0.0125em){
+          @include typebeast($family,$size,$line,$weight,$letter);
         }
       ",
                 "name": "type-h1-xxl-default",
               },
               "settings": Object {
-                "letter": "-0.03125em",
+                "family": "Poppins",
+                "letter": "-0.0125em",
                 "line": 46.2,
                 "size": 42,
-                "weight": "bold",
+                "weight": "normal",
               },
             },
             "large": Object {
@@ -156,16 +158,17 @@ describe('Transform parsed config file to desired structure', () => {
             "default": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h2-default($size: 28,$line: 30.8,$weight: bold){
-          @include typebeast($size,$line,$weight);
+        @mixin type-h2-default($family: Poppins,$size: 28,$line: 30.8,$weight: normal){
+          @include typebeast($family,$size,$line,$weight);
         }
       ",
                 "name": "type-h2-default",
               },
               "settings": Object {
+                "family": "Poppins",
                 "line": 30.8,
                 "size": 28,
-                "weight": "bold",
+                "weight": "normal",
               },
             },
             "large": Object {
@@ -192,16 +195,17 @@ describe('Transform parsed config file to desired structure', () => {
             "default": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h3-default($size: 20,$line: 22,$weight: bold){
-          @include typebeast($size,$line,$weight);
+        @mixin type-h3-default($family: Poppins,$size: 20,$line: 22,$weight: normal){
+          @include typebeast($family,$size,$line,$weight);
         }
       ",
                 "name": "type-h3-default",
               },
               "settings": Object {
+                "family": "Poppins",
                 "line": 22,
                 "size": 20,
-                "weight": "bold",
+                "weight": "normal",
               },
             },
             "large": Object {
@@ -228,13 +232,14 @@ describe('Transform parsed config file to desired structure', () => {
             "default": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h4-default($size: 16,$line: 19.2,$weight: bold){
-          @include typebeast($size,$line,$weight);
+        @mixin type-h4-default($family: Poppins,$size: 16,$line: 19.2,$weight: bold){
+          @include typebeast($family,$size,$line,$weight);
         }
       ",
                 "name": "type-h4-default",
               },
               "settings": Object {
+                "family": "Poppins",
                 "line": 19.2,
                 "size": 16,
                 "weight": "bold",
@@ -264,13 +269,14 @@ describe('Transform parsed config file to desired structure', () => {
             "default": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h5-default($size: 13,$line: 15.6,$weight: bold){
-          @include typebeast($size,$line,$weight);
+        @mixin type-h5-default($family: Poppins,$size: 13,$line: 15.6,$weight: bold){
+          @include typebeast($family,$size,$line,$weight);
         }
       ",
                 "name": "type-h5-default",
               },
               "settings": Object {
+                "family": "Poppins",
                 "line": 15.6,
                 "size": 13,
                 "weight": "bold",
@@ -364,6 +370,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-lede",
+            ".wysiwyg .with-lede p:first-child",
           ],
         },
         "para": Object {
@@ -440,112 +447,41 @@ describe('Transform parsed config file to desired structure', () => {
             ".wysiwyg small",
           ],
         },
+        "ui": Object {
+          "breakpoints": Object {
+            "default": Object {
+              "mixin": Object {
+                "definition": "
+        @mixin type-ui-default($size: 13,$line: 18.2){
+          @include typebeast($size,$line);
+        }
+      ",
+                "name": "type-ui-default",
+              },
+              "settings": Object {
+                "line": 18.2,
+                "size": 13,
+              },
+            },
+            "large": Object {
+              "mixin": Object {
+                "definition": "
+        @mixin type-ui-large($size: 14){
+          @include typebeast($size);
+        }
+      ",
+                "name": "type-ui-large",
+              },
+              "settings": Object {
+                "size": 14,
+              },
+            },
+          },
+          "selectors": Array [
+            ".type-ui",
+          ],
+        },
       }
     `)
   })
 })
-
-function getMockConfig() {
-  return {
-    breakpoints: { large: '768px' },
-    typography: {
-      'h1-xxl': {
-        default: {
-          size: 42,
-          line: 46.2,
-          weight: 'bold',
-          letter: '-0.03125em',
-        },
-        large: { size: 80 },
-      },
-      'h1-xl': {
-        default: {
-          size: 36,
-          line: 39.6,
-          weight: 'bold',
-          letter: '-0.03125em',
-        },
-        large: { size: 64 },
-      },
-      h1: {
-        default: {
-          size: 32,
-          line: 35.2,
-          weight: 'bold',
-          letter: '-0.03125em',
-        },
-        large: { size: 48 },
-      },
-      h2: {
-        default: { size: 28, line: 30.8, weight: 'bold' },
-        large: { size: 32 },
-      },
-      h3: {
-        default: { size: 20, line: 22, weight: 'bold' },
-        large: { size: 24 },
-      },
-      h4: {
-        default: { size: 16, line: 19.2, weight: 'bold' },
-        large: { size: 20 },
-      },
-      h5: {
-        default: { size: 13, line: 15.6, weight: 'bold' },
-        large: { size: 16 },
-      },
-      h6: {
-        default: {
-          size: 10,
-          line: 12,
-          weight: 'bold',
-          transform: 'uppercase',
-        },
-        large: { size: 12 },
-      },
-      lede: { default: { size: 18, line: 27 }, large: { size: 24 } },
-      para: {
-        default: { size: 16, line: 27.2 },
-        large: { size: 18 },
-      },
-      small: {
-        default: { size: 14, line: 23.8 },
-        large: { size: 16 },
-      },
-      caption: {
-        default: { size: 10, line: 15 },
-        large: { size: 12 },
-      },
-    },
-    wysiwyg: {
-      scope: 'wysiwyg',
-      elements: {
-        h1: 'h1',
-        h2: 'h2',
-        h3: 'h3',
-        h4: 'h4',
-        h5: 'h5',
-        h6: 'h6',
-        para: ['p', 'ul', 'ol', 'dl', 'blockquote'],
-        small: 'small',
-        caption: 'figcaption',
-      },
-      rhythm: {
-        default: { before: '16px', after: '16px' },
-        large: { before: '24px', after: '24px' },
-      },
-    },
-    outputs: {
-      'sass-mixins': true,
-      'sass-tokens': true,
-      'css-variables': true,
-    },
-    prefixes: {
-      typography: 'type',
-      'custom-properties': 'type',
-      'sass-mixins': 'type',
-      'sass-tokens': 'type',
-    },
-    'custom-fonts': {
-      helvetica: { url: 'path', weight: 'str', style: 'str' },
-    },
-  }
-}

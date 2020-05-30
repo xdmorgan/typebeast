@@ -18,6 +18,7 @@ async function main({ config, output, compression } = {}) {
   const srcDir = path.join(__dirname, 'sass')
   const tmpDir = path.join(__dirname, '../build')
   const defaultsPath = path.join(__dirname, './defaults.yml')
+  const tmpDirJson = path.join(tmpDir, 'config.json')
   const tmpDirSass = path.join(tmpDir, 'sass')
   const generatedSassSettingsPath = path.join(
     tmpDirSass,
@@ -40,8 +41,7 @@ async function main({ config, output, compression } = {}) {
   // merge custom config onto necessary but optional defaults (e.g.
   // prefixes and vertical rhythm settings)
   const merged = merge(defaults, parsed)
-  // Validate the combined config to ensure any assumed values are
-  // set
+  // Validate combined config to ensure any assumed values are set
   const [valid, { message }] = validate(merged, CURRENT_FORMAT_VERSION)
   if (!valid) throw new Error(message)
   // since config is valid, clean intermediate target for built files
@@ -59,6 +59,8 @@ async function main({ config, output, compression } = {}) {
   // copy the source sass dir to its temp destination before we start
   // to mutate it with custom generated code
   await fs.copy(srcDir, tmpDirSass)
+  // write the generated settings to the temp sass dir
+  await fs.writeFile(tmpDirJson, JSON.stringify(merged, null, 2))
   // write the generated settings to the temp sass dir
   await fs.writeFile(generatedSassSettingsPath, settings)
   // write the generated mixins to the temp sass dir

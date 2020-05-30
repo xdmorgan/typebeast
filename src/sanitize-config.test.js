@@ -1,33 +1,65 @@
 const { sanitize } = require('./sanitize-config')
-
-const MOCK_CONFIG = getMockConfig()
+const mock = require('./mock-config.json')
 
 describe('Sanitize parsed config file to set default values', () => {
   test('sanitize()', () => {
-    const sanitized = sanitize(MOCK_CONFIG)
+    const sanitized = sanitize(mock)
     // expect(true).toBe(true)
     expect(sanitized).toMatchInlineSnapshot(`
       Object {
         "breakpoints": Object {
           "large": "768px",
         },
-        "custom-fonts": Object {
-          "helvetica": Object {
-            "style": "str",
-            "url": "path",
-            "weight": "str",
-          },
-        },
-        "outputs": Object {
-          "css-variables": true,
-          "sass-mixins": true,
-          "sass-tokens": true,
-        },
+        "format-version": 1,
         "prefixes": Object {
           "custom-properties": "type",
           "sass-mixins": "type",
           "sass-tokens": "type",
           "typography": "type",
+        },
+        "settings": Object {
+          "calculate-rem-size": true,
+          "include-utility-classes": true,
+          "rem-base": 16,
+        },
+        "spacing": Object {
+          "horizontal-reset": Object {
+            "breakpoints": Object {
+              "default": Object {
+                "inline": 0,
+              },
+            },
+            "include": Array [
+              "figure",
+              "blockquote",
+              "dd",
+            ],
+          },
+          "vertical-rhythm": Object {
+            "breakpoints": Object {
+              "default": Object {
+                "block": "1rem",
+              },
+              "large": Object {
+                "block": "2rem",
+              },
+            },
+            "include": Array [
+              "h1",
+              "h2",
+              "h3",
+              "h4",
+              "h5",
+              "h6",
+              "p",
+              "ul",
+              "ol",
+              "dl",
+              "blockquote",
+              "figure",
+              "pre",
+            ],
+          },
         },
         "typography": Object {
           "caption": Object {
@@ -52,13 +84,13 @@ describe('Sanitize parsed config file to set default values', () => {
           },
           "h1": Object {
             "default": Object {
-              "family": null,
-              "letter": "-0.03125em",
+              "family": "Poppins",
+              "letter": "-0.0125em",
               "line": 35.2,
               "size": 32,
               "style": null,
               "transform": null,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "family": null,
@@ -72,13 +104,13 @@ describe('Sanitize parsed config file to set default values', () => {
           },
           "h1-xl": Object {
             "default": Object {
-              "family": null,
-              "letter": "-0.03125em",
+              "family": "Poppins",
+              "letter": "-0.0125em",
               "line": 39.6,
               "size": 36,
               "style": null,
               "transform": null,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "family": null,
@@ -92,13 +124,13 @@ describe('Sanitize parsed config file to set default values', () => {
           },
           "h1-xxl": Object {
             "default": Object {
-              "family": null,
-              "letter": "-0.03125em",
+              "family": "Poppins",
+              "letter": "-0.0125em",
               "line": 46.2,
               "size": 42,
               "style": null,
               "transform": null,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "family": null,
@@ -112,13 +144,13 @@ describe('Sanitize parsed config file to set default values', () => {
           },
           "h2": Object {
             "default": Object {
-              "family": null,
+              "family": "Poppins",
               "letter": null,
               "line": 30.8,
               "size": 28,
               "style": null,
               "transform": null,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "family": null,
@@ -132,13 +164,13 @@ describe('Sanitize parsed config file to set default values', () => {
           },
           "h3": Object {
             "default": Object {
-              "family": null,
+              "family": "Poppins",
               "letter": null,
               "line": 22,
               "size": 20,
               "style": null,
               "transform": null,
-              "weight": "bold",
+              "weight": "normal",
             },
             "large": Object {
               "family": null,
@@ -152,7 +184,7 @@ describe('Sanitize parsed config file to set default values', () => {
           },
           "h4": Object {
             "default": Object {
-              "family": null,
+              "family": "Poppins",
               "letter": null,
               "line": 19.2,
               "size": 16,
@@ -172,7 +204,7 @@ describe('Sanitize parsed config file to set default values', () => {
           },
           "h5": Object {
             "default": Object {
-              "family": null,
+              "family": "Poppins",
               "letter": null,
               "line": 15.6,
               "size": 13,
@@ -270,6 +302,26 @@ describe('Sanitize parsed config file to set default values', () => {
               "weight": null,
             },
           },
+          "ui": Object {
+            "default": Object {
+              "family": null,
+              "letter": null,
+              "line": 18.2,
+              "size": 13,
+              "style": null,
+              "transform": null,
+              "weight": null,
+            },
+            "large": Object {
+              "family": null,
+              "letter": null,
+              "line": null,
+              "size": 14,
+              "style": null,
+              "transform": null,
+              "weight": null,
+            },
+          },
         },
         "wysiwyg": Object {
           "elements": Object {
@@ -280,6 +332,7 @@ describe('Sanitize parsed config file to set default values', () => {
             "h4": "h4",
             "h5": "h5",
             "h6": "h6",
+            "lede": ".with-lede p:first-child",
             "para": Array [
               "p",
               "ul",
@@ -289,122 +342,31 @@ describe('Sanitize parsed config file to set default values', () => {
             ],
             "small": "small",
           },
-          "rhythm": Object {
-            "default": Object {
-              "after": "16px",
-              "before": "16px",
+          "scope": "wysiwyg",
+          "spacing": Object {
+            "figure": Object {
+              "default": Object {
+                "inline": 0,
+              },
             },
-            "large": Object {
-              "after": "24px",
-              "before": "24px",
+            "h1": Object {
+              "default": Object {
+                "block-start": "3rem",
+              },
+              "large": Object {
+                "block-end": "2rem",
+                "block-start": "5rem",
+              },
+            },
+            "h3": Object {
+              "large": Object {
+                "block-end": "2rem",
+                "block-start": "4rem",
+              },
             },
           },
-          "scope": "wysiwyg",
         },
       }
     `)
   })
 })
-
-function getMockConfig() {
-  return {
-    breakpoints: { large: '768px' },
-    typography: {
-      'h1-xxl': {
-        default: {
-          size: 42,
-          line: 46.2,
-          weight: 'bold',
-          letter: '-0.03125em',
-        },
-        large: { size: 80 },
-      },
-      'h1-xl': {
-        default: {
-          size: 36,
-          line: 39.6,
-          weight: 'bold',
-          letter: '-0.03125em',
-        },
-        large: { size: 64 },
-      },
-      h1: {
-        default: {
-          size: 32,
-          line: 35.2,
-          weight: 'bold',
-          letter: '-0.03125em',
-        },
-        large: { size: 48 },
-      },
-      h2: {
-        default: { size: 28, line: 30.8, weight: 'bold' },
-        large: { size: 32 },
-      },
-      h3: {
-        default: { size: 20, line: 22, weight: 'bold' },
-        large: { size: 24 },
-      },
-      h4: {
-        default: { size: 16, line: 19.2, weight: 'bold' },
-        large: { size: 20 },
-      },
-      h5: {
-        default: { size: 13, line: 15.6, weight: 'bold' },
-        large: { size: 16 },
-      },
-      h6: {
-        default: {
-          size: 10,
-          line: 12,
-          weight: 'bold',
-          transform: 'uppercase',
-        },
-        large: { size: 12 },
-      },
-      lede: { default: { size: 18, line: 27 }, large: { size: 24 } },
-      para: {
-        default: { size: 16, line: 27.2 },
-        large: { size: 18 },
-      },
-      small: {
-        default: { size: 14, line: 23.8 },
-        large: { size: 16 },
-      },
-      caption: {
-        default: { size: 10, line: 15 },
-        large: { size: 12 },
-      },
-    },
-    wysiwyg: {
-      scope: 'wysiwyg',
-      elements: {
-        h1: 'h1',
-        h2: 'h2',
-        h3: 'h3',
-        h4: 'h4',
-        h5: 'h5',
-        h6: 'h6',
-        para: ['p', 'ul', 'ol', 'dl', 'blockquote'],
-        small: 'small',
-        caption: 'figcaption',
-      },
-      rhythm: {
-        default: { before: '16px', after: '16px' },
-        large: { before: '24px', after: '24px' },
-      },
-    },
-    outputs: {
-      'sass-mixins': true,
-      'sass-tokens': true,
-      'css-variables': true,
-    },
-    prefixes: {
-      typography: 'type',
-      'custom-properties': 'type',
-    },
-    'custom-fonts': {
-      helvetica: { url: 'path', weight: 'str', style: 'str' },
-    },
-  }
-}

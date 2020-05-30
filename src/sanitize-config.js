@@ -1,3 +1,5 @@
+const cloneDeep = require('lodash.clonedeep')
+
 const DEFAULT_PARAMS = {
   family: null,
   letter: null,
@@ -37,7 +39,8 @@ function setDefaultPrefixes(config, prefixes) {
   return config
 }
 
-function sanitize(config) {
+function sanitize(original) {
+  config = cloneDeep(original)
   config = setNullPropertyDefaults(config, DEFAULT_PARAMS)
   config = setDefaultPrefixes(config, DEFAULT_PREFIXES)
   return config
