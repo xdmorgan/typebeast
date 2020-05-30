@@ -10,6 +10,8 @@ const { write: writeMixins } = require('./write-mixins')
 const { write: writeStyles } = require('./write-styles')
 const { validate } = require('./validate-config')
 const { get: getSassSettingsMap } = require('./get-sass-settings-map')
+const { transform: transformSpacing } = require('./transform-spacing')
+const { write: writeSpacing } = require('./write-spacing')
 
 const { CURRENT_FORMAT_VERSION = 1 } = process.env
 
@@ -18,6 +20,7 @@ async function main({ config, output, compression } = {}) {
   const srcDir = path.join(__dirname, 'sass')
   const tmpDir = path.join(__dirname, '../build')
   const defaultsPath = path.join(__dirname, './defaults.yml')
+  const tmpDirJson = path.join(tmpDir, 'config.json')
   const tmpDirSass = path.join(tmpDir, 'sass')
   const generatedSassSettingsPath = path.join(
     tmpDirSass,
@@ -27,9 +30,13 @@ async function main({ config, output, compression } = {}) {
     tmpDirSass,
     'core/_generated-mixins.scss'
   )
-  const generatedSassStylesPath = path.join(
+  const generatedSassTypographyPath = path.join(
     tmpDirSass,
-    'styles/_generated-styles.scss'
+    'styles/_generated-typography.scss'
+  )
+  const generatedSassSpacingPath = path.join(
+    tmpDirSass,
+    'styles/_generated-spacing.scss'
   )
   const sassRenderEntryPoint = path.join(tmpDirSass, 'main.scss')
   const sassRenderOutFile = path.join(tmpDir, 'typebeast.css')
@@ -40,8 +47,7 @@ async function main({ config, output, compression } = {}) {
   // merge custom config onto necessary but optional defaults (e.g.
   // prefixes and vertical rhythm settings)
   const merged = merge(defaults, parsed)
-  // Validate the combined config to ensure any assumed values are
-  // set
+  // Validate combined config to ensure any assumed values are set
   const [valid, { message }] = validate(merged, CURRENT_FORMAT_VERSION)
   if (!valid) throw new Error(message)
   // since config is valid, clean intermediate target for built files
@@ -60,13 +66,20 @@ async function main({ config, output, compression } = {}) {
   // to mutate it with custom generated code
   await fs.copy(srcDir, tmpDirSass)
   // write the generated settings to the temp sass dir
+  await fs.writeFile(tmpDirJson, JSON.stringify(merged, null, 2))
+  // write the generated settings to the temp sass dir
   await fs.writeFile(generatedSassSettingsPath, settings)
   // write the generated mixins to the temp sass dir
   await fs.writeFile(generatedSassMixinsPath, mixins)
   // write the classes that refer to the generated mixins (as string)
-  const styles = writeStyles({ data: transformed, config: sanitized })
+  const typography = writeStyles({ data: transformed, config: sanitized })
+  const spacing = writeSpacing({
+    transformed: transformSpacing(sanitized),
+    config: sanitized,
+  })
   // write the styles to the temp dir
-  await fs.writeFile(generatedSassStylesPath, styles)
+  await fs.writeFile(generatedSassTypographyPath, typography)
+  await fs.writeFile(generatedSassSpacingPath, spacing)
   // render the temp dir with the main entry point
   const result = sass.renderSync({
     file: sassRenderEntryPoint,

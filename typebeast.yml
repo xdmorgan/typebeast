@@ -110,8 +110,40 @@ typography:
       size: 12
 
 spacing:
-  breakpoints:
-    default: 0
+  vertical-rhythm:
+    include:
+      - h1
+      - h2
+      - h3
+      - h4
+      - h5
+      - h6
+      - p
+      - ul
+      - ol
+      - dl
+      - blockquote
+      - figure
+      - pre
+    breakpoints:
+      default:
+        block: 0
+  horizontal-reset:
+    include:
+      - figure
+      - blockquote
+      - dd
+    breakpoints:
+      default:
+        inline: 0
+  horizontal-rule:
+    include:
+      - hr
+    breakpoints:
+      default:
+        block: 3rem
+      large:
+        block: 4rem
 
 wysiwyg: # optional, 1.0
   scope: wysiwyg

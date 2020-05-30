@@ -15,8 +15,52 @@ describe('Load and parse yml config as json', () => {
           "include-utility-classes": true,
         },
         "spacing": Object {
-          "breakpoints": Object {
-            "default": 0,
+          "horizontal-reset": Object {
+            "breakpoints": Object {
+              "default": Object {
+                "inline": 0,
+              },
+            },
+            "include": Array [
+              "figure",
+              "blockquote",
+              "dd",
+            ],
+          },
+          "horizontal-rule": Object {
+            "breakpoints": Object {
+              "default": Object {
+                "block": "3rem",
+              },
+              "large": Object {
+                "block": "4rem",
+              },
+            },
+            "include": Array [
+              "hr",
+            ],
+          },
+          "vertical-rhythm": Object {
+            "breakpoints": Object {
+              "default": Object {
+                "block": 0,
+              },
+            },
+            "include": Array [
+              "h1",
+              "h2",
+              "h3",
+              "h4",
+              "h5",
+              "h6",
+              "p",
+              "ul",
+              "ol",
+              "dl",
+              "blockquote",
+              "figure",
+              "pre",
+            ],
           },
         },
         "typography": Object {

@@ -1,7 +1,5 @@
 const { format } = require('./prettier-format')
-
-const toMediaQuery = breakpoint =>
-  `@media screen and (min-width: ${breakpoint})`
+const { breakpointToMediaQuery } = require('./utils')
 
 const writeStyleDeclaration = ({ mixinName, selectors }) => {
   return `
@@ -28,7 +26,7 @@ function write({ data, config }) {
     (acc, name) => [
       ...acc,
       '\n',
-      toMediaQuery(config.breakpoints[name]) + '{',
+      breakpointToMediaQuery(config.breakpoints[name]) + '{',
       ...declarationWriter(name),
       '}',
     ],

@@ -10,22 +10,6 @@ settings:
 wysiwyg:
   scope: 'wysiwyg'
 
-spacing:
-  include:
-    - h1
-    - h2
-    - h3
-    - h4
-    - h5
-    - h6
-    - p
-    - ul
-    - ol
-    - dl
-    - blockquote
-    - figure
-    - pre
-
 # outputs: # optional, 1.0
 #   sass-mixins: true
 #   sass-tokens: true
