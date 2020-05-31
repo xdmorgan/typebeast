@@ -1,4 +1,4 @@
-@if typebeast-settings('include-utility-classes') {
+@if typebeast-setting('include-utility-classes') {
   a.is-stealth,
   a.no-underline:not(:hover):not(:active):not(:focus) {
     text-decoration: none;
