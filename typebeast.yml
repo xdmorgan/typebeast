@@ -1,7 +1,6 @@
 # hello, world
 format-version: 1
 
-# technicallyy not required, but should it be?
 breakpoints:
   large: 768px
 
@@ -9,7 +8,6 @@ settings:
   calculate-rem-size: true
   include-utility-classes: true
 
-# technicallyy not required, but should it be?
 typography:
   h1-xxl:
     default:
