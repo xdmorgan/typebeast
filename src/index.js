@@ -39,7 +39,8 @@ async function main({ config, output, compression } = {}) {
     'styles/_generated-spacing.scss'
   )
   const sassRenderEntryPoint = path.join(tmpDirSass, 'main.scss')
-  const sassRenderOutFile = path.join(tmpDir, 'typebeast.css')
+  const sassRenderOutCSSFile = path.join(tmpDir, 'typebeast.css')
+  const sassRenderOutMapFile = path.join(tmpDir, 'typebeast.css.map')
   // parse the custom config
   const parsed = await parse(config)
   // parse the deafults (internal shadow config file)
@@ -83,12 +84,13 @@ async function main({ config, output, compression } = {}) {
   // render the temp dir with the main entry point
   const result = sass.renderSync({
     file: sassRenderEntryPoint,
-    outFile: sassRenderOutFile,
+    outFile: sassRenderOutCSSFile,
     outputStyle: compression,
     sourceMap: true, // or an absolute or relative (to outFile) path
   })
   // write the resultant css to the temp dir
-  await fs.writeFile(sassRenderOutFile, result.css)
+  await fs.writeFile(sassRenderOutCSSFile, result.css)
+  await fs.writeFile(sassRenderOutMapFile, result.map)
   // if we made it this far without throwing, copy the finalized temp
   // dir to the final output destination
   await fs.copy(tmpDir, output)
