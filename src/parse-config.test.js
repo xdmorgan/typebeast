@@ -210,7 +210,7 @@ describe('Load and parse yml config as json', () => {
             "h4": "h4",
             "h5": "h5",
             "h6": "h6",
-            "lede": ".with-lede p:first-child",
+            "lede": "&.with-lede p:first-child",
             "para": Array [
               "p",
               "ul",
@@ -222,25 +222,79 @@ describe('Load and parse yml config as json', () => {
           },
           "scope": "wysiwyg",
           "spacing": Object {
-            "figure": Object {
-              "default": Object {
-                "inline": 0,
+            "larger-headings": Object {
+              "breakpoints": Object {
+                "default": Object {
+                  "block-start": "3rem",
+                },
+                "large": Object {
+                  "block-start": "5rem",
+                },
               },
+              "include": Array [
+                "h1",
+                "h2",
+              ],
             },
-            "h1": Object {
-              "default": Object {
-                "block-start": "3rem",
+            "other-content": Object {
+              "breakpoints": Object {
+                "default": Object {
+                  "block": "3rem",
+                },
+                "large": Object {
+                  "block": "4rem",
+                },
               },
-              "large": Object {
-                "block-end": "2rem",
-                "block-start": "5rem",
-              },
+              "include": Array [
+                "pre",
+                "iframe",
+                "figure",
+                "& > img",
+                "blockquote",
+                "& > p > img:first-child:last-child",
+                "& > p > .gatsby-resp-image-wrapper",
+              ],
             },
-            "h3": Object {
-              "large": Object {
-                "block-end": "2rem",
-                "block-start": "4rem",
+            "smaller-headings": Object {
+              "breakpoints": Object {
+                "default": Object {
+                  "block-start": "2rem",
+                },
+                "large": Object {
+                  "block-start": "3rem",
+                },
               },
+              "include": Array [
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+              ],
+            },
+            "vertical-rhythm": Object {
+              "breakpoints": Object {
+                "default": Object {
+                  "block": "1rem",
+                },
+                "large": Object {
+                  "block": "1.5rem",
+                },
+              },
+              "include": Array [
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+                "p",
+                "ul",
+                "ol",
+                "dl",
+                "blockquote",
+                "figure",
+                "pre",
+              ],
             },
           },
         },

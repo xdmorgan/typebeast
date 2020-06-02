@@ -370,7 +370,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-lede",
-            ".wysiwyg .with-lede p:first-child",
+            ".wysiwyg.with-lede p:first-child",
           ],
         },
         "para": Object {
