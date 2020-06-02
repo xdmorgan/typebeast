@@ -42,7 +42,13 @@ function ensureSelectorsAreArrays(selectors) {
 }
 
 function createSelectorScopeFormatter(scope) {
-  return sel => `.${scope} ${sel}`
+  return sel => {
+    if (sel[0] === '&') {
+      return `.${scope}${sel.slice(1)}`
+    } else {
+      return `.${scope} ${sel}`
+    }
+  }
 }
 
 function createGetListOfSelectors(config) {
