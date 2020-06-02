@@ -65,7 +65,6 @@ function createGetListOfSelectors(config) {
 }
 
 function transform(config) {
-  let out
   // grab the style names from the config ['heading-1', 'my-para']
   const styleNames = Object.keys(config.typography)
   // create mapping of style name to breakpoints with settings
