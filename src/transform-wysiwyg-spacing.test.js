@@ -1,4 +1,4 @@
-const { transform } = require('./transform-wysiwyg')
+const { transform } = require('./transform-wysiwyg-spacing')
 const mock = require('./mock-config.json')
 
 describe('transform()', () => {
