@@ -73,14 +73,14 @@ function transform(config) {
     breakpoints: getBreakpointWritersFromConfig(config),
     // groups: {
     //   'vertical-rhythm': {
-    //     default: {
-    //       selectors: `h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, figure, pre`,
-    //       properties: {
+    //     selectors: `h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, figure, pre`,
+    //     breakpoints: {
+    //       default: {
     //         'margin-block-end': '1rem',
     //       },
     //     },
     //   },
-    // }
+    // },
     groups: getGroupsFromConfig(config),
   }
 }
