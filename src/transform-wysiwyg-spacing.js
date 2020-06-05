@@ -63,6 +63,7 @@ function getGroupsFromConfig(config) {
 }
 
 function transform(config) {
+  if (!config.wysiwyg) return null
   return {
     // '.classname'
     scope: getScopeFromConfig(config),

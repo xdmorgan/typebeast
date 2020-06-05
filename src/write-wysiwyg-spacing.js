@@ -4,7 +4,7 @@ const { objectToCssProperties } = require('./utils')
 function getDelcarationByBreakpoint({ groupName, selectors, properties }) {
   return `
     // group: ${groupName}
-    
+
     ${selectors} {
       ${objectToCssProperties(properties)}
     }
@@ -38,6 +38,7 @@ function getBlocksByBreakpoint({ breakpoints, groups }) {
 }
 
 function write(transformed) {
+  if (!transformed) return ''
   const breakpoints = getBlocksByBreakpoint(transformed)
   return format(`${transformed.scope} { ${breakpoints.join('\n')} }`)
 }
