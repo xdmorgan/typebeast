@@ -12,6 +12,10 @@ const { validate } = require('./validate-config')
 const { get: getSassSettingsMap } = require('./get-sass-settings-map')
 const { transform: transformSpacing } = require('./transform-spacing')
 const { write: writeSpacing } = require('./write-spacing')
+const {
+  transform: transformWysiwygSpacing,
+} = require('./transform-wysiwyg-spacing')
+const { write: writeWysiwygSpacing } = require('./write-wysiwyg-spacing')
 
 const { CURRENT_FORMAT_VERSION = 1 } = process.env
 
@@ -37,6 +41,10 @@ async function main({ config, output, compression } = {}) {
   const generatedSassSpacingPath = path.join(
     tmpDirSass,
     'styles/_generated-spacing.scss'
+  )
+  const generatedSassWysiwygSpacingPath = path.join(
+    tmpDirSass,
+    'styles/_generated-wysiwyg-spacing.scss'
   )
   const sassRenderEntryPoint = path.join(tmpDirSass, 'main.scss')
   const sassRenderOutCSSFile = path.join(tmpDir, 'typebeast.css')
@@ -78,9 +86,11 @@ async function main({ config, output, compression } = {}) {
     transformed: transformSpacing(sanitized),
     config: sanitized,
   })
+  const wysiwygSpacing = writeWysiwygSpacing(transformWysiwygSpacing(sanitized))
   // write the styles to the temp dir
   await fs.writeFile(generatedSassTypographyPath, typography)
   await fs.writeFile(generatedSassSpacingPath, spacing)
+  await fs.writeFile(generatedSassWysiwygSpacingPath, wysiwygSpacing)
   // render the temp dir with the main entry point
   const result = sass.renderSync({
     file: sassRenderEntryPoint,

@@ -46,6 +46,19 @@ hr { margin-block-start: 3rem; margin-block-end: 3rem; }
   .type-ui { font-size: 0.875rem; }
   .type-caption, .wysiwyg figcaption { font-size: 0.75rem; } }
 
+.wysiwyg h1, .wysiwyg h2, .wysiwyg h3, .wysiwyg h4, .wysiwyg h5, .wysiwyg h6, .wysiwyg p, .wysiwyg ul, .wysiwyg ol, .wysiwyg dl, .wysiwyg blockquote, .wysiwyg figure, .wysiwyg pre { margin-block-start: 1rem; margin-block-end: 1rem; }
+
+.wysiwyg h1, .wysiwyg h2 { margin-block-start: 3rem; }
+
+.wysiwyg h3, .wysiwyg h4, .wysiwyg h5, .wysiwyg h6 { margin-block-start: 2rem; }
+
+.wysiwyg pre, .wysiwyg iframe, .wysiwyg figure, .wysiwyg > img, .wysiwyg blockquote, .wysiwyg > p > img:first-child:last-child, .wysiwyg > p > .gatsby-resp-image-wrapper { margin-block-start: 3rem; margin-block-end: 3rem; }
+
+@media screen and (min-width: 768px) { .wysiwyg h1, .wysiwyg h2, .wysiwyg h3, .wysiwyg h4, .wysiwyg h5, .wysiwyg h6, .wysiwyg p, .wysiwyg ul, .wysiwyg ol, .wysiwyg dl, .wysiwyg blockquote, .wysiwyg figure, .wysiwyg pre { margin-block-start: 1.5rem; margin-block-end: 1.5rem; }
+  .wysiwyg h1, .wysiwyg h2 { margin-block-start: 5rem; }
+  .wysiwyg h3, .wysiwyg h4, .wysiwyg h5, .wysiwyg h6 { margin-block-start: 3rem; }
+  .wysiwyg pre, .wysiwyg iframe, .wysiwyg figure, .wysiwyg > img, .wysiwyg blockquote, .wysiwyg > p > img:first-child:last-child, .wysiwyg > p > .gatsby-resp-image-wrapper { margin-block-start: 4rem; margin-block-end: 4rem; } }
+
 a.is-stealth, a.no-underline:not(:hover):not(:active):not(:focus) { text-decoration: none; }
 
 a.is-stealth { color: inherit; }
