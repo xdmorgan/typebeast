@@ -61,7 +61,7 @@ hr { margin-block-start: 3rem; margin-block-end: 3rem; }
 
 code { color: midnightblue; background-color: aliceblue; border-radius: 4px; font-size: 0.9em; padding: 0.2em 0.3em 0.3em; }
 
-kbd { position: relative; font-size: 0.9em; background-color: whitesmoke; border-radius: 4px; padding: 0.2em 0.3em 0.3em; border: 1px solid darkgray; box-shadow: 0 0.15em 0 0 darkgray; }
+kbd { position: relative; font-size: 0.9em; border-radius: 4px; padding: 0.2em 0.3em 0.3em; border: 1px solid darkgray; box-shadow: 0 0.15em 0 0 darkgray; }
 
 a.is-stealth, a.no-underline:not(:hover):not(:active):not(:focus) { text-decoration: none; }
 

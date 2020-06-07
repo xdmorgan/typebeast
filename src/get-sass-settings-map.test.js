@@ -7,6 +7,7 @@ describe('get()', () => {
       "$TYPEBEAST_SETTINGS: (
         \\"calculate-rem-size\\": true,
         \\"include-utility-classes\\": true,
+        \\"monospace-font-family\\": null,
         \\"rem-base\\": 16
       );
       "

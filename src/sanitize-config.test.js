@@ -20,6 +20,7 @@ describe('Sanitize parsed config file to set default values', () => {
         "settings": Object {
           "calculate-rem-size": true,
           "include-utility-classes": true,
+          "monospace-font-family": null,
           "rem-base": 16,
         },
         "spacing": Object {

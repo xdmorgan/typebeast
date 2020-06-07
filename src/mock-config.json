@@ -2,7 +2,8 @@
   "settings": {
     "rem-base": 16,
     "calculate-rem-size": true,
-    "include-utility-classes": true
+    "include-utility-classes": true,
+    "monospace-font-family": null
   },
   "wysiwyg": {
     "scope": "wysiwyg",
