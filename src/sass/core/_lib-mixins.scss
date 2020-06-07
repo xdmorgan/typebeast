@@ -58,8 +58,8 @@
 }
 
 @mixin typebeast-code-style(
-  $color: midnightblue,
-  $background: aliceblue,
+  $color: null,
+  $background: ghostwhite,
   $radius: 4px,
   $size: 0.9em,
   $inset: 0.2em 0.3em 0.3em
