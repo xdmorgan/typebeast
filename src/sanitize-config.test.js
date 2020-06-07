@@ -343,13 +343,15 @@ describe('Sanitize parsed config file to set default values', () => {
             "h4": "h4",
             "h5": "h5",
             "h6": "h6",
-            "lede": "&.with-lede p:first-child",
+            "lede": Array [
+              "&.with-lede > p:first-child",
+              "blockquote > p",
+            ],
             "para": Array [
               "p",
               "ul",
               "ol",
               "dl",
-              "blockquote",
             ],
             "small": "small",
           },
