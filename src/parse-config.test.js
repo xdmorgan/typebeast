@@ -210,13 +210,15 @@ describe('Load and parse yml config as json', () => {
             "h4": "h4",
             "h5": "h5",
             "h6": "h6",
-            "lede": "&.with-lede p:first-child",
+            "lede": Array [
+              "&.with-lede > p:first-child",
+              "blockquote > p",
+            ],
             "para": Array [
               "p",
               "ul",
               "ol",
               "dl",
-              "blockquote",
             ],
             "small": "small",
           },

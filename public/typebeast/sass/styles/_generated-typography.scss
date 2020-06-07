@@ -37,7 +37,8 @@
 }
 
 .type-lede,
-.wysiwyg.with-lede p:first-child {
+.wysiwyg.with-lede > p:first-child,
+.wysiwyg blockquote > p {
   @include type-lede-default;
 }
 
@@ -45,8 +46,7 @@
 .wysiwyg p,
 .wysiwyg ul,
 .wysiwyg ol,
-.wysiwyg dl,
-.wysiwyg blockquote {
+.wysiwyg dl {
   @include type-para-default;
 }
 
@@ -104,7 +104,8 @@
   }
 
   .type-lede,
-  .wysiwyg.with-lede p:first-child {
+  .wysiwyg.with-lede > p:first-child,
+  .wysiwyg blockquote > p {
     @include type-lede-large;
   }
 
@@ -112,8 +113,7 @@
   .wysiwyg p,
   .wysiwyg ul,
   .wysiwyg ol,
-  .wysiwyg dl,
-  .wysiwyg blockquote {
+  .wysiwyg dl {
     @include type-para-large;
   }
 
