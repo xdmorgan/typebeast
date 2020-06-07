@@ -10,7 +10,8 @@
   "scripts": {
     "serve": "serve -s public -p 3000",
     "start": "node cli --output public/typebeast",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "build": "yarn start"
   },
   "repository": {
     "type": "git",
