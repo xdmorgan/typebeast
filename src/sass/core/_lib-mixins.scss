@@ -45,6 +45,7 @@
   $color: null,
   $hover: null,
   $active: null,
+  $visited: null,
   $style: null
 ) {
   color: $color;
@@ -74,10 +75,10 @@
 @mixin typebeast-kbd-style(
   $color: null,
   $background: null,
+  $border: darkgray,
   $radius: 4px,
   $size: 0.9em,
-  $inset: 0.2em 0.3em 0.3em,
-  $border: darkgray
+  $inset: 0.2em 0.3em 0.3em
 ) {
   position: relative; // layering rquirement
   font-size: $size;

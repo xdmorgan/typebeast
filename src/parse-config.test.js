@@ -10,6 +10,18 @@ describe('Load and parse yml config as json', () => {
           "large": "768px",
         },
         "format-version": 1,
+        "inline-elements": Object {
+          "a": Object {
+            "include": ".type-link",
+            "settings": Object {
+              "active": "#035AEB",
+              "color": "#002B73",
+              "hover": "#1755BB",
+              "style": "wavy",
+              "visited": "#035AEB",
+            },
+          },
+        },
         "settings": Object {
           "calculate-rem-size": true,
           "include-utility-classes": true,

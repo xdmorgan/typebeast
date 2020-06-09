@@ -1,5 +1,5 @@
 const { sanitize } = require('./sanitize-config')
-const mock = require('./mock-config.json')
+const mock = require('../public/typebeast/config.json')
 
 describe('Sanitize parsed config file to set default values', () => {
   test('sanitize()', () => {
@@ -11,6 +11,18 @@ describe('Sanitize parsed config file to set default values', () => {
           "large": "768px",
         },
         "format-version": 1,
+        "inline-elements": Object {
+          "a": Object {
+            "include": ".type-link",
+            "settings": Object {
+              "active": "#035AEB",
+              "color": "#002B73",
+              "hover": "#1755BB",
+              "style": "wavy",
+              "visited": "#035AEB",
+            },
+          },
+        },
         "prefixes": Object {
           "custom-properties": "type",
           "sass-mixins": "type",

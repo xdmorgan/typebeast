@@ -1,5 +1,5 @@
 const { transform } = require('./transform-wysiwyg-spacing')
-const mock = require('./mock-config.json')
+const mock = require('../public/typebeast/config.json')
 
 describe('transform()', () => {
   test('it works', async () => {

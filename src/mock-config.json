@@ -278,5 +278,17 @@
         }
       }
     }
+  },
+  "inline-elements": {
+    "a": {
+      "include": ".type-link",
+      "settings": {
+        "color": "#002B73",
+        "hover": "#1755BB",
+        "active": "#035AEB",
+        "visited": "#035AEB",
+        "style": "wavy"
+      }
+    }
   }
 }

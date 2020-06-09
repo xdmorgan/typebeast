@@ -1,5 +1,5 @@
 const { transform } = require('./transform-config')
-const mock = require('./mock-config.json')
+const mock = require('../public/typebeast/config.json')
 
 describe('Transform parsed config file to desired structure', () => {
   test('Transform config', () => {

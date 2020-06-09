@@ -59,6 +59,12 @@ hr { margin-block-start: 3rem; margin-block-end: 3rem; }
   .wysiwyg h3, .wysiwyg h4, .wysiwyg h5, .wysiwyg h6 { margin-block-start: 3rem; }
   .wysiwyg pre, .wysiwyg iframe, .wysiwyg figure, .wysiwyg > img, .wysiwyg blockquote, .wysiwyg > p > img:first-child:last-child, .wysiwyg > p > .gatsby-resp-image-wrapper { margin-block-start: 4rem; margin-block-end: 4rem; } }
 
+a, .type-link { color: #002b73; text-decoration-style: wavy; }
+
+a:hover, .type-link:hover { color: #1755bb; }
+
+a:active, .type-link:active { color: #002b73; }
+
 code { background-color: ghostwhite; border-radius: 4px; font-size: 0.9em; padding: 0.2em 0.3em 0.3em; }
 
 kbd { position: relative; font-size: 0.9em; border-radius: 4px; padding: 0.2em 0.3em 0.3em; border: 1px solid darkgray; box-shadow: 0 0.15em 0 0 darkgray; }

@@ -217,3 +217,24 @@ wysiwyg: # optional, 1.0
           block: 3rem
         large:
           block: 4rem
+
+inline-elements:
+  a:
+    include: .type-link
+    settings:
+      color: '#002B73'
+      hover: '#1755BB'
+      active: '#035AEB'
+      visited: '#035AEB'
+      style: wavy
+  # code:
+  #   settings:
+  #     color:
+  #     background:
+  #     radius:
+  # kbd:
+  #   settings:
+  #     color:
+  #     background:
+  #     border:
+  #     radius:

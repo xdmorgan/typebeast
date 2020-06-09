@@ -1,5 +1,5 @@
 const { get } = require('./get-sass-settings-map')
-const mock = require('./mock-config.json')
+const mock = require('../public/typebeast/config.json')
 
 describe('get()', () => {
   test('it works', async () => {
