@@ -2,7 +2,8 @@
   "settings": {
     "rem-base": 16,
     "calculate-rem-size": true,
-    "include-utility-classes": true
+    "include-utility-classes": true,
+    "monospace-font-family": null
   },
   "wysiwyg": {
     "scope": "wysiwyg",
@@ -13,8 +14,8 @@
       "h4": "h4",
       "h5": "h5",
       "h6": "h6",
-      "lede": "&.with-lede p:first-child",
-      "para": ["p", "ul", "ol", "dl", "blockquote"],
+      "lede": ["&.with-lede > p:first-child", "blockquote > p"],
+      "para": ["p", "ul", "ol", "dl"],
       "small": "small",
       "caption": "figcaption"
     },
@@ -275,6 +276,17 @@
         "large": {
           "block": "4rem"
         }
+      }
+    }
+  },
+  "inline-elements": {
+    "a": {
+      "include": ".type-link",
+      "settings": {
+        "color": "#002B73",
+        "hover": "#1755BB",
+        "active": "#035AEB",
+        "visited": "#035AEB"
       }
     }
   }

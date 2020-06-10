@@ -1,6 +1,6 @@
 const { transform } = require('./transform-spacing')
 const { write } = require('./write-spacing')
-const mock = require('./mock-config.json')
+const mock = require('../public/typebeast/config.json')
 
 describe('write()', () => {
   test('it works', async () => {

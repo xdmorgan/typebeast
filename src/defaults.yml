@@ -6,6 +6,7 @@ settings:
   rem-base: 16
   calculate-rem-size: false
   include-utility-classes: false
+  monospace-font-family: null
 
 wysiwyg:
   scope: 'wysiwyg'

@@ -1,5 +1,5 @@
 const { sanitize } = require('./sanitize-config')
-const mock = require('./mock-config.json')
+const mock = require('../public/typebeast/config.json')
 
 describe('Sanitize parsed config file to set default values', () => {
   test('sanitize()', () => {
@@ -11,6 +11,17 @@ describe('Sanitize parsed config file to set default values', () => {
           "large": "768px",
         },
         "format-version": 1,
+        "inline-elements": Object {
+          "a": Object {
+            "include": ".type-link",
+            "settings": Object {
+              "active": "#035AEB",
+              "color": "#002B73",
+              "hover": "#1755BB",
+              "visited": "#035AEB",
+            },
+          },
+        },
         "prefixes": Object {
           "custom-properties": "type",
           "sass-mixins": "type",
@@ -20,6 +31,7 @@ describe('Sanitize parsed config file to set default values', () => {
         "settings": Object {
           "calculate-rem-size": true,
           "include-utility-classes": true,
+          "monospace-font-family": null,
           "rem-base": 16,
         },
         "spacing": Object {
@@ -342,13 +354,15 @@ describe('Sanitize parsed config file to set default values', () => {
             "h4": "h4",
             "h5": "h5",
             "h6": "h6",
-            "lede": "&.with-lede p:first-child",
+            "lede": Array [
+              "&.with-lede > p:first-child",
+              "blockquote > p",
+            ],
             "para": Array [
               "p",
               "ul",
               "ol",
               "dl",
-              "blockquote",
             ],
             "small": "small",
           },

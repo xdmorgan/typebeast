@@ -1,5 +1,5 @@
 const { transform } = require('./transform-config')
-const mock = require('./mock-config.json')
+const mock = require('../public/typebeast/config.json')
 
 describe('Transform parsed config file to desired structure', () => {
   test('Transform config', () => {
@@ -370,7 +370,8 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-lede",
-            ".wysiwyg.with-lede p:first-child",
+            ".wysiwyg.with-lede > p:first-child",
+            ".wysiwyg blockquote > p",
           ],
         },
         "para": Object {
@@ -409,7 +410,6 @@ describe('Transform parsed config file to desired structure', () => {
             ".wysiwyg ul",
             ".wysiwyg ol",
             ".wysiwyg dl",
-            ".wysiwyg blockquote",
           ],
         },
         "small": Object {

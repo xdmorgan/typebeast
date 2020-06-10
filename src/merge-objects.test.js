@@ -1,7 +1,7 @@
 const path = require('path')
 const { parse } = require('./parse-config')
 const { merge } = require('./merge-objects')
-const mock = require('./mock-config.json')
+const mock = require('../public/typebeast/config.json')
 
 describe('merge-objects', () => {
   test('Deep merge custom config onto defaults', async () => {

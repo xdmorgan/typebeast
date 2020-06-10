@@ -152,13 +152,14 @@ wysiwyg: # optional, 1.0
     h4: h4
     h5: h5
     h6: h6
-    lede: '&.with-lede p:first-child' # should have leading &
+    lede:
+      - '&.with-lede > p:first-child'
+      - blockquote > p
     para:
       - p
       - ul
       - ol
       - dl
-      - blockquote
     small: small
     caption: figcaption
   spacing:
@@ -216,3 +217,23 @@ wysiwyg: # optional, 1.0
           block: 3rem
         large:
           block: 4rem
+
+inline-elements:
+  a:
+    include: .type-link
+    settings:
+      color: '#002B73'
+      hover: '#1755BB'
+      active: '#035AEB'
+      visited: '#035AEB'
+  # code:
+  #   settings:
+  #     color:
+  #     background:
+  #     radius:
+  # kbd:
+  #   settings:
+  #     color:
+  #     background:
+  #     border:
+  #     radius:

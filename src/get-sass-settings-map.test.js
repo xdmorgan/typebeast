@@ -1,5 +1,5 @@
 const { get } = require('./get-sass-settings-map')
-const mock = require('./mock-config.json')
+const mock = require('../public/typebeast/config.json')
 
 describe('get()', () => {
   test('it works', async () => {
@@ -7,6 +7,7 @@ describe('get()', () => {
       "$TYPEBEAST_SETTINGS: (
         \\"calculate-rem-size\\": true,
         \\"include-utility-classes\\": true,
+        \\"monospace-font-family\\": null,
         \\"rem-base\\": 16
       );
       "

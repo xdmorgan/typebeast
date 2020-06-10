@@ -10,6 +10,17 @@ describe('Load and parse yml config as json', () => {
           "large": "768px",
         },
         "format-version": 1,
+        "inline-elements": Object {
+          "a": Object {
+            "include": ".type-link",
+            "settings": Object {
+              "active": "#035AEB",
+              "color": "#002B73",
+              "hover": "#1755BB",
+              "visited": "#035AEB",
+            },
+          },
+        },
         "settings": Object {
           "calculate-rem-size": true,
           "include-utility-classes": true,
@@ -210,13 +221,15 @@ describe('Load and parse yml config as json', () => {
             "h4": "h4",
             "h5": "h5",
             "h6": "h6",
-            "lede": "&.with-lede p:first-child",
+            "lede": Array [
+              "&.with-lede > p:first-child",
+              "blockquote > p",
+            ],
             "para": Array [
               "p",
               "ul",
               "ol",
               "dl",
-              "blockquote",
             ],
             "small": "small",
           },

@@ -1,8 +1,5 @@
 const { format } = require('./prettier-format')
-
-function writeHeadingComment(name) {
-  return `// ${name} \n// ---------------------------------------------------------`
-}
+const { getHeadingComment } = require('./utils')
 
 function getWriteMixinDefinition(data) {
   return (styleName, breakpointName) =>
@@ -20,7 +17,7 @@ function getWriteMixinDefinitions(data) {
 function getWriteMixinDeclaration(data) {
   const writeMixinDefinitions = getWriteMixinDefinitions(data)
   return styleName =>
-    [writeHeadingComment(styleName)]
+    [getHeadingComment(styleName)]
       .concat(writeMixinDefinitions(styleName))
       .join('\n')
 }
