@@ -18,7 +18,7 @@ describe('get()', () => {
           $hover: #1755bb,
           $active: #035aeb,
           $visited: #035aeb,
-          $style: wavy
+          $style: null
         );
       }
       "
@@ -101,7 +101,7 @@ describe('transform()', () => {
     const transformed = transform(mock)
     expect(transformed).toMatchInlineSnapshot(`
       Object {
-        "mixin": "@include typebeast-link-style($color: #002B73, $hover: #1755BB, $active: #035AEB, $visited: #035AEB, $style: wavy)",
+        "mixin": "@include typebeast-link-style($color: #002B73, $hover: #1755BB, $active: #035AEB, $visited: #035AEB, $style: null)",
         "selectors": "a, .type-link",
       }
     `)

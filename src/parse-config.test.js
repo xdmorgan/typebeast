@@ -17,7 +17,6 @@ describe('Load and parse yml config as json', () => {
               "active": "#035AEB",
               "color": "#002B73",
               "hover": "#1755BB",
-              "style": "wavy",
               "visited": "#035AEB",
             },
           },

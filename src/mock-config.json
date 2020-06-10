@@ -286,8 +286,7 @@
         "color": "#002B73",
         "hover": "#1755BB",
         "active": "#035AEB",
-        "visited": "#035AEB",
-        "style": "wavy"
+        "visited": "#035AEB"
       }
     }
   }

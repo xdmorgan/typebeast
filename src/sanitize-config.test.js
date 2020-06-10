@@ -18,7 +18,6 @@ describe('Sanitize parsed config file to set default values', () => {
               "active": "#035AEB",
               "color": "#002B73",
               "hover": "#1755BB",
-              "style": "wavy",
               "visited": "#035AEB",
             },
           },

@@ -59,7 +59,7 @@ hr { margin-block-start: 3rem; margin-block-end: 3rem; }
   .wysiwyg h3, .wysiwyg h4, .wysiwyg h5, .wysiwyg h6 { margin-block-start: 3rem; }
   .wysiwyg pre, .wysiwyg iframe, .wysiwyg figure, .wysiwyg > img, .wysiwyg blockquote, .wysiwyg > p > img:first-child:last-child, .wysiwyg > p > .gatsby-resp-image-wrapper { margin-block-start: 4rem; margin-block-end: 4rem; } }
 
-a, .type-link { color: #002b73; text-decoration-style: wavy; }
+a, .type-link { color: #002b73; }
 
 a:hover, .type-link:hover { color: #1755bb; }
 

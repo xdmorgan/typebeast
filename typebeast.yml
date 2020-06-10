@@ -226,7 +226,6 @@ inline-elements:
       hover: '#1755BB'
       active: '#035AEB'
       visited: '#035AEB'
-      style: wavy
   # code:
   #   settings:
   #     color:
