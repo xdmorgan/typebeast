@@ -17,6 +17,8 @@ const {
 } = require('./transform-wysiwyg-spacing')
 const { write: writeWysiwygSpacing } = require('./write-wysiwyg-spacing')
 const { get: getInlineLinks } = require('./get-inline-links')
+const { get: getInlineCode } = require('./get-inline-code')
+const { get: getInlineKBD } = require('./get-inline-kbd')
 
 const { CURRENT_FORMAT_VERSION = 1 } = process.env
 
@@ -50,6 +52,14 @@ async function main({ config, output, compression } = {}) {
   const generatedSassInlineLinksPath = path.join(
     tmpDirSass,
     'styles/_generated-inline-links.scss'
+  )
+  const generatedSassInlineCodePath = path.join(
+    tmpDirSass,
+    'styles/_generated-inline-code.scss'
+  )
+  const generatedSassInlineKBDPath = path.join(
+    tmpDirSass,
+    'styles/_generated-inline-kbd.scss'
   )
   const sassRenderEntryPoint = path.join(tmpDirSass, 'main.scss')
   const sassRenderOutCSSFile = path.join(tmpDir, 'typebeast.css')
@@ -93,11 +103,15 @@ async function main({ config, output, compression } = {}) {
   })
   const wysiwygSpacing = writeWysiwygSpacing(transformWysiwygSpacing(merged))
   const inlineLinks = getInlineLinks(merged)
+  const inlineCode = getInlineCode(merged)
+  const inlineKBD = getInlineKBD(merged)
   // write the styles to the temp dir
   await fs.writeFile(generatedSassTypographyPath, typography)
   await fs.writeFile(generatedSassSpacingPath, spacing)
   await fs.writeFile(generatedSassWysiwygSpacingPath, wysiwygSpacing)
   await fs.writeFile(generatedSassInlineLinksPath, inlineLinks)
+  await fs.writeFile(generatedSassInlineCodePath, inlineCode)
+  await fs.writeFile(generatedSassInlineKBDPath, inlineKBD)
   // render the temp dir with the main entry point
   const result = sass.renderSync({
     file: sassRenderEntryPoint,

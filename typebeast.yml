@@ -226,14 +226,16 @@ inline-elements:
       hover: '#1755BB'
       active: '#035AEB'
       visited: '#035AEB'
-  # code:
-  #   settings:
-  #     color:
-  #     background:
-  #     radius:
-  # kbd:
-  #   settings:
-  #     color:
-  #     background:
-  #     border:
-  #     radius:
+  code:
+    include: .type-code
+    settings:
+      color: '#1C7C4E'
+      background: '#F0F9F5'
+      radius: 0.25rem
+  kbd:
+    include: .type-kbd
+    settings:
+      color: '#454647'
+      background: '#f8f8f8'
+      border: '#BCBDBE'
+      radius: 0.25rem

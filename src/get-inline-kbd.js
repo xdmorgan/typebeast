@@ -7,18 +7,19 @@ const {
 
 const SETTINGS_TO_SASS_PARAMS = {
   color: '$color',
-  hover: '$hover',
-  active: '$active',
-  visited: '$visited',
-  style: '$style',
+  background: '$background',
+  border: '$border',
+  radius: '$radius',
+  size: '$size',
+  inset: '$inset',
 }
 
 function transform(config) {
-  const { settings = {}, include = '' } = config['inline-elements'].a
+  const { settings = {}, include = '' } = config['inline-elements'].kbd
   const sanitizedInclude = ensureListOfSelectors(include)
   return {
-    selectors: ['a'].concat(sanitizedInclude).join(', '),
-    mixin: `@include typebeast-link-style(${convertObjectToSassParams(
+    selectors: ['kbd'].concat(sanitizedInclude).join(', '),
+    mixin: `@include typebeast-kbd-style(${convertObjectToSassParams(
       settings,
       SETTINGS_TO_SASS_PARAMS
     )})`,
@@ -27,7 +28,7 @@ function transform(config) {
 
 function write(data) {
   return format(`
-    ${getHeadingComment('Link')}
+    ${getHeadingComment('KBD')}
     ${data.selectors} {
       ${data.mixin}
     }
@@ -35,7 +36,7 @@ function write(data) {
 }
 
 function get(config) {
-  if (!(config['inline-elements'] || {}).a) return ''
+  if (!(config['inline-elements'] || {}).kbd) return ''
   const transformed = transform(config)
   return write(transformed)
 }
