@@ -20,6 +20,23 @@ describe('Load and parse yml config as json', () => {
               "visited": "#035AEB",
             },
           },
+          "code": Object {
+            "include": ".type-code",
+            "settings": Object {
+              "background": "#F0F9F5",
+              "color": "#1C7C4E",
+              "radius": "0.25rem",
+            },
+          },
+          "kbd": Object {
+            "include": ".type-kbd",
+            "settings": Object {
+              "background": "#f8f8f8",
+              "border": "#BCBDBE",
+              "color": "#454647",
+              "radius": "0.25rem",
+            },
+          },
         },
         "settings": Object {
           "calculate-rem-size": true,
