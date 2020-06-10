@@ -14,6 +14,11 @@ const SETTINGS_TO_SASS_PARAMS = {
   inset: '$inset',
 }
 
+const SASS_PARAM_DEFAULTS = {
+  size: '0.9em',
+  inset: '0.2em 0.3em 0.3em',
+}
+
 function transform(config) {
   const { settings = {}, include = '' } = config['inline-elements'].kbd
   const sanitizedInclude = ensureListOfSelectors(include)
@@ -21,7 +26,8 @@ function transform(config) {
     selectors: ['kbd'].concat(sanitizedInclude).join(', '),
     mixin: `@include typebeast-kbd-style(${convertObjectToSassParams(
       settings,
-      SETTINGS_TO_SASS_PARAMS
+      SETTINGS_TO_SASS_PARAMS,
+      SASS_PARAM_DEFAULTS
     )})`,
   }
 }

@@ -18,8 +18,8 @@ describe('get()', () => {
           $background: #f8f8f8,
           $border: #bcbdbe,
           $radius: 0.25rem,
-          $size: null,
-          $inset: null
+          $size: 0.9em,
+          $inset: 0.2em 0.3em 0.3em
         );
       }
       "
@@ -32,7 +32,7 @@ describe('transform()', () => {
     const conf = { 'inline-elements': { kbd: {} } }
     expect(transform(conf)).toMatchInlineSnapshot(`
       Object {
-        "mixin": "@include typebeast-kbd-style($color: null, $background: null, $border: null, $radius: null, $size: null, $inset: null)",
+        "mixin": "@include typebeast-kbd-style($color: null, $background: null, $border: null, $radius: null, $size: 0.9em, $inset: 0.2em 0.3em 0.3em)",
         "selectors": "kbd",
       }
     `)
@@ -51,7 +51,7 @@ describe('transform()', () => {
     }
     expect(transform(conf)).toMatchInlineSnapshot(`
       Object {
-        "mixin": "@include typebeast-kbd-style($color: #002B73, $background: #1755BB, $border: null, $radius: null, $size: null, $inset: null)",
+        "mixin": "@include typebeast-kbd-style($color: #002B73, $background: #1755BB, $border: null, $radius: null, $size: 0.9em, $inset: 0.2em 0.3em 0.3em)",
         "selectors": "kbd",
       }
     `)
@@ -71,7 +71,7 @@ describe('transform()', () => {
     }
     expect(transform(conf)).toMatchInlineSnapshot(`
       Object {
-        "mixin": "@include typebeast-kbd-style($color: #002B73, $background: #1755BB, $border: null, $radius: null, $size: null, $inset: null)",
+        "mixin": "@include typebeast-kbd-style($color: #002B73, $background: #1755BB, $border: null, $radius: null, $size: 0.9em, $inset: 0.2em 0.3em 0.3em)",
         "selectors": "kbd, .type-link",
       }
     `)
@@ -91,7 +91,7 @@ describe('transform()', () => {
     }
     expect(transform(conf)).toMatchInlineSnapshot(`
       Object {
-        "mixin": "@include typebeast-kbd-style($color: #002B73, $background: null, $border: null, $radius: null, $size: null, $inset: null)",
+        "mixin": "@include typebeast-kbd-style($color: #002B73, $background: null, $border: null, $radius: null, $size: 0.9em, $inset: 0.2em 0.3em 0.3em)",
         "selectors": "kbd, .kbd, .type-kbd",
       }
     `)
@@ -101,7 +101,7 @@ describe('transform()', () => {
     const transformed = transform(mock)
     expect(transformed).toMatchInlineSnapshot(`
       Object {
-        "mixin": "@include typebeast-kbd-style($color: #454647, $background: #f8f8f8, $border: #BCBDBE, $radius: 0.25rem, $size: null, $inset: null)",
+        "mixin": "@include typebeast-kbd-style($color: #454647, $background: #f8f8f8, $border: #BCBDBE, $radius: 0.25rem, $size: 0.9em, $inset: 0.2em 0.3em 0.3em)",
         "selectors": "kbd, .type-kbd",
       }
     `)

@@ -60,10 +60,10 @@
 
 @mixin typebeast-code-style(
   $color: null,
-  $background: ghostwhite,
-  $radius: 4px,
-  $size: 0.9em,
-  $inset: 0.2em 0.3em 0.3em
+  $background: null,
+  $radius: null,
+  $size: null,
+  $inset: null
 ) {
   color: $color;
   background-color: $background;
@@ -75,10 +75,10 @@
 @mixin typebeast-kbd-style(
   $color: null,
   $background: null,
-  $border: darkgray,
-  $radius: 4px,
-  $size: 0.9em,
-  $inset: 0.2em 0.3em 0.3em
+  $border: null,
+  $radius: null,
+  $size: null,
+  $inset: null
 ) {
   position: relative; // layering rquirement
   font-size: $size;

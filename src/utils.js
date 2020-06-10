@@ -9,9 +9,11 @@ exports.objectToCssProperties = obj =>
 exports.getHeadingComment = name =>
   `// ${name} \n// ---------------------------------------------------------`
 
-exports.convertObjectToSassParams = (settings, map) =>
+exports.convertObjectToSassParams = (settings, map, defaults = {}) =>
   Object.entries(map)
-    .map(([key, param]) => `${param}: ${settings[key] || 'null'}`)
+    .map(
+      ([key, param]) => `${param}: ${settings[key] || defaults[key] || null}`
+    )
     .filter(Boolean)
     .join(', ')
 

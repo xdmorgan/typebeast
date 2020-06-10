@@ -17,8 +17,8 @@ describe('get()', () => {
           $color: #1c7c4e,
           $background: #f0f9f5,
           $radius: 0.25rem,
-          $size: null,
-          $inset: null
+          $size: 0.9em,
+          $inset: 0.2em 0.3em 0.3em
         );
       }
       "
@@ -31,7 +31,7 @@ describe('transform()', () => {
     const conf = { 'inline-elements': { code: {} } }
     expect(transform(conf)).toMatchInlineSnapshot(`
       Object {
-        "mixin": "@include typebeast-code-style($color: null, $background: null, $radius: null, $size: null, $inset: null)",
+        "mixin": "@include typebeast-code-style($color: null, $background: null, $radius: null, $size: 0.9em, $inset: 0.2em 0.3em 0.3em)",
         "selectors": "code",
       }
     `)
@@ -50,7 +50,7 @@ describe('transform()', () => {
     }
     expect(transform(conf)).toMatchInlineSnapshot(`
       Object {
-        "mixin": "@include typebeast-code-style($color: #002B73, $background: #1755BB, $radius: null, $size: null, $inset: null)",
+        "mixin": "@include typebeast-code-style($color: #002B73, $background: #1755BB, $radius: null, $size: 0.9em, $inset: 0.2em 0.3em 0.3em)",
         "selectors": "code",
       }
     `)
@@ -70,7 +70,7 @@ describe('transform()', () => {
     }
     expect(transform(conf)).toMatchInlineSnapshot(`
       Object {
-        "mixin": "@include typebeast-code-style($color: #002B73, $background: #1755BB, $radius: null, $size: null, $inset: null)",
+        "mixin": "@include typebeast-code-style($color: #002B73, $background: #1755BB, $radius: null, $size: 0.9em, $inset: 0.2em 0.3em 0.3em)",
         "selectors": "code, .type-link",
       }
     `)
@@ -90,7 +90,7 @@ describe('transform()', () => {
     }
     expect(transform(conf)).toMatchInlineSnapshot(`
       Object {
-        "mixin": "@include typebeast-code-style($color: #002B73, $background: null, $radius: null, $size: null, $inset: null)",
+        "mixin": "@include typebeast-code-style($color: #002B73, $background: null, $radius: null, $size: 0.9em, $inset: 0.2em 0.3em 0.3em)",
         "selectors": "code, .code, .type-code",
       }
     `)
@@ -100,7 +100,7 @@ describe('transform()', () => {
     const transformed = transform(mock)
     expect(transformed).toMatchInlineSnapshot(`
       Object {
-        "mixin": "@include typebeast-code-style($color: #1C7C4E, $background: #F0F9F5, $radius: 0.25rem, $size: null, $inset: null)",
+        "mixin": "@include typebeast-code-style($color: #1C7C4E, $background: #F0F9F5, $radius: 0.25rem, $size: 0.9em, $inset: 0.2em 0.3em 0.3em)",
         "selectors": "code, .type-code",
       }
     `)
