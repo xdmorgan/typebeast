@@ -65,9 +65,9 @@ a:hover, .type-link:hover { color: #1755bb; }
 
 a:active, .type-link:active { color: #002b73; }
 
-code { background-color: ghostwhite; border-radius: 4px; font-size: 0.9em; padding: 0.2em 0.3em 0.3em; }
+code, .type-code { color: #1c7c4e; background-color: #f0f9f5; border-radius: 0.25rem; font-size: 0.9em; padding: 0.2em 0.3em 0.3em; }
 
-kbd { position: relative; font-size: 0.9em; border-radius: 4px; padding: 0.2em 0.3em 0.3em; border: 1px solid darkgray; box-shadow: 0 0.15em 0 0 darkgray; }
+kbd, .type-kbd { position: relative; font-size: 0.9em; color: #454647; background-color: #f8f8f8; border-radius: 0.25rem; padding: 0.2em 0.3em 0.3em; border: 1px solid #bcbdbe; box-shadow: 0 0.15em 0 0 #bcbdbe; }
 
 a.is-stealth, a.no-underline:not(:hover):not(:active):not(:focus) { text-decoration: none; }
 

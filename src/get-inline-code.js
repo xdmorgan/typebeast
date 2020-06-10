@@ -7,27 +7,33 @@ const {
 
 const SETTINGS_TO_SASS_PARAMS = {
   color: '$color',
-  hover: '$hover',
-  active: '$active',
-  visited: '$visited',
-  style: '$style',
+  background: '$background',
+  radius: '$radius',
+  size: '$size',
+  inset: '$inset',
+}
+
+const SASS_PARAM_DEFAULTS = {
+  size: '0.9em',
+  inset: '0.2em 0.3em 0.3em',
 }
 
 function transform(config) {
-  const { settings = {}, include = '' } = config['inline-elements'].a
+  const { settings = {}, include = '' } = config['inline-elements'].code
   const sanitizedInclude = ensureListOfSelectors(include)
   return {
-    selectors: ['a'].concat(sanitizedInclude).join(', '),
-    mixin: `@include typebeast-link-style(${convertObjectToSassParams(
+    selectors: ['code'].concat(sanitizedInclude).join(', '),
+    mixin: `@include typebeast-code-style(${convertObjectToSassParams(
       settings,
-      SETTINGS_TO_SASS_PARAMS
+      SETTINGS_TO_SASS_PARAMS,
+      SASS_PARAM_DEFAULTS
     )})`,
   }
 }
 
 function write(data) {
   return format(`
-    ${getHeadingComment('Link')}
+    ${getHeadingComment('Code')}
     ${data.selectors} {
       ${data.mixin}
     }
@@ -35,7 +41,7 @@ function write(data) {
 }
 
 function get(config) {
-  if (!(config['inline-elements'] || {}).a) return ''
+  if (!(config['inline-elements'] || {}).code) return ''
   const transformed = transform(config)
   return write(transformed)
 }
