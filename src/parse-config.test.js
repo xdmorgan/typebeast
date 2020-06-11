@@ -41,6 +41,7 @@ describe('Load and parse yml config as json', () => {
         "settings": Object {
           "calculate-rem-size": true,
           "include-utility-classes": true,
+          "wysiwyg-block-images": true,
         },
         "spacing": Object {
           "horizontal-reset": Object {
