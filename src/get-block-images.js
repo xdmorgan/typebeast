@@ -22,7 +22,7 @@ function write(transformed) {
 }
 
 function get(config) {
-  if (!config.settings || config.settings['wysiwyg-block-images']) return ''
+  if (!config.settings || !config.settings['wysiwyg-block-images']) return ''
   const transformed = transform(config)
   const written = write(transformed)
   return format(written)

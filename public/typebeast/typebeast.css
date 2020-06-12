@@ -69,6 +69,8 @@ code, .type-code { color: #1c7c4e; background-color: #f0f9f5; border-radius: 0.2
 
 kbd, .type-kbd { position: relative; font-size: 0.9em; color: #454647; background-color: #f8f8f8; border-radius: 0.25rem; padding: 0.2em 0.3em 0.3em; border: 1px solid #bcbdbe; box-shadow: 0 0.15em 0 0 #bcbdbe; }
 
+.wysiwyg > img { display: block; max-width: 100%; height: auto; }
+
 a.is-stealth, a.no-underline:not(:hover):not(:active):not(:focus) { text-decoration: none; }
 
 a.is-stealth { color: inherit; }
