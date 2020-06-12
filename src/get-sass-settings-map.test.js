@@ -8,7 +8,8 @@ describe('get()', () => {
         \\"calculate-rem-size\\": true,
         \\"include-utility-classes\\": true,
         \\"monospace-font-family\\": null,
-        \\"rem-base\\": 16
+        \\"rem-base\\": 16,
+        \\"wysiwyg-block-images\\": true
       );
       "
     `)

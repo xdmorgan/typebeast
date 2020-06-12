@@ -19,6 +19,7 @@ const { write: writeWysiwygSpacing } = require('./write-wysiwyg-spacing')
 const { get: getInlineLinks } = require('./get-inline-links')
 const { get: getInlineCode } = require('./get-inline-code')
 const { get: getInlineKBD } = require('./get-inline-kbd')
+const { get: getBlockImages } = require('./get-block-images')
 
 const { CURRENT_FORMAT_VERSION = 1 } = process.env
 
@@ -29,41 +30,28 @@ async function main({ config, output, compression } = {}) {
   const defaultsPath = path.join(__dirname, './defaults.yml')
   const tmpDirJson = path.join(tmpDir, 'config.json')
   const tmpDirSass = path.join(tmpDir, 'sass')
-  const generatedSassSettingsPath = path.join(
-    tmpDirSass,
-    'core/_generated-settings.scss'
-  )
-  const generatedSassMixinsPath = path.join(
-    tmpDirSass,
-    'core/_generated-mixins.scss'
-  )
-  const generatedSassTypographyPath = path.join(
-    tmpDirSass,
-    'styles/_generated-typography.scss'
-  )
-  const generatedSassSpacingPath = path.join(
-    tmpDirSass,
-    'styles/_generated-spacing.scss'
-  )
-  const generatedSassWysiwygSpacingPath = path.join(
-    tmpDirSass,
-    'styles/_generated-wysiwyg-spacing.scss'
-  )
-  const generatedSassInlineLinksPath = path.join(
-    tmpDirSass,
-    'styles/_generated-inline-links.scss'
-  )
-  const generatedSassInlineCodePath = path.join(
-    tmpDirSass,
-    'styles/_generated-inline-code.scss'
-  )
-  const generatedSassInlineKBDPath = path.join(
-    tmpDirSass,
-    'styles/_generated-inline-kbd.scss'
-  )
-  const sassRenderEntryPoint = path.join(tmpDirSass, 'main.scss')
-  const sassRenderOutCSSFile = path.join(tmpDir, 'typebeast.css')
-  const sassRenderOutMapFile = path.join(tmpDir, 'typebeast.css.map')
+  const generatedSassPaths = {
+    settings: path.join(tmpDirSass, 'core/_generated-settings.scss'),
+    mixins: path.join(tmpDirSass, 'core/_generated-mixins.scss'),
+    index: path.join(tmpDirSass, 'styles/_index.scss'),
+    typography: path.join(tmpDirSass, 'styles/_generated-typography.scss'),
+    spacing: path.join(tmpDirSass, 'styles/_generated-spacing.scss'),
+    wysiwygSpacing: path.join(
+      tmpDirSass,
+      'styles/_generated-wysiwyg-spacing.scss'
+    ),
+    inlineLinks: path.join(tmpDirSass, 'styles/_generated-inline-links.scss'),
+    inlineCode: path.join(tmpDirSass, 'styles/_generated-inline-code.scss'),
+    inlineKBD: path.join(tmpDirSass, 'styles/_generated-inline-kbd.scss'),
+    blockImages: path.join(tmpDirSass, 'styles/_generated-block-images.scss'),
+  }
+
+  const sassRenderPaths = {
+    entryPoint: path.join(tmpDirSass, 'main.scss'),
+    outCSSFile: path.join(tmpDir, 'typebeast.css'),
+    outMapFile: path.join(tmpDir, 'typebeast.css.map'),
+  }
+
   // parse the custom config
   const parsed = await parse(config)
   // parse the deafults (internal shadow config file)
@@ -86,16 +74,6 @@ async function main({ config, output, compression } = {}) {
   // with our transformed data structure now containing sass, write
   // the mixin definitions to a single ready-to-save string
   const mixins = writeMixins({ data: transformed })
-  // copy the source sass dir to its temp destination before we start
-  // to mutate it with custom generated code
-  await fs.copy(srcDir, tmpDirSass)
-  // write the generated settings to the temp sass dir
-  await fs.writeFile(tmpDirJson, JSON.stringify(merged, null, 2))
-  // write the generated settings to the temp sass dir
-  await fs.writeFile(generatedSassSettingsPath, settings)
-  // write the generated mixins to the temp sass dir
-  await fs.writeFile(generatedSassMixinsPath, mixins)
-  // write the classes that refer to the generated mixins (as string)
   const typography = writeStyles({ data: transformed, config: sanitized })
   const spacing = writeSpacing({
     transformed: transformSpacing(merged),
@@ -105,23 +83,35 @@ async function main({ config, output, compression } = {}) {
   const inlineLinks = getInlineLinks(merged)
   const inlineCode = getInlineCode(merged)
   const inlineKBD = getInlineKBD(merged)
-  // write the styles to the temp dir
-  await fs.writeFile(generatedSassTypographyPath, typography)
-  await fs.writeFile(generatedSassSpacingPath, spacing)
-  await fs.writeFile(generatedSassWysiwygSpacingPath, wysiwygSpacing)
-  await fs.writeFile(generatedSassInlineLinksPath, inlineLinks)
-  await fs.writeFile(generatedSassInlineCodePath, inlineCode)
-  await fs.writeFile(generatedSassInlineKBDPath, inlineKBD)
+  const blockImages = getBlockImages(merged)
+
+  // copy the source sass dir to its temp destination before we start
+  // to mutate it with custom generated code
+  await fs.copy(srcDir, tmpDirSass)
+  // write the generated settings to the temp sass dir
+  await fs.writeFile(tmpDirJson, JSON.stringify(merged, null, 2))
+  // write the generated settings to the temp sass dir
+  await fs.writeFile(generatedSassPaths.settings, settings)
+  // write the generated mixins to the temp sass dir
+  await fs.writeFile(generatedSassPaths.mixins, mixins)
+  // write the classes that refer to the generated mixins (as string)
+  await fs.writeFile(generatedSassPaths.typography, typography)
+  await fs.writeFile(generatedSassPaths.spacing, spacing)
+  await fs.writeFile(generatedSassPaths.wysiwygSpacing, wysiwygSpacing)
+  await fs.writeFile(generatedSassPaths.inlineLinks, inlineLinks)
+  await fs.writeFile(generatedSassPaths.inlineCode, inlineCode)
+  await fs.writeFile(generatedSassPaths.inlineKBD, inlineKBD)
+  await fs.writeFile(generatedSassPaths.blockImages, blockImages)
   // render the temp dir with the main entry point
   const result = sass.renderSync({
-    file: sassRenderEntryPoint,
-    outFile: sassRenderOutCSSFile,
+    file: sassRenderPaths.entryPoint,
+    outFile: sassRenderPaths.outCSSFile,
     outputStyle: compression,
     sourceMap: true, // or an absolute or relative (to outFile) path
   })
   // write the resultant css to the temp dir
-  await fs.writeFile(sassRenderOutCSSFile, result.css)
-  await fs.writeFile(sassRenderOutMapFile, result.map)
+  await fs.writeFile(sassRenderPaths.outCSSFile, result.css)
+  await fs.writeFile(sassRenderPaths.outMapFile, result.map)
   // if we made it this far without throwing, copy the finalized temp
   // dir to the final output destination
   await fs.copy(tmpDir, output)

@@ -3,7 +3,8 @@
     "rem-base": 16,
     "calculate-rem-size": true,
     "include-utility-classes": true,
-    "monospace-font-family": null
+    "monospace-font-family": null,
+    "wysiwyg-block-images": true
   },
   "wysiwyg": {
     "scope": "wysiwyg",

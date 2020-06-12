@@ -7,6 +7,7 @@ breakpoints:
 settings:
   calculate-rem-size: true
   include-utility-classes: true
+  wysiwyg-block-images: true
 
 typography:
   h1-xxl:

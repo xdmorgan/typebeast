@@ -50,6 +50,7 @@ describe('Sanitize parsed config file to set default values', () => {
           "include-utility-classes": true,
           "monospace-font-family": null,
           "rem-base": 16,
+          "wysiwyg-block-images": true,
         },
         "spacing": Object {
           "horizontal-reset": Object {
