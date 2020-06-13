@@ -13,7 +13,6 @@ const cli = meow(
       --config, -C     Custom config file path (default: './typebeast.yml')
       --output, -O     Custom output folder path (default: './typebeast')
       --compression    Sass output style (default: compact)
-      --gzip           Produce gzipped outputs (system command)
       --no-sass        Disable production of Sass core
       --no-sourcemap   Disable production of sourcemaps
  
@@ -36,10 +35,6 @@ const cli = meow(
       compression: {
         type: 'string',
         default: 'compact',
-      },
-      gzip: {
-        type: 'boolean',
-        default: false,
       },
       sourcemap: {
         type: 'boolean',
