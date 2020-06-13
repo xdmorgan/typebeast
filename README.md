@@ -94,7 +94,7 @@ wysiwyg:
 
 inline-elements:
   a:
-    include: [class-name]
+    include: [selector(s)]
     settings:
       color: [color]
       hover: [color]
@@ -102,7 +102,7 @@ inline-elements:
       visited: [color]
       style: [text-decoration-style]
   code:
-    include: [class-name]
+    include: [selector(s)]
     settings:
       color: [color]
       background: [color]
@@ -110,7 +110,7 @@ inline-elements:
       size: [size]
       inset: [size]
   kbd:
-    include: [class-name]
+    include: [selector(s)]
     settings:
       color: [color]
       border: [color]
