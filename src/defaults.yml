@@ -9,21 +9,19 @@ settings:
   monospace-font-family: null
   wysiwyg-block-images: false
 
+breakpoints:
+
+typography:
+
+spacing:
+
 wysiwyg:
   scope: 'wysiwyg'
 
-# outputs: # optional, 1.0
-#   sass-mixins: true
-#   sass-tokens: true
-#   css-variables: true
+inline-elements:
 
 prefixes:
   typography: type
   custom-properties: type
   sass-mixins: type
   sass-tokens: type
-# custom-fonts: # optional (backlog)
-#   helvetica:
-#     url: path
-#     weight: str
-#     style: str

@@ -6,21 +6,17 @@ hr { margin-block-start: 3rem; margin-block-end: 3rem; }
 
 @media screen and (min-width: 768px) { hr { margin-block-start: 4rem; margin-block-end: 4rem; } }
 
-.type-h1-xxl { font-family: Poppins; font-size: 2.625rem; line-height: 1.1; font-weight: normal; letter-spacing: -0.0125em; }
+.type-heading-1 { font-family: Poppins; font-size: 2rem; line-height: 1.1; font-weight: normal; letter-spacing: -0.0125em; }
 
-.type-h1-xl { font-family: Poppins; font-size: 2.25rem; line-height: 1.1; font-weight: normal; letter-spacing: -0.0125em; }
+.type-heading-2 { font-family: Poppins; font-size: 1.75rem; line-height: 1.1; font-weight: normal; }
 
-.type-h1, .wysiwyg h1 { font-family: Poppins; font-size: 2rem; line-height: 1.1; font-weight: normal; letter-spacing: -0.0125em; }
+.type-heading-3 { font-family: Poppins; font-size: 1.25rem; line-height: 1.1; font-weight: normal; }
 
-.type-h2, .wysiwyg h2 { font-family: Poppins; font-size: 1.75rem; line-height: 1.1; font-weight: normal; }
+.type-heading-4 { font-family: Poppins; font-size: 1rem; line-height: 1.2; font-weight: bold; }
 
-.type-h3, .wysiwyg h3 { font-family: Poppins; font-size: 1.25rem; line-height: 1.1; font-weight: normal; }
+.type-heading-5 { font-family: Poppins; font-size: 0.8125rem; line-height: 1.2; font-weight: bold; }
 
-.type-h4, .wysiwyg h4 { font-family: Poppins; font-size: 1rem; line-height: 1.2; font-weight: bold; }
-
-.type-h5, .wysiwyg h5 { font-family: Poppins; font-size: 0.8125rem; line-height: 1.2; font-weight: bold; }
-
-.type-h6, .wysiwyg h6 { font-size: 0.625rem; line-height: 1.2; font-weight: bold; text-transform: uppercase; }
+.type-heading-6 { font-size: 0.625rem; line-height: 1.2; font-weight: bold; text-transform: uppercase; }
 
 .type-lede, .wysiwyg.with-lede > p:first-child, .wysiwyg blockquote > p { font-size: 1.125rem; line-height: 1.5; }
 
@@ -28,22 +24,17 @@ hr { margin-block-start: 3rem; margin-block-end: 3rem; }
 
 .type-small, .wysiwyg small { font-size: 0.875rem; line-height: 1.7; }
 
-.type-ui { font-size: 0.8125rem; line-height: 1.4; }
-
 .type-caption, .wysiwyg figcaption { font-size: 0.625rem; line-height: 1.5; }
 
-@media screen and (min-width: 768px) { .type-h1-xxl { font-size: 5rem; }
-  .type-h1-xl { font-size: 4rem; }
-  .type-h1, .wysiwyg h1 { font-size: 3rem; }
-  .type-h2, .wysiwyg h2 { font-size: 2rem; }
-  .type-h3, .wysiwyg h3 { font-size: 1.5rem; }
-  .type-h4, .wysiwyg h4 { font-size: 1.25rem; }
-  .type-h5, .wysiwyg h5 { font-size: 1rem; }
-  .type-h6, .wysiwyg h6 { font-size: 0.75rem; }
+@media screen and (min-width: 768px) { .type-heading-1 { font-size: 3rem; }
+  .type-heading-2 { font-size: 2rem; }
+  .type-heading-3 { font-size: 1.5rem; }
+  .type-heading-4 { font-size: 1.25rem; }
+  .type-heading-5 { font-size: 1rem; }
+  .type-heading-6 { font-size: 0.75rem; }
   .type-lede, .wysiwyg.with-lede > p:first-child, .wysiwyg blockquote > p { font-size: 1.5rem; }
   .type-para, .wysiwyg p, .wysiwyg ul, .wysiwyg ol, .wysiwyg dl { font-size: 1.125rem; }
   .type-small, .wysiwyg small { font-size: 1rem; }
-  .type-ui { font-size: 0.875rem; }
   .type-caption, .wysiwyg figcaption { font-size: 0.75rem; } }
 
 .wysiwyg h1, .wysiwyg h2, .wysiwyg h3, .wysiwyg h4, .wysiwyg h5, .wysiwyg h6, .wysiwyg p, .wysiwyg ul, .wysiwyg ol, .wysiwyg dl, .wysiwyg blockquote, .wysiwyg figure, .wysiwyg pre { margin-block-start: 1rem; margin-block-end: 1rem; }
@@ -52,12 +43,12 @@ hr { margin-block-start: 3rem; margin-block-end: 3rem; }
 
 .wysiwyg h3, .wysiwyg h4, .wysiwyg h5, .wysiwyg h6 { margin-block-start: 2rem; }
 
-.wysiwyg pre, .wysiwyg iframe, .wysiwyg figure, .wysiwyg > img, .wysiwyg blockquote, .wysiwyg > p > img:first-child:last-child, .wysiwyg > p > .gatsby-resp-image-wrapper { margin-block-start: 3rem; margin-block-end: 3rem; }
+.wysiwyg pre, .wysiwyg iframe, .wysiwyg figure, .wysiwyg > img, .wysiwyg blockquote { margin-block-start: 3rem; margin-block-end: 3rem; }
 
 @media screen and (min-width: 768px) { .wysiwyg h1, .wysiwyg h2, .wysiwyg h3, .wysiwyg h4, .wysiwyg h5, .wysiwyg h6, .wysiwyg p, .wysiwyg ul, .wysiwyg ol, .wysiwyg dl, .wysiwyg blockquote, .wysiwyg figure, .wysiwyg pre { margin-block-start: 1.5rem; margin-block-end: 1.5rem; }
   .wysiwyg h1, .wysiwyg h2 { margin-block-start: 5rem; }
   .wysiwyg h3, .wysiwyg h4, .wysiwyg h5, .wysiwyg h6 { margin-block-start: 3rem; }
-  .wysiwyg pre, .wysiwyg iframe, .wysiwyg figure, .wysiwyg > img, .wysiwyg blockquote, .wysiwyg > p > img:first-child:last-child, .wysiwyg > p > .gatsby-resp-image-wrapper { margin-block-start: 4rem; margin-block-end: 4rem; } }
+  .wysiwyg pre, .wysiwyg iframe, .wysiwyg figure, .wysiwyg > img, .wysiwyg blockquote { margin-block-start: 4rem; margin-block-end: 4rem; } }
 
 a, .type-link { color: #002b73; }
 

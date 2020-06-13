@@ -26,7 +26,7 @@ const { CURRENT_FORMAT_VERSION = 1 } = process.env
 async function main({ config, output, compression } = {}) {
   // messy entry paths — TODO: tidy/structure
   const srcDir = path.join(__dirname, 'sass')
-  const tmpDir = path.join(__dirname, '../build')
+  const tmpDir = path.join(__dirname, '../tmp')
   const defaultsPath = path.join(__dirname, './defaults.yml')
   const tmpDirJson = path.join(tmpDir, 'config.json')
   const tmpDirSass = path.join(tmpDir, 'sass')

@@ -44,9 +44,7 @@
   iframe,
   figure,
   & > img,
-  blockquote,
-  & > p > img:first-child:last-child,
-  & > p > .gatsby-resp-image-wrapper {
+  blockquote {
     margin-block-start: 3rem;
     margin-block-end: 3rem;
   }
@@ -97,9 +95,7 @@
     iframe,
     figure,
     & > img,
-    blockquote,
-    & > p > img:first-child:last-child,
-    & > p > .gatsby-resp-image-wrapper {
+    blockquote {
       margin-block-start: 4rem;
       margin-block-end: 4rem;
     }

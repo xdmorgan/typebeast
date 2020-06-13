@@ -10,13 +10,6 @@ const DEFAULT_PARAMS = {
   weight: null,
 }
 
-const DEFAULT_PREFIXES = {
-  typography: 'type',
-  'custom-properties': 'type',
-  'sass-mixins': 'type',
-  'sass-tokens': 'type',
-}
-
 function setNullPropertyDefaults(config, params) {
   Object.entries(config.typography).forEach(([styleName, breakpointData]) =>
     Object.entries(breakpointData).forEach(
@@ -31,18 +24,11 @@ function setNullPropertyDefaults(config, params) {
   return config
 }
 
-function setDefaultPrefixes(config, prefixes) {
-  config.prefixes = {
-    ...prefixes,
-    ...(config.prefixes || {}),
-  }
-  return config
-}
-
 function sanitize(original) {
   config = cloneDeep(original)
-  config = setNullPropertyDefaults(config, DEFAULT_PARAMS)
-  config = setDefaultPrefixes(config, DEFAULT_PREFIXES)
+  if (config.typography) {
+    config = setNullPropertyDefaults(config, DEFAULT_PARAMS)
+  }
   return config
 }
 

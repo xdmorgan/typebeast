@@ -1,0 +1,23 @@
+{
+  "settings": {
+    "rem-base": 16,
+    "calculate-rem-size": false,
+    "include-utility-classes": false,
+    "monospace-font-family": null,
+    "wysiwyg-block-images": false
+  },
+  "wysiwyg": {
+    "scope": "wysiwyg"
+  },
+  "prefixes": {
+    "typography": "type",
+    "custom-properties": "type",
+    "sass-mixins": "type",
+    "sass-tokens": "type"
+  },
+  "format-version": 1,
+  "breakpoints": null,
+  "typography": null,
+  "spacing": null,
+  "inline-elements": null
+}

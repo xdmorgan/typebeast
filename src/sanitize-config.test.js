@@ -1,8 +1,16 @@
 const { sanitize } = require('./sanitize-config')
 const mock = require('../public/typebeast/config.json')
 
-describe('Sanitize parsed config file to set default values', () => {
-  test('sanitize()', () => {
+describe('sanitizes a config file', () => {
+  test('works with an empty config', () => {
+    const sanitized = sanitize({ 'format-version': 1 })
+    expect(sanitized).toMatchInlineSnapshot(`
+      Object {
+        "format-version": 1,
+      }
+    `)
+  })
+  test('sanitizes mock', () => {
     const sanitized = sanitize(mock)
     // expect(true).toBe(true)
     expect(sanitized).toMatchInlineSnapshot(`
@@ -122,7 +130,7 @@ describe('Sanitize parsed config file to set default values', () => {
               "weight": null,
             },
           },
-          "h1": Object {
+          "heading-1": Object {
             "default": Object {
               "family": "Poppins",
               "letter": "-0.0125em",
@@ -142,47 +150,7 @@ describe('Sanitize parsed config file to set default values', () => {
               "weight": null,
             },
           },
-          "h1-xl": Object {
-            "default": Object {
-              "family": "Poppins",
-              "letter": "-0.0125em",
-              "line": 39.6,
-              "size": 36,
-              "style": null,
-              "transform": null,
-              "weight": "normal",
-            },
-            "large": Object {
-              "family": null,
-              "letter": null,
-              "line": null,
-              "size": 64,
-              "style": null,
-              "transform": null,
-              "weight": null,
-            },
-          },
-          "h1-xxl": Object {
-            "default": Object {
-              "family": "Poppins",
-              "letter": "-0.0125em",
-              "line": 46.2,
-              "size": 42,
-              "style": null,
-              "transform": null,
-              "weight": "normal",
-            },
-            "large": Object {
-              "family": null,
-              "letter": null,
-              "line": null,
-              "size": 80,
-              "style": null,
-              "transform": null,
-              "weight": null,
-            },
-          },
-          "h2": Object {
+          "heading-2": Object {
             "default": Object {
               "family": "Poppins",
               "letter": null,
@@ -202,7 +170,7 @@ describe('Sanitize parsed config file to set default values', () => {
               "weight": null,
             },
           },
-          "h3": Object {
+          "heading-3": Object {
             "default": Object {
               "family": "Poppins",
               "letter": null,
@@ -222,7 +190,7 @@ describe('Sanitize parsed config file to set default values', () => {
               "weight": null,
             },
           },
-          "h4": Object {
+          "heading-4": Object {
             "default": Object {
               "family": "Poppins",
               "letter": null,
@@ -242,7 +210,7 @@ describe('Sanitize parsed config file to set default values', () => {
               "weight": null,
             },
           },
-          "h5": Object {
+          "heading-5": Object {
             "default": Object {
               "family": "Poppins",
               "letter": null,
@@ -262,7 +230,7 @@ describe('Sanitize parsed config file to set default values', () => {
               "weight": null,
             },
           },
-          "h6": Object {
+          "heading-6": Object {
             "default": Object {
               "family": null,
               "letter": null,
@@ -342,26 +310,6 @@ describe('Sanitize parsed config file to set default values', () => {
               "weight": null,
             },
           },
-          "ui": Object {
-            "default": Object {
-              "family": null,
-              "letter": null,
-              "line": 18.2,
-              "size": 13,
-              "style": null,
-              "transform": null,
-              "weight": null,
-            },
-            "large": Object {
-              "family": null,
-              "letter": null,
-              "line": null,
-              "size": 14,
-              "style": null,
-              "transform": null,
-              "weight": null,
-            },
-          },
         },
         "wysiwyg": Object {
           "elements": Object {
@@ -415,8 +363,6 @@ describe('Sanitize parsed config file to set default values', () => {
                 "figure",
                 "& > img",
                 "blockquote",
-                "& > p > img:first-child:last-child",
-                "& > p > .gatsby-resp-image-wrapper",
               ],
             },
             "smaller-headings": Object {

@@ -3,7 +3,7 @@ const { parse } = require('./parse-config')
 
 describe('Load and parse yml config as json', () => {
   test('Read sample config', async () => {
-    const file = path.join(__dirname, '../typebeast.yml')
+    const file = path.join(__dirname, '../mocks/demo-site.yml')
     expect(await parse(file)).toMatchInlineSnapshot(`
       Object {
         "breakpoints": Object {
@@ -102,7 +102,7 @@ describe('Load and parse yml config as json', () => {
               "size": 12,
             },
           },
-          "h1": Object {
+          "heading-1": Object {
             "default": Object {
               "family": "Poppins",
               "letter": "-0.0125em",
@@ -114,31 +114,7 @@ describe('Load and parse yml config as json', () => {
               "size": 48,
             },
           },
-          "h1-xl": Object {
-            "default": Object {
-              "family": "Poppins",
-              "letter": "-0.0125em",
-              "line": 39.6,
-              "size": 36,
-              "weight": "normal",
-            },
-            "large": Object {
-              "size": 64,
-            },
-          },
-          "h1-xxl": Object {
-            "default": Object {
-              "family": "Poppins",
-              "letter": "-0.0125em",
-              "line": 46.2,
-              "size": 42,
-              "weight": "normal",
-            },
-            "large": Object {
-              "size": 80,
-            },
-          },
-          "h2": Object {
+          "heading-2": Object {
             "default": Object {
               "family": "Poppins",
               "line": 30.8,
@@ -149,7 +125,7 @@ describe('Load and parse yml config as json', () => {
               "size": 32,
             },
           },
-          "h3": Object {
+          "heading-3": Object {
             "default": Object {
               "family": "Poppins",
               "line": 22,
@@ -160,7 +136,7 @@ describe('Load and parse yml config as json', () => {
               "size": 24,
             },
           },
-          "h4": Object {
+          "heading-4": Object {
             "default": Object {
               "family": "Poppins",
               "line": 19.2,
@@ -171,7 +147,7 @@ describe('Load and parse yml config as json', () => {
               "size": 20,
             },
           },
-          "h5": Object {
+          "heading-5": Object {
             "default": Object {
               "family": "Poppins",
               "line": 15.6,
@@ -182,7 +158,7 @@ describe('Load and parse yml config as json', () => {
               "size": 16,
             },
           },
-          "h6": Object {
+          "heading-6": Object {
             "default": Object {
               "line": 12,
               "size": 10,
@@ -218,15 +194,6 @@ describe('Load and parse yml config as json', () => {
             },
             "large": Object {
               "size": 16,
-            },
-          },
-          "ui": Object {
-            "default": Object {
-              "line": 18.2,
-              "size": 13,
-            },
-            "large": Object {
-              "size": 14,
             },
           },
         },
@@ -282,8 +249,6 @@ describe('Load and parse yml config as json', () => {
                 "figure",
                 "& > img",
                 "blockquote",
-                "& > p > img:first-child:last-child",
-                "& > p > .gatsby-resp-image-wrapper",
               ],
             },
             "smaller-headings": Object {

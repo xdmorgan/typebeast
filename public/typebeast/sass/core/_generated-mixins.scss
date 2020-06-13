@@ -1,93 +1,7 @@
-// h1-xxl
+// heading-1
 // ---------------------------------------------------------
 
-@mixin type-h1-xxl-default(
-  $family: Poppins,
-  $letter: -0.0125em,
-  $line: 46.2,
-  $size: 42,
-  $style: null,
-  $transform: null,
-  $weight: normal
-) {
-  @include typebeast(
-    $family,
-    $letter,
-    $line,
-    $size,
-    $style,
-    $transform,
-    $weight
-  );
-}
-
-@mixin type-h1-xxl-large(
-  $family: null,
-  $letter: null,
-  $line: null,
-  $size: 80,
-  $style: null,
-  $transform: null,
-  $weight: null
-) {
-  @include typebeast(
-    $family,
-    $letter,
-    $line,
-    $size,
-    $style,
-    $transform,
-    $weight
-  );
-}
-
-// h1-xl
-// ---------------------------------------------------------
-
-@mixin type-h1-xl-default(
-  $family: Poppins,
-  $letter: -0.0125em,
-  $line: 39.6,
-  $size: 36,
-  $style: null,
-  $transform: null,
-  $weight: normal
-) {
-  @include typebeast(
-    $family,
-    $letter,
-    $line,
-    $size,
-    $style,
-    $transform,
-    $weight
-  );
-}
-
-@mixin type-h1-xl-large(
-  $family: null,
-  $letter: null,
-  $line: null,
-  $size: 64,
-  $style: null,
-  $transform: null,
-  $weight: null
-) {
-  @include typebeast(
-    $family,
-    $letter,
-    $line,
-    $size,
-    $style,
-    $transform,
-    $weight
-  );
-}
-
-// h1
-// ---------------------------------------------------------
-
-@mixin type-h1-default(
+@mixin type-heading-1-default(
   $family: Poppins,
   $letter: -0.0125em,
   $line: 35.2,
@@ -107,7 +21,7 @@
   );
 }
 
-@mixin type-h1-large(
+@mixin type-heading-1-large(
   $family: null,
   $letter: null,
   $line: null,
@@ -127,10 +41,10 @@
   );
 }
 
-// h2
+// heading-2
 // ---------------------------------------------------------
 
-@mixin type-h2-default(
+@mixin type-heading-2-default(
   $family: Poppins,
   $letter: null,
   $line: 30.8,
@@ -150,7 +64,7 @@
   );
 }
 
-@mixin type-h2-large(
+@mixin type-heading-2-large(
   $family: null,
   $letter: null,
   $line: null,
@@ -170,10 +84,10 @@
   );
 }
 
-// h3
+// heading-3
 // ---------------------------------------------------------
 
-@mixin type-h3-default(
+@mixin type-heading-3-default(
   $family: Poppins,
   $letter: null,
   $line: 22,
@@ -193,7 +107,7 @@
   );
 }
 
-@mixin type-h3-large(
+@mixin type-heading-3-large(
   $family: null,
   $letter: null,
   $line: null,
@@ -213,10 +127,10 @@
   );
 }
 
-// h4
+// heading-4
 // ---------------------------------------------------------
 
-@mixin type-h4-default(
+@mixin type-heading-4-default(
   $family: Poppins,
   $letter: null,
   $line: 19.2,
@@ -236,7 +150,7 @@
   );
 }
 
-@mixin type-h4-large(
+@mixin type-heading-4-large(
   $family: null,
   $letter: null,
   $line: null,
@@ -256,10 +170,10 @@
   );
 }
 
-// h5
+// heading-5
 // ---------------------------------------------------------
 
-@mixin type-h5-default(
+@mixin type-heading-5-default(
   $family: Poppins,
   $letter: null,
   $line: 15.6,
@@ -279,7 +193,7 @@
   );
 }
 
-@mixin type-h5-large(
+@mixin type-heading-5-large(
   $family: null,
   $letter: null,
   $line: null,
@@ -299,10 +213,10 @@
   );
 }
 
-// h6
+// heading-6
 // ---------------------------------------------------------
 
-@mixin type-h6-default(
+@mixin type-heading-6-default(
   $family: null,
   $letter: null,
   $line: 12,
@@ -322,7 +236,7 @@
   );
 }
 
-@mixin type-h6-large(
+@mixin type-heading-6-large(
   $family: null,
   $letter: null,
   $line: null,
@@ -456,49 +370,6 @@
   $letter: null,
   $line: null,
   $size: 16,
-  $style: null,
-  $transform: null,
-  $weight: null
-) {
-  @include typebeast(
-    $family,
-    $letter,
-    $line,
-    $size,
-    $style,
-    $transform,
-    $weight
-  );
-}
-
-// ui
-// ---------------------------------------------------------
-
-@mixin type-ui-default(
-  $family: null,
-  $letter: null,
-  $line: 18.2,
-  $size: 13,
-  $style: null,
-  $transform: null,
-  $weight: null
-) {
-  @include typebeast(
-    $family,
-    $letter,
-    $line,
-    $size,
-    $style,
-    $transform,
-    $weight
-  );
-}
-
-@mixin type-ui-large(
-  $family: null,
-  $letter: null,
-  $line: null,
-  $size: 14,
   $style: null,
   $transform: null,
   $weight: null
