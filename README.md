@@ -4,7 +4,7 @@
 ![npm version](https://img.shields.io/npm/v/typebeast)
 ![github tests](https://img.shields.io/github/workflow/status/xdmorgan/typebeast/Node.js%20CI)
 
-A fully customizable format for generating resilient, utilitirian CSS typography styles.
+A fully customizable library to generate resilient, utilitarian CSS typographyy styles.
 
 ---
 
