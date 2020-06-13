@@ -8,7 +8,7 @@
     />
     <style>
       body {
-        margin: 0;
+        margin: 0 auto;
         padding: 32px;
         --font-heading: Poppins, -apple-system, system-ui, BlinkMacSystemFont,
           Segoe UI, Helvetica, Arial, sans-serif;
@@ -16,6 +16,7 @@
           Helvetica, Arial, sans-serif;
 
         font-family: var(--font-body);
+        max-width: 800px;
       }
     </style>
   </head>
@@ -70,191 +71,187 @@
     </div>
     <div class="wysiwyg with-lede">
       <p>
-        A lede paragraph to <em>emphasis</em> and show
-        <strong>important</strong> bits. Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Laudantium accusamus aperiam pariatur omnis mollitia
-        placeat excepturi praesentium,
-        <a href="/">eaque obcaecati illum, assumenda</a>
-        accusantium, velit rem saepe atque officia cumque. Possimus, tenetur?
+        In this post, we'll be building a declarative React list rendering
+        component inspired by
+        <a href="https://ant.design/components/list/">Ant Design's List</a> and
+        <a href="https://reactnative.dev/docs/flatlist"
+          >React Native's FlatList</a
+        >
+        to use in situations where you may regularly reach for
+        <code>array.map()</code>. While JavaScript's array methods are amazing
+        modern additions to the language—they improve readability and foster
+        immutable data transformation—they're fairly limited when it comes to UI
+        rendering, but we can use them as a foundation for something better!
       </p>
       <p>
-        And a small paragraph to <em>emphasis</em> and show
-        <strong>important</strong> bits. Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Laudantium
-        <a href=""
-          >accusamus aperiam pariatur omnis mollitia placeat excepturi</a
+        Over the next few examples, we'll refactor an
+        <code>array.map()</code> example to use a newly created
+        <code>ListView</code>, then start to introduce functionality designed to
+        cut boilerplate required to implement common patterns for organizing
+        collections of data.
+      </p>
+      <h3 id="list-and-listitem" style="position:relative">
+        List and List.Item
+      </h3>
+      <p>
+        Before we get started, we'll create a couple unstyled
+        <code>List</code> and <code>List.Item</code> components to use in the
+        rest of the examples. To follow along interactively, see this
+        <a href="https://codesandbox.io/s/rendering-lists-with-react-2y0v8"
+          >CodeSandbox Project</a
         >
-        praesentium, eaque obcaecati illum, assumenda accusantium, velit rem
-        <kbd>saepe</kbd> atque officia cumque. <code>Possimus, tenetur</code>?
+        and feel free to fork and customize/style the examples as we go then
+        <a href="https://twitter.com/xdanmorgan"
+          >share them with me on Twitter</a
+        >
+      </p>
+      <h3 id="hardcoded-list-items" style="position:relative">
+        Hardcoded List Items
+      </h3>
+      <p>
+        Now we have <code>&lt;List /&gt;</code> and
+        <code>&lt;List.Item /&gt;</code> created, we can use them to create a
+        basic to-do list.
+      </p>
+      <h3 id="using-arraymap" style="position:relative">
+        Using Array.map()
+      </h3>
+      <p>
+        As our list continues to grow, we'll update to use a simple data
+        structure then start rendering a variable amount of items with
+        <code>array.map()</code>—Don't forget the key prop!
+      </p>
+      <h2 id="new-challenger-approaches" style="position:relative">
+        New Challenger Approaches
+      </h2>
+      <p>
+        So far, so good. The example above is a valid and standard approach in
+        most React codebases. Over time, there will be other features we want to
+        add to this list, such as filtering, sorting, and pagination. As the
+        project continues to grow, the boilerplate supporting these patterns
+        will get fragmented and inconsistent, unless we have a way to centralize
+        them.
+      </p>
+      <p>
+        Let's start our alternative approach by creating
+        <code>ListView</code> to be functionally equivalent to
+        <code>array.map()</code>
+      </p>
+      <p>
+        We can now refactor our application code to replace our
+        <code>List.Item</code> rendering
+      </p>
+      <h2 id="improving-the-api" style="position:relative">
+        Improving the API
+      </h2>
+      <p>
+        With the foundation in place, let's add a few more props and, in doing
+        so, add support for many more use-cases.
+      </p>
+      <p>
+        A quick note on what the newly added props do before we update the
+        example code. In each case, when these optional props are omitted, they
+        leave behind no trace of their existence rendering either
+        <code>null</code> or a <code>Fragment</code> accordingly.
       </p>
       <ul>
         <li>
-          This is a list item
+          <strong>as</strong>: Render the whole thing in a wrapper element.
         </li>
         <li>
-          So is this - there could be more
+          <strong>container</strong>: Render an element around the list body.
         </li>
         <li>
-          Make sure to style list items to:
-          <ul>
-            <li>Not forgetting child list items</li>
-            <li>Not forgetting child list items</li>
-            <li>Not forgetting child list items</li>
-            <li>Not forgetting child list items</li>
-          </ul>
+          <strong>before</strong>: Render a block of content before the list
+          body.
         </li>
-        <li>A couple more</li>
-        <li>top level list items</li>
+        <li>
+          <strong>after</strong>: Render a block of content after the list body.
+        </li>
       </ul>
-      <p>Don't forget <strong>Ordered lists</strong>:</p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quo
-        aperiam dolorem nesciunt tempore? Deserunt, a dolore consequatur dolorum
-        repellat doloribus itaque provident ea praesentium iste nam possimus
-        perferendis nobis?
-      </p>
-
-      <img alt="Person riding a bicycle on city street" src="/header.jpg" />
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque tempore
-        pariatur ipsum, placeat voluptates molestias distinctio doloremque
-        perferendis, dolorem mollitia assumenda aperiam ut illum commodi totam
-        porro quae inventore obcaecati.
-      </p>
-      <ol>
-        <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-        <li>
-          Aliquam tincidunt mauris eu risus.
-          <ol>
-            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-            <li>Aliquam tincidunt mauris eu risus.</li>
-          </ol>
-        </li>
-        <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-        <li>Aliquam tincidunt mauris eu risus.</li>
-      </ol>
-      <h2>
-        A sub heading which is not as important as the first, but is quite
-        imporant overall
+      <h2 id="composition" style="position:relative">
+        Composition
       </h2>
       <p>
-        Pellentesque habitant morbi tristique senectus et netus et malesuada
-        fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-        ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-        egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend
-        leo.
+        At this point, the ListView itself is fully functional and gives us a
+        nice declarative API to render the original example entirely. Are we
+        done? Not nearly. Now we're ready to really get started! With a flexible
+        foundation in place, we can now write a series of thin wrapper
+        components to implement custom functionality or styles.
       </p>
-      <table>
-        <tbody>
-          <tr>
-            <th>Table Heading</th>
-            <th>Table Heading</th>
-          </tr>
-          <tr>
-            <td>table data</td>
-            <td>table data</td>
-          </tr>
-          <tr>
-            <td>table data</td>
-            <td>table data</td>
-          </tr>
-          <tr>
-            <td>table data</td>
-            <td>table data</td>
-          </tr>
-          <tr>
-            <td>table data</td>
-            <td>table data</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>
-        A sub heading which is not as important as the second, but should be
-        used with consideration
+      <h3 id="introducing-pagination" style="position:relative">
+        Introducing Pagination
       </h3>
       <p>
-        Pellentesque habitant morbi tristique senectus et netus et malesuada
-        fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-        ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-        egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend
-        leo.
+        As our list length grows, one of the first additions we'll want to make
+        is the introduction of pagination. To support a traditional pagination
+        pattern, we'll wrap the <code>ListView</code> with a specialized
+        <code>PaginatedListView</code>.
       </p>
-      <blockquote>
+      <div class="bg-spring-wood p-3x md:p-4x my-4x my-6x child-my-0">
         <p>
-          “Ooh - a blockquote! Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut
-          a est eget ligula molestie gravida. Curabitur massa. Donec eleifend,
-          libero at sagittis mollis, tellus est malesuada tellus, at luctus
-          turpis elit sit amet quam. Vivamus pretium ornare est.”
+          <strong>Sidenote:</strong> If you're new to React Hooks, this recently
+          updated free course from Kent Dodds &amp; Egghead
+          <a
+            href="https://egghead.io/lessons/react-create-reusable-custom-hooks"
+            >The Beginner's Guide to React</a
+          >
+          is an excellent introduction to the topic.
         </p>
-      </blockquote>
-      <h4>
-        A sub heading which is not as important as the second, but should be
-        used with consideration
-      </h4>
-      <p>
-        Pellentesque habitant morbi tristique senectus et netus et malesuada
-        fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-        ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-        egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend
-        leo.
-      </p>
-      <pre><code>
-#header h1 a { 
-    display: block; 
-    width: 300px; 
-    height: 80px; 
-}
-</code></pre>
-      <h5>
-        A sub heading which is not as important as the second, but should be
-        used with consideration
-      </h5>
-      <p>
-        Pellentesque habitant morbi tristique senectus et netus et malesuada
-        fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-        ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-        egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend
-        leo.
-      </p>
-      <dl>
-        <dt>Definition list</dt>
-        <dd>
-          Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </dd>
-        <dt>Lorem ipsum dolor sit amet</dt>
-        <dd>
-          Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </dd>
-      </dl>
-      <h6>
-        This heading plays a relatively small bit part role, if you use it at
-        all
-      </h6>
-      <p>
-        Pellentesque habitant morbi tristique senectus et netus et malesuada
-        fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-        ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-        egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend
-        leo.
-      </p>
-    </div>
-    <div class="g">
-      <div class="gr">
-        <div class="gc">Flex</div>
       </div>
-    </div>
-    <div class="g">
-      <div class="gr">
-        <div class="gc gc-1 md:gc-3 lg:gc-1 xl:gc-3">1</div>
-        <div class="gc gc-2 md:gc-1 lg:gc-2 xl:gc-1">2</div>
-        <div class="gc gc-3 md:gc-2 lg:gc-3 xl:gc-2">3</div>
-      </div>
+      <p>
+        To implement this in our example code, we'll need to add the
+        <code>usePagination()</code> Hook, update the component name from
+        <code>ListView</code> to <code>PaginatedListView</code>, then add two
+        new props: <code>currentPage</code> and <code>perPage</code>.
+      </p>
+      <h3 id="render-a-table-instead" style="position:relative">
+        Render a Table Instead?
+      </h3>
+      <p>
+        We sure can. Let's swap out all the HTML in our example and semantically
+        render a table without modifying anything below the surface and keep the
+        pagination free.
+      </p>
+      <h2 id="further-improvement" style="position:relative">
+        Further Improvement
+      </h2>
+      <p>
+        To expand upon the examples above, here's a few features that can be
+        implemented in just few lines in new composing components without
+        modifying the underlying ListView at all:
+      </p>
+      <ul>
+        <li>
+          Add list sorting and filtering by completion status using header
+          controls
+        </li>
+        <li>
+          Create an alternate pagination pattern which uses an
+          IntersectionOberserver-wrapped footer to support infinite scrolling
+        </li>
+      </ul>
+      <p>
+        Really, the possibilities are endless. Feel free to fork the
+        <a href="https://codesandbox.io/s/rendering-lists-with-react-2y0v8"
+          >CodeSandbox Project</a
+        >
+        or give it a shot in your next side-project and let me know what you
+        find!
+      </p>
+      <p>
+        I hope the examples above help to illustrate the value of a generic list
+        rendering component and the power of React as a tool to standardize UI
+        patterns irrespective of DOM elements rendered on screen.
+      </p>
+      <p>
+        For more information, be sure to check out
+        <a href="https://ant.design/components/list/">Ant Design's List</a> and
+        <a href="https://reactnative.dev/docs/flatlist"
+          >React Native's FlatList</a
+        >
+        excellent examples too.
+      </p>
     </div>
   </body>
 </html>
