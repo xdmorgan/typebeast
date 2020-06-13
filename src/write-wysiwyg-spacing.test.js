@@ -1,6 +1,6 @@
 const { transform } = require('./transform-wysiwyg-spacing')
 const { write } = require('./write-wysiwyg-spacing')
-const mock = require('../public/typebeast/config.json')
+const mock = require('../mocks/demo-site.json')
 
 describe('write()', () => {
   test('it works', async () => {
@@ -53,9 +53,7 @@ describe('write()', () => {
         iframe,
         figure,
         & > img,
-        blockquote,
-        & > p > img:first-child:last-child,
-        & > p > .gatsby-resp-image-wrapper {
+        blockquote {
           margin-block-start: 3rem;
           margin-block-end: 3rem;
         }
@@ -106,9 +104,7 @@ describe('write()', () => {
           iframe,
           figure,
           & > img,
-          blockquote,
-          & > p > img:first-child:last-child,
-          & > p > .gatsby-resp-image-wrapper {
+          blockquote {
             margin-block-start: 4rem;
             margin-block-end: 4rem;
           }

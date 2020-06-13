@@ -1,5 +1,5 @@
 const { transform } = require('./transform-spacing')
-const mock = require('../public/typebeast/config.json')
+const mock = require('../mocks/demo-site.json')
 
 describe('transform()', () => {
   test('it works', async () => {

@@ -1,6 +1,8 @@
 node_modules/
 public/
 build/
+tmp/
+mocks/
 .sass-cache/
 *.css.map
 *.log
@@ -11,4 +13,3 @@ build/
 .github
 .prettierrc.yml
 *.test.js
-typebeast.yml

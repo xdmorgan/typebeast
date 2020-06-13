@@ -1,5 +1,5 @@
 const { transform } = require('./transform-config')
-const mock = require('../public/typebeast/config.json')
+const mock = require('../mocks/demo-site.json')
 
 describe('Transform parsed config file to desired structure', () => {
   test('Transform config', () => {
@@ -41,16 +41,16 @@ describe('Transform parsed config file to desired structure', () => {
             ".wysiwyg figcaption",
           ],
         },
-        "h1": Object {
+        "heading-1": Object {
           "breakpoints": Object {
             "default": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h1-default($family: Poppins,$size: 32,$line: 35.2,$weight: normal,$letter: -0.0125em){
+        @mixin type-heading-1-default($family: Poppins,$size: 32,$line: 35.2,$weight: normal,$letter: -0.0125em){
           @include typebeast($family,$size,$line,$weight,$letter);
         }
       ",
-                "name": "type-h1-default",
+                "name": "type-heading-1-default",
               },
               "settings": Object {
                 "family": "Poppins",
@@ -63,11 +63,11 @@ describe('Transform parsed config file to desired structure', () => {
             "large": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h1-large($size: 48){
+        @mixin type-heading-1-large($size: 48){
           @include typebeast($size);
         }
       ",
-                "name": "type-h1-large",
+                "name": "type-heading-1-large",
               },
               "settings": Object {
                 "size": 48,
@@ -75,94 +75,20 @@ describe('Transform parsed config file to desired structure', () => {
             },
           },
           "selectors": Array [
-            ".type-h1",
+            ".type-heading-1",
             ".wysiwyg h1",
           ],
         },
-        "h1-xl": Object {
+        "heading-2": Object {
           "breakpoints": Object {
             "default": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h1-xl-default($family: Poppins,$size: 36,$line: 39.6,$weight: normal,$letter: -0.0125em){
-          @include typebeast($family,$size,$line,$weight,$letter);
-        }
-      ",
-                "name": "type-h1-xl-default",
-              },
-              "settings": Object {
-                "family": "Poppins",
-                "letter": "-0.0125em",
-                "line": 39.6,
-                "size": 36,
-                "weight": "normal",
-              },
-            },
-            "large": Object {
-              "mixin": Object {
-                "definition": "
-        @mixin type-h1-xl-large($size: 64){
-          @include typebeast($size);
-        }
-      ",
-                "name": "type-h1-xl-large",
-              },
-              "settings": Object {
-                "size": 64,
-              },
-            },
-          },
-          "selectors": Array [
-            ".type-h1-xl",
-          ],
-        },
-        "h1-xxl": Object {
-          "breakpoints": Object {
-            "default": Object {
-              "mixin": Object {
-                "definition": "
-        @mixin type-h1-xxl-default($family: Poppins,$size: 42,$line: 46.2,$weight: normal,$letter: -0.0125em){
-          @include typebeast($family,$size,$line,$weight,$letter);
-        }
-      ",
-                "name": "type-h1-xxl-default",
-              },
-              "settings": Object {
-                "family": "Poppins",
-                "letter": "-0.0125em",
-                "line": 46.2,
-                "size": 42,
-                "weight": "normal",
-              },
-            },
-            "large": Object {
-              "mixin": Object {
-                "definition": "
-        @mixin type-h1-xxl-large($size: 80){
-          @include typebeast($size);
-        }
-      ",
-                "name": "type-h1-xxl-large",
-              },
-              "settings": Object {
-                "size": 80,
-              },
-            },
-          },
-          "selectors": Array [
-            ".type-h1-xxl",
-          ],
-        },
-        "h2": Object {
-          "breakpoints": Object {
-            "default": Object {
-              "mixin": Object {
-                "definition": "
-        @mixin type-h2-default($family: Poppins,$size: 28,$line: 30.8,$weight: normal){
+        @mixin type-heading-2-default($family: Poppins,$size: 28,$line: 30.8,$weight: normal){
           @include typebeast($family,$size,$line,$weight);
         }
       ",
-                "name": "type-h2-default",
+                "name": "type-heading-2-default",
               },
               "settings": Object {
                 "family": "Poppins",
@@ -174,11 +100,11 @@ describe('Transform parsed config file to desired structure', () => {
             "large": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h2-large($size: 32){
+        @mixin type-heading-2-large($size: 32){
           @include typebeast($size);
         }
       ",
-                "name": "type-h2-large",
+                "name": "type-heading-2-large",
               },
               "settings": Object {
                 "size": 32,
@@ -186,20 +112,20 @@ describe('Transform parsed config file to desired structure', () => {
             },
           },
           "selectors": Array [
-            ".type-h2",
+            ".type-heading-2",
             ".wysiwyg h2",
           ],
         },
-        "h3": Object {
+        "heading-3": Object {
           "breakpoints": Object {
             "default": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h3-default($family: Poppins,$size: 20,$line: 22,$weight: normal){
+        @mixin type-heading-3-default($family: Poppins,$size: 20,$line: 22,$weight: normal){
           @include typebeast($family,$size,$line,$weight);
         }
       ",
-                "name": "type-h3-default",
+                "name": "type-heading-3-default",
               },
               "settings": Object {
                 "family": "Poppins",
@@ -211,11 +137,11 @@ describe('Transform parsed config file to desired structure', () => {
             "large": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h3-large($size: 24){
+        @mixin type-heading-3-large($size: 24){
           @include typebeast($size);
         }
       ",
-                "name": "type-h3-large",
+                "name": "type-heading-3-large",
               },
               "settings": Object {
                 "size": 24,
@@ -223,20 +149,20 @@ describe('Transform parsed config file to desired structure', () => {
             },
           },
           "selectors": Array [
-            ".type-h3",
+            ".type-heading-3",
             ".wysiwyg h3",
           ],
         },
-        "h4": Object {
+        "heading-4": Object {
           "breakpoints": Object {
             "default": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h4-default($family: Poppins,$size: 16,$line: 19.2,$weight: bold){
+        @mixin type-heading-4-default($family: Poppins,$size: 16,$line: 19.2,$weight: bold){
           @include typebeast($family,$size,$line,$weight);
         }
       ",
-                "name": "type-h4-default",
+                "name": "type-heading-4-default",
               },
               "settings": Object {
                 "family": "Poppins",
@@ -248,11 +174,11 @@ describe('Transform parsed config file to desired structure', () => {
             "large": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h4-large($size: 20){
+        @mixin type-heading-4-large($size: 20){
           @include typebeast($size);
         }
       ",
-                "name": "type-h4-large",
+                "name": "type-heading-4-large",
               },
               "settings": Object {
                 "size": 20,
@@ -260,20 +186,20 @@ describe('Transform parsed config file to desired structure', () => {
             },
           },
           "selectors": Array [
-            ".type-h4",
+            ".type-heading-4",
             ".wysiwyg h4",
           ],
         },
-        "h5": Object {
+        "heading-5": Object {
           "breakpoints": Object {
             "default": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h5-default($family: Poppins,$size: 13,$line: 15.6,$weight: bold){
+        @mixin type-heading-5-default($family: Poppins,$size: 13,$line: 15.6,$weight: bold){
           @include typebeast($family,$size,$line,$weight);
         }
       ",
-                "name": "type-h5-default",
+                "name": "type-heading-5-default",
               },
               "settings": Object {
                 "family": "Poppins",
@@ -285,11 +211,11 @@ describe('Transform parsed config file to desired structure', () => {
             "large": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h5-large($size: 16){
+        @mixin type-heading-5-large($size: 16){
           @include typebeast($size);
         }
       ",
-                "name": "type-h5-large",
+                "name": "type-heading-5-large",
               },
               "settings": Object {
                 "size": 16,
@@ -297,20 +223,20 @@ describe('Transform parsed config file to desired structure', () => {
             },
           },
           "selectors": Array [
-            ".type-h5",
+            ".type-heading-5",
             ".wysiwyg h5",
           ],
         },
-        "h6": Object {
+        "heading-6": Object {
           "breakpoints": Object {
             "default": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h6-default($size: 10,$line: 12,$weight: bold,$transform: uppercase){
+        @mixin type-heading-6-default($size: 10,$line: 12,$weight: bold,$transform: uppercase){
           @include typebeast($size,$line,$weight,$transform);
         }
       ",
-                "name": "type-h6-default",
+                "name": "type-heading-6-default",
               },
               "settings": Object {
                 "line": 12,
@@ -322,11 +248,11 @@ describe('Transform parsed config file to desired structure', () => {
             "large": Object {
               "mixin": Object {
                 "definition": "
-        @mixin type-h6-large($size: 12){
+        @mixin type-heading-6-large($size: 12){
           @include typebeast($size);
         }
       ",
-                "name": "type-h6-large",
+                "name": "type-heading-6-large",
               },
               "settings": Object {
                 "size": 12,
@@ -334,7 +260,7 @@ describe('Transform parsed config file to desired structure', () => {
             },
           },
           "selectors": Array [
-            ".type-h6",
+            ".type-heading-6",
             ".wysiwyg h6",
           ],
         },
@@ -445,40 +371,6 @@ describe('Transform parsed config file to desired structure', () => {
           "selectors": Array [
             ".type-small",
             ".wysiwyg small",
-          ],
-        },
-        "ui": Object {
-          "breakpoints": Object {
-            "default": Object {
-              "mixin": Object {
-                "definition": "
-        @mixin type-ui-default($size: 13,$line: 18.2){
-          @include typebeast($size,$line);
-        }
-      ",
-                "name": "type-ui-default",
-              },
-              "settings": Object {
-                "line": 18.2,
-                "size": 13,
-              },
-            },
-            "large": Object {
-              "mixin": Object {
-                "definition": "
-        @mixin type-ui-large($size: 14){
-          @include typebeast($size);
-        }
-      ",
-                "name": "type-ui-large",
-              },
-              "settings": Object {
-                "size": 14,
-              },
-            },
-          },
-          "selectors": Array [
-            ".type-ui",
           ],
         },
       }

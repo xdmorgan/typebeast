@@ -1,0 +1,230 @@
+# hello, world
+format-version: 1
+
+breakpoints:
+  large: 768px
+
+settings:
+  calculate-rem-size: true
+  include-utility-classes: true
+  wysiwyg-block-images: true
+
+typography:
+  heading-1:
+    default:
+      family: Poppins
+      size: 32
+      line: 35.2
+      weight: normal
+      letter: -0.0125em
+    large:
+      size: 48
+  heading-2:
+    default:
+      family: Poppins
+      size: 28
+      line: 30.8
+      weight: normal
+    large:
+      size: 32
+  heading-3:
+    default:
+      family: Poppins
+      size: 20
+      line: 22
+      weight: normal
+    large:
+      size: 24
+  heading-4:
+    default:
+      family: Poppins
+      size: 16
+      line: 19.2
+      weight: bold
+    large:
+      size: 20
+  heading-5:
+    default:
+      family: Poppins
+      size: 13
+      line: 15.6
+      weight: bold
+    large:
+      size: 16
+  heading-6:
+    default:
+      size: 10
+      line: 12
+      weight: bold
+      transform: uppercase
+    large:
+      size: 12
+  lede:
+    default:
+      size: 18
+      line: 27
+    large:
+      size: 24
+  para:
+    default:
+      size: 16
+      line: 27.2
+    large:
+      size: 18
+  small:
+    default:
+      size: 14
+      line: 23.8
+    large:
+      size: 16
+  caption:
+    default:
+      size: 10
+      line: 15
+    large:
+      size: 12
+
+spacing:
+  # zero out defaults and assume its preferred to use
+  # spacing utility classes
+  vertical-rhythm:
+    include:
+      - h1
+      - h2
+      - h3
+      - h4
+      - h5
+      - h6
+      - p
+      - ul
+      - ol
+      - dl
+      - blockquote
+      - figure
+      - pre
+    breakpoints:
+      default:
+        block: 0
+  # zero out defaults and assume its preferred to use
+  # spacing utility classes
+  horizontal-reset:
+    include:
+      - figure
+      - blockquote
+      - dd
+    breakpoints:
+      default:
+        inline: 0
+  # large default margins around hr to space out sections
+  horizontal-rule:
+    include:
+      - hr
+    breakpoints:
+      default:
+        block: 3rem
+      large:
+        block: 4rem
+
+wysiwyg:
+  scope: wysiwyg
+  elements:
+    heading-1: h1
+    heading-2: h2
+    heading-3: h3
+    heading-4: h4
+    heading-5: h5
+    heading-6: h6
+    lede:
+      - '&.with-lede > p:first-child'
+      - blockquote > p
+    para:
+      - p
+      - ul
+      - ol
+      - dl
+    small: small
+    caption: figcaption
+  spacing:
+    # add in default spacing when scoped to .wysiwyg {} container
+    # instead of using spacing utility classes
+    vertical-rhythm:
+      include:
+        - h1
+        - h2
+        - h3
+        - h4
+        - h5
+        - h6
+        - p
+        - ul
+        - ol
+        - dl
+        - blockquote
+        - figure
+        - pre
+      breakpoints:
+        default:
+          block: 1rem
+        large:
+          block: 1.5rem
+    # increase the spacing above large headings to space out sections
+    larger-headings:
+      include:
+        - h1
+        - h2
+      breakpoints:
+        default:
+          block-start: 3rem
+        large:
+          block-start: 5rem
+    # increase the spacing above smaller headings to space out from
+    # surrounding content within a section
+    smaller-headings:
+      include:
+        - h3
+        - h4
+        - h5
+        - h6
+      breakpoints:
+        default:
+          block-start: 2rem
+        large:
+          block-start: 3rem
+    # random other stuff that we'll also want to give add'l bretahing room
+    other-content:
+      include:
+        - pre # code blocks
+        - iframe # media embeds
+        - figure # images, usaully w caption
+        - '& > img' # top-level images
+        - blockquote # pull quotes
+      breakpoints:
+        default:
+          block: 3rem
+        large:
+          block: 4rem
+
+inline-elements:
+  # default styling for links (<a />)
+  a:
+    include: .type-link
+    settings:
+      color: '#002B73'
+      hover: '#1755BB'
+      active: '#035AEB'
+      visited: '#035AEB'
+  # default styling for <code />
+  code:
+    include: .type-code
+    settings:
+      color: '#1C7C4E'
+      background: '#F0F9F5'
+      radius: 0.25rem
+  # default styling for <kbd />
+  kbd:
+    include: .type-kbd
+    settings:
+      color: '#454647'
+      background: '#f8f8f8'
+      border: '#BCBDBE'
+      radius: 0.25rem

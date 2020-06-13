@@ -15,16 +15,8 @@
       "h4": "h4",
       "h5": "h5",
       "h6": "h6",
-      "lede": [
-        "&.with-lede > p:first-child",
-        "blockquote > p"
-      ],
-      "para": [
-        "p",
-        "ul",
-        "ol",
-        "dl"
-      ],
+      "lede": ["&.with-lede > p:first-child", "blockquote > p"],
+      "para": ["p", "ul", "ol", "dl"],
       "small": "small",
       "caption": "figcaption"
     },
@@ -55,10 +47,7 @@
         }
       },
       "larger-headings": {
-        "include": [
-          "h1",
-          "h2"
-        ],
+        "include": ["h1", "h2"],
         "breakpoints": {
           "default": {
             "block-start": "3rem"
@@ -69,12 +58,7 @@
         }
       },
       "smaller-headings": {
-        "include": [
-          "h3",
-          "h4",
-          "h5",
-          "h6"
-        ],
+        "include": ["h3", "h4", "h5", "h6"],
         "breakpoints": {
           "default": {
             "block-start": "2rem"
@@ -277,11 +261,7 @@
       }
     },
     "horizontal-reset": {
-      "include": [
-        "figure",
-        "blockquote",
-        "dd"
-      ],
+      "include": ["figure", "blockquote", "dd"],
       "breakpoints": {
         "default": {
           "inline": 0
@@ -289,9 +269,7 @@
       }
     },
     "horizontal-rule": {
-      "include": [
-        "hr"
-      ],
+      "include": ["hr"],
       "breakpoints": {
         "default": {
           "block": "3rem"
