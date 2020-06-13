@@ -1,5 +1,5 @@
 const { transform } = require('./transform-wysiwyg-spacing')
-const mock = require('../public/typebeast/config.json')
+const mock = require('../mocks/demo-site.json')
 
 describe('transform()', () => {
   test('it works', async () => {
@@ -33,7 +33,7 @@ describe('transform()', () => {
                 "margin-block-start": "4rem",
               },
             },
-            "selectors": "pre, iframe, figure, & > img, blockquote, & > p > img:first-child:last-child, & > p > .gatsby-resp-image-wrapper",
+            "selectors": "pre, iframe, figure, & > img, blockquote",
           },
           "smaller-headings": Object {
             "breakpoints": Object {

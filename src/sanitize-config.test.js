@@ -1,5 +1,5 @@
 const { sanitize } = require('./sanitize-config')
-const mock = require('../public/typebeast/config.json')
+const mock = require('../mocks/demo-site.json')
 
 describe('sanitizes a config file', () => {
   test('works with an empty config', () => {

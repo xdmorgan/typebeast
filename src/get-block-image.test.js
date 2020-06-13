@@ -1,5 +1,5 @@
 const { get } = require('./get-block-images')
-const mock = require('../public/typebeast/config.json')
+const mock = require('../mocks/demo-site.json')
 
 describe('get()', () => {
   test('is optional', async () => {

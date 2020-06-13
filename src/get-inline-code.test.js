@@ -1,5 +1,5 @@
 const { get, transform, write } = require('./get-inline-code')
-const mock = require('../public/typebeast/config.json')
+const mock = require('../mocks/demo-site.json')
 
 describe('get()', () => {
   test('is optional', async () => {
