@@ -314,12 +314,12 @@ describe('sanitizes a config file', () => {
         "wysiwyg": Object {
           "elements": Object {
             "caption": "figcaption",
-            "h1": "h1",
-            "h2": "h2",
-            "h3": "h3",
-            "h4": "h4",
-            "h5": "h5",
-            "h6": "h6",
+            "heading-1": "h1",
+            "heading-2": "h2",
+            "heading-3": "h3",
+            "heading-4": "h4",
+            "heading-5": "h5",
+            "heading-6": "h6",
             "lede": Array [
               "&.with-lede > p:first-child",
               "blockquote > p",

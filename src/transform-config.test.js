@@ -76,6 +76,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-heading-1",
+            ".wysiwyg h1",
           ],
         },
         "heading-2": Object {
@@ -112,6 +113,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-heading-2",
+            ".wysiwyg h2",
           ],
         },
         "heading-3": Object {
@@ -148,6 +150,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-heading-3",
+            ".wysiwyg h3",
           ],
         },
         "heading-4": Object {
@@ -184,6 +187,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-heading-4",
+            ".wysiwyg h4",
           ],
         },
         "heading-5": Object {
@@ -220,6 +224,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-heading-5",
+            ".wysiwyg h5",
           ],
         },
         "heading-6": Object {
@@ -256,6 +261,7 @@ describe('Transform parsed config file to desired structure', () => {
           },
           "selectors": Array [
             ".type-heading-6",
+            ".wysiwyg h6",
           ],
         },
         "lede": Object {
