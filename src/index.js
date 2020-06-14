@@ -23,7 +23,9 @@ const { get: getBlockImages } = require('./get-block-images')
 
 const { CURRENT_FORMAT_VERSION = 1 } = process.env
 
-async function main({ config, output, compression } = {}) {
+async function main(opts = {}) {
+  console.log(opts)
+
   // messy entry paths — TODO: tidy/structure
   const srcDir = path.join(__dirname, 'sass')
   const tmpDir = path.join(__dirname, '../tmp')
@@ -53,7 +55,7 @@ async function main({ config, output, compression } = {}) {
   }
 
   // parse the custom config
-  const parsed = await parse(config)
+  const parsed = await parse(opts.config)
   // parse the deafults (internal shadow config file)
   const defaults = await parse(defaultsPath)
   // merge custom config onto necessary but optional defaults (e.g.
@@ -88,8 +90,10 @@ async function main({ config, output, compression } = {}) {
   // copy the source sass dir to its temp destination before we start
   // to mutate it with custom generated code
   await fs.copy(srcDir, tmpDirSass)
-  // write the generated settings to the temp sass dir
-  await fs.writeFile(tmpDirJson, JSON.stringify(merged, null, 2))
+  if (opts.json) {
+    // write the generated settings to the temp sass dir
+    await fs.writeFile(tmpDirJson, JSON.stringify(merged, null, 2))
+  }
   // write the generated settings to the temp sass dir
   await fs.writeFile(generatedSassPaths.settings, settings)
   // write the generated mixins to the temp sass dir
@@ -106,15 +110,23 @@ async function main({ config, output, compression } = {}) {
   const result = sass.renderSync({
     file: sassRenderPaths.entryPoint,
     outFile: sassRenderPaths.outCSSFile,
-    outputStyle: compression,
+    outputStyle: opts.compression,
     sourceMap: true, // or an absolute or relative (to outFile) path
   })
   // write the resultant css to the temp dir
   await fs.writeFile(sassRenderPaths.outCSSFile, result.css)
-  await fs.writeFile(sassRenderPaths.outMapFile, result.map)
+  if (opts.sourcemap) {
+    // write a sourcemap if desired
+    await fs.writeFile(sassRenderPaths.outMapFile, result.map)
+  }
+  if (!opts.sass) {
+    // we needed the sass dir for rendering purposes, but if we aren't
+    // publishing it, remove before we copy the tmp dir to its output
+    await fs.remove(tmpDirSass)
+  }
   // if we made it this far without throwing, copy the finalized temp
   // dir to the final output destination
-  await fs.copy(tmpDir, output)
+  await fs.copy(tmpDir, opts.output)
   // remove the temp dir, that's a wrap. If the process threw and we
   // didn't make it here, it doesn't really matter. this would also
   // get cleaned up above (after asserting on valid config and before
