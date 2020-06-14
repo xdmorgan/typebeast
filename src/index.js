@@ -24,8 +24,6 @@ const { get: getBlockImages } = require('./get-block-images')
 const { CURRENT_FORMAT_VERSION = 1 } = process.env
 
 async function main(opts = {}) {
-  console.log(opts)
-
   // messy entry paths — TODO: tidy/structure
   const srcDir = path.join(__dirname, 'sass')
   const tmpDir = path.join(__dirname, '../tmp')
