@@ -14,7 +14,8 @@ const cli = meow(
       --output, -O     Custom output folder path (default: './typebeast')
       --compression    Sass output style (default: compact)
       --no-sass        Disable production of Sass core
-      --no-sourcemap   Disable production of sourcemaps
+      --no-sourcemap   Disable production of Sass sourcemap
+      --json           Produce a json version of the config
  
     Examples
       $ typebeast --config config.yml --output dist
@@ -43,6 +44,10 @@ const cli = meow(
       sass: {
         type: 'boolean',
         default: true,
+      },
+      json: {
+        type: 'boolean',
+        default: false,
       },
     },
   }
