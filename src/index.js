@@ -74,7 +74,7 @@ async function main(opts = {}) {
   // with our transformed data structure now containing sass, write
   // the mixin definitions to a single ready-to-save string
   const mixins = writeMixins({ data: transformed })
-  const typography = writeStyles({ data: transformed, config: sanitized })
+  const typography = writeStyles({ data: transformed, config: merged })
   const spacing = writeSpacing({
     transformed: transformSpacing(merged),
     config: merged,
