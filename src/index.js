@@ -8,10 +8,7 @@ const { validate } = require('./validate-config')
 const { get: getSassSettingsMap } = require('./get-sass-settings-map')
 const { transform: transformSpacing } = require('./transform-spacing')
 const { write: writeSpacing } = require('./write-spacing')
-const {
-  transform: transformWysiwygSpacing,
-} = require('./transform-wysiwyg-spacing')
-const { write: writeWysiwygSpacing } = require('./write-wysiwyg-spacing')
+const { get: getWysiwygSpacing } = require('./get-wysiwyg-spacing')
 const { get: getTypography } = require('./get-typography')
 const { get: getInlineLinks } = require('./get-inline-links')
 const { get: getInlineCode } = require('./get-inline-code')
@@ -70,7 +67,7 @@ async function main(opts = {}) {
     transformed: transformSpacing(merged),
     config: merged,
   })
-  const wysiwygSpacing = writeWysiwygSpacing(transformWysiwygSpacing(merged))
+  const wysiwygSpacing = getWysiwygSpacing(merged)
   const inlineLinks = getInlineLinks(merged)
   const inlineCode = getInlineCode(merged)
   const inlineKBD = getInlineKBD(merged)
