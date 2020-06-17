@@ -6,8 +6,7 @@ const { parse } = require('./parse-config')
 const { merge } = require('./merge-objects')
 const { validate } = require('./validate-config')
 const { get: getSassSettingsMap } = require('./get-sass-settings-map')
-const { transform: transformSpacing } = require('./transform-spacing')
-const { write: writeSpacing } = require('./write-spacing')
+const { get: getSpacing } = require('./get-spacing')
 const { get: getWysiwygSpacing } = require('./get-wysiwyg-spacing')
 const { get: getTypography } = require('./get-typography')
 const { get: getInlineLinks } = require('./get-inline-links')
@@ -63,10 +62,7 @@ async function main(opts = {}) {
   // with our transformed data structure now containing sass, write
   // the mixin definitions to a single ready-to-save string
   const { mixins, typography } = getTypography(merged)
-  const spacing = writeSpacing({
-    transformed: transformSpacing(merged),
-    config: merged,
-  })
+  const spacing = getSpacing(merged)
   const wysiwygSpacing = getWysiwygSpacing(merged)
   const inlineLinks = getInlineLinks(merged)
   const inlineCode = getInlineCode(merged)
