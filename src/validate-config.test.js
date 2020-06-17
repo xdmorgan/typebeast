@@ -22,7 +22,7 @@ describe('validate()', () => {
       `"Unexpected config version (yours: 1, expected: 2) please see docs for instructions on how to upgrade."`
     )
   })
-  test('Succeeds with minimally viable config', () => {
+  test('Succeeds with expected version', () => {
     const expectedVersion = 1
     const [valid, { message, version }] = validate(
       { 'format-version': expectedVersion },

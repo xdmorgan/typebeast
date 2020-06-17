@@ -3,19 +3,12 @@ const fs = require('fs-extra')
 const sass = require('node-sass')
 
 const { parse } = require('./parse-config')
-const { sanitize } = require('./sanitize-config')
-const { transform } = require('./transform-config')
 const { merge } = require('./merge-objects')
-const { write: writeMixins } = require('./write-mixins')
-const { write: writeStyles } = require('./write-styles')
 const { validate } = require('./validate-config')
 const { get: getSassSettingsMap } = require('./get-sass-settings-map')
-const { transform: transformSpacing } = require('./transform-spacing')
-const { write: writeSpacing } = require('./write-spacing')
-const {
-  transform: transformWysiwygSpacing,
-} = require('./transform-wysiwyg-spacing')
-const { write: writeWysiwygSpacing } = require('./write-wysiwyg-spacing')
+const { get: getSpacing } = require('./get-spacing')
+const { get: getWysiwygSpacing } = require('./get-wysiwyg-spacing')
+const { get: getTypography } = require('./get-typography')
 const { get: getInlineLinks } = require('./get-inline-links')
 const { get: getInlineCode } = require('./get-inline-code')
 const { get: getInlineKBD } = require('./get-inline-kbd')
@@ -66,20 +59,11 @@ async function main(opts = {}) {
   await fs.remove(tmpDir)
   // convert config settings to a sass map
   const settings = getSassSettingsMap(merged)
-  // fill in blanks for styles (i.e. use null instead of undefined for
-  // omitted mixin properties)
-  const sanitized = await sanitize(merged)
-  // convert raw values into a sass-ready format
-  const transformed = await transform(sanitized)
   // with our transformed data structure now containing sass, write
   // the mixin definitions to a single ready-to-save string
-  const mixins = writeMixins({ data: transformed })
-  const typography = writeStyles({ data: transformed, config: sanitized })
-  const spacing = writeSpacing({
-    transformed: transformSpacing(merged),
-    config: merged,
-  })
-  const wysiwygSpacing = writeWysiwygSpacing(transformWysiwygSpacing(merged))
+  const { mixins, typography } = getTypography(merged)
+  const spacing = getSpacing(merged)
+  const wysiwygSpacing = getWysiwygSpacing(merged)
   const inlineLinks = getInlineLinks(merged)
   const inlineCode = getInlineCode(merged)
   const inlineKBD = getInlineKBD(merged)

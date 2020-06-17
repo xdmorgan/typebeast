@@ -1,15 +1,38 @@
 const { get } = require('./get-sass-settings-map')
-const mock = require('../mocks/demo-site.json')
 
 describe('get()', () => {
-  test('it works', async () => {
-    expect(get(mock)).toMatchInlineSnapshot(`
+  test('Supports empty input object', async () => {
+    expect(get({})).toMatchInlineSnapshot(`
+      "$TYPEBEAST_SETTINGS: ();
+      "
+    `)
+  })
+  test('Supports an optional custom name', async () => {
+    expect(get({}, 'CUSTOM_NAME')).toMatchInlineSnapshot(`
+      "$CUSTOM_NAME: ();
+      "
+    `)
+  })
+  test('Handles varying input types', async () => {
+    expect(get({ settings: { option: 'value' } })).toMatchInlineSnapshot(`
       "$TYPEBEAST_SETTINGS: (
-        \\"calculate-rem-size\\": true,
-        \\"include-utility-classes\\": true,
-        \\"monospace-font-family\\": null,
-        \\"rem-base\\": 16,
-        \\"wysiwyg-block-images\\": true
+        \\"option\\": value
+      );
+      "
+    `)
+    expect(get({ settings: { first: 1, second: 2 } })).toMatchInlineSnapshot(`
+      "$TYPEBEAST_SETTINGS: (
+        \\"first\\": 1,
+        \\"second\\": 2
+      );
+      "
+    `)
+    expect(get({ settings: { first: 1, second: null, third: false } }))
+      .toMatchInlineSnapshot(`
+      "$TYPEBEAST_SETTINGS: (
+        \\"first\\": 1,
+        \\"second\\": null,
+        \\"third\\": false
       );
       "
     `)
