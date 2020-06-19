@@ -1,11 +1,9 @@
-const { transform } = require('./transform-spacing')
-const { write } = require('./write-spacing')
+const { get } = require('./get-spacing')
 const mock = require('../mocks/demo-site.json')
 
-describe('write()', () => {
+describe('get()', () => {
   test('it works', async () => {
-    const transformed = transform(mock)
-    const spacing = write({ transformed, config: mock })
+    const spacing = get(mock)
     expect(spacing).toMatchInlineSnapshot(`
       "// vertical-rhythm
       h1,
