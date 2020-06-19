@@ -1,11 +1,16 @@
 const fs = require('fs-extra')
 const { write } = require('./write-files')
 
-jest.mock('fs-extra')
-
+beforeAll(() => {
+  jest.mock('fs-extra', () => ({
+    writeFile: jest.fn().mockResolvedValue(true),
+  }))
+})
 beforeEach(() => {
-  jest.resetModules()
   jest.resetAllMocks()
+})
+afterAll(() => {
+  jest.resetModules()
 })
 
 test('undefined input has default empty object, no writes', async () => {

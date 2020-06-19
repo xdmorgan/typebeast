@@ -13,6 +13,7 @@ const { get: getInlineLinks } = require('./get-inline-links')
 const { get: getInlineCode } = require('./get-inline-code')
 const { get: getInlineKBD } = require('./get-inline-kbd')
 const { get: getBlockImages } = require('./get-block-images')
+const { write: writeFiles } = require('./write-files')
 
 const { CURRENT_FORMAT_VERSION = 1 } = process.env
 
@@ -72,22 +73,25 @@ async function main(opts = {}) {
   // copy the source sass dir to its temp destination before we start
   // to mutate it with custom generated code
   await fs.copy(srcDir, tmpDirSass)
+
   if (opts.json) {
     // write the generated settings to the temp sass dir
     await fs.writeFile(tmpDirJson, JSON.stringify(merged, null, 2))
   }
-  // write the generated settings to the temp sass dir
-  await fs.writeFile(generatedSassPaths.settings, settings)
-  // write the generated mixins to the temp sass dir
-  await fs.writeFile(generatedSassPaths.mixins, mixins)
-  // write the classes that refer to the generated mixins (as string)
-  await fs.writeFile(generatedSassPaths.typography, typography)
-  await fs.writeFile(generatedSassPaths.spacing, spacing)
-  await fs.writeFile(generatedSassPaths.wysiwygSpacing, wysiwygSpacing)
-  await fs.writeFile(generatedSassPaths.inlineLinks, inlineLinks)
-  await fs.writeFile(generatedSassPaths.inlineCode, inlineCode)
-  await fs.writeFile(generatedSassPaths.inlineKBD, inlineKBD)
-  await fs.writeFile(generatedSassPaths.blockImages, blockImages)
+
+  // write all the partials required for sass rendering
+  await writeFiles({
+    [generatedSassPaths.settings]: settings,
+    [generatedSassPaths.mixins]: mixins,
+    [generatedSassPaths.typography]: typography,
+    [generatedSassPaths.spacing]: spacing,
+    [generatedSassPaths.wysiwygSpacing]: wysiwygSpacing,
+    [generatedSassPaths.inlineLinks]: inlineLinks,
+    [generatedSassPaths.inlineCode]: inlineCode,
+    [generatedSassPaths.inlineKBD]: inlineKBD,
+    [generatedSassPaths.blockImages]: blockImages,
+  })
+
   // render the temp dir with the main entry point
   const result = sass.renderSync({
     file: sassRenderPaths.entryPoint,
