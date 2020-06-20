@@ -45,7 +45,7 @@ describe('transform()', () => {
               "margin-inline-end": 4,
               "margin-inline-start": 3,
             },
-            "selectors": undefined,
+            "selectors": Array [],
           },
         },
       }
@@ -75,7 +75,7 @@ describe('transform()', () => {
               "margin-inline-end": 2,
               "margin-inline-start": 2,
             },
-            "selectors": undefined,
+            "selectors": Array [],
           },
         },
       }
@@ -107,7 +107,7 @@ describe('transform()', () => {
               "margin-inline-end": 1,
               "margin-inline-start": 2,
             },
-            "selectors": undefined,
+            "selectors": Array [],
           },
         },
       }
@@ -134,7 +134,7 @@ describe('transform()', () => {
               "margin-block-end": 0,
               "margin-block-start": 0,
             },
-            "selectors": undefined,
+            "selectors": Array [],
           },
         },
       }
@@ -168,7 +168,7 @@ describe('transform()', () => {
               "margin-block-end": 0,
               "margin-block-start": 0,
             },
-            "selectors": undefined,
+            "selectors": Array [],
           },
           "large": Object {
             "properties": Object {
@@ -177,17 +177,83 @@ describe('transform()', () => {
               "margin-inline-end": 2,
               "margin-inline-start": 2,
             },
-            "selectors": undefined,
+            "selectors": Array [],
           },
           "medium": Object {
             "properties": Object {
               "margin-inline-end": 1,
               "margin-inline-start": 1,
             },
-            "selectors": undefined,
+            "selectors": Array [],
           },
         },
       }
     `)
   })
+  test('can use single selector', () => {
+    expect(
+      transform({
+        spacing: {
+          'vertical-reset': {
+            include: '#bruh',
+            breakpoints: {
+              default: {
+                block: 0,
+              },
+            },
+          },
+        },
+      })
+    ).toMatchInlineSnapshot(`
+      Object {
+        "vertical-reset": Object {
+          "default": Object {
+            "properties": Object {
+              "margin-block-end": 0,
+              "margin-block-start": 0,
+            },
+            "selectors": Array [
+              "#bruh",
+            ],
+          },
+        },
+      }
+    `)
+  })
+})
+test('can use multiple selectors', () => {
+  expect(
+    transform({
+      spacing: {
+        'vertical-reset': {
+          include: [
+            '#bruh',
+            'strong',
+            '&.something .compound[selector="yeah"]',
+          ],
+          breakpoints: {
+            default: {
+              block: 0,
+            },
+          },
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    Object {
+      "vertical-reset": Object {
+        "default": Object {
+          "properties": Object {
+            "margin-block-end": 0,
+            "margin-block-start": 0,
+          },
+          "selectors": Array [
+            "#bruh",
+            "strong",
+            "&.something .compound[selector=\\"yeah\\"]",
+          ],
+        },
+      },
+    }
+  `)
 })
