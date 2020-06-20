@@ -44,13 +44,16 @@ function getDataByBreakpoint(data) {
 
 function transform(config) {
   const { spacing = {} } = config
-  return Object.keys(spacing).reduce(
-    (all, groupName) => ({
-      ...all,
-      [groupName]: getDataByBreakpoint(spacing[groupName]),
-    }),
-    {}
-  )
+  return {
+    breakpoints: config.breakpoints || {},
+    spacing: Object.keys(spacing || {}).reduce(
+      (all, groupName) => ({
+        ...all,
+        [groupName]: getDataByBreakpoint(spacing[groupName]),
+      }),
+      {}
+    ),
+  }
 }
 
 module.exports = { transform }

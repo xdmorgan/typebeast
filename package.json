@@ -12,9 +12,9 @@
     "start": "node cli --config mocks/demo-site.yml --output public/typebeast --no-sourcemap --no-sass --compression compressed",
     "test": "jest",
     "build": "yarn start",
-    "cli:minimum": "node cli --config mocks/minimum.yml --output build/minimum",
-    "cli:demo-site": "node cli --config mocks/demo-site.yml --output build/demo-site",
-    "cli:kitchen-sink": "node cli --config mocks/kitchen-sink.yml --output build/kitchen-sink"
+    "cli:minimum": "node cli --json --config mocks/minimum.yml --output build/minimum",
+    "cli:demo-site": "node cli --json --config mocks/demo-site.yml --output build/demo-site",
+    "cli:kitchen-sink": "node cli --json --config mocks/kitchen-sink.yml --output build/kitchen-sink"
   },
   "repository": {
     "type": "git",

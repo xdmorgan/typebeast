@@ -2,9 +2,13 @@ const { transform } = require('./transform-spacing')
 
 describe('transform()', () => {
   test('is optional', () => {
-    expect(transform({})).toEqual({})
-    expect(transform({ 'format-version': 1 })).toEqual({})
-    expect(transform({ spacing: {} })).toEqual({})
+    const empty = { breakpoints: {}, spacing: {} }
+    expect(transform({})).toEqual(empty)
+    expect(transform({ 'format-version': 1 })).toEqual(empty)
+    expect(transform({ spacing: null })).toEqual(empty)
+    expect(transform({ spacing: {} })).toEqual(empty)
+    expect(transform({ breakpoints: null })).toEqual(empty)
+    expect(transform({ breakpoints: {} })).toEqual(empty)
   })
   test('empty group', () => {
     expect(
@@ -15,7 +19,33 @@ describe('transform()', () => {
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "vertical-reset": Object {},
+        "breakpoints": Object {},
+        "spacing": Object {
+          "vertical-reset": Object {},
+        },
+      }
+    `)
+  })
+  test('pass-through breakpoints', () => {
+    expect(
+      transform({
+        breakpoints: {
+          medium: 420,
+          large: '690em',
+        },
+        spacing: {
+          'vertical-reset': {},
+        },
+      })
+    ).toMatchInlineSnapshot(`
+      Object {
+        "breakpoints": Object {
+          "large": "690em",
+          "medium": 420,
+        },
+        "spacing": Object {
+          "vertical-reset": Object {},
+        },
       }
     `)
   })
@@ -37,15 +67,18 @@ describe('transform()', () => {
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "vertical-reset": Object {
-          "default": Object {
-            "properties": Object {
-              "margin-block-end": 2,
-              "margin-block-start": 1,
-              "margin-inline-end": 4,
-              "margin-inline-start": 3,
+        "breakpoints": Object {},
+        "spacing": Object {
+          "vertical-reset": Object {
+            "default": Object {
+              "properties": Object {
+                "margin-block-end": 2,
+                "margin-block-start": 1,
+                "margin-inline-end": 4,
+                "margin-inline-start": 3,
+              },
+              "selectors": Array [],
             },
-            "selectors": Array [],
           },
         },
       }
@@ -67,15 +100,18 @@ describe('transform()', () => {
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "vertical-reset": Object {
-          "default": Object {
-            "properties": Object {
-              "margin-block-end": 1,
-              "margin-block-start": 1,
-              "margin-inline-end": 2,
-              "margin-inline-start": 2,
+        "breakpoints": Object {},
+        "spacing": Object {
+          "vertical-reset": Object {
+            "default": Object {
+              "properties": Object {
+                "margin-block-end": 1,
+                "margin-block-start": 1,
+                "margin-inline-end": 2,
+                "margin-inline-start": 2,
+              },
+              "selectors": Array [],
             },
-            "selectors": Array [],
           },
         },
       }
@@ -99,15 +135,18 @@ describe('transform()', () => {
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "vertical-reset": Object {
-          "default": Object {
-            "properties": Object {
-              "margin-block-end": 2,
-              "margin-block-start": 1,
-              "margin-inline-end": 1,
-              "margin-inline-start": 2,
+        "breakpoints": Object {},
+        "spacing": Object {
+          "vertical-reset": Object {
+            "default": Object {
+              "properties": Object {
+                "margin-block-end": 2,
+                "margin-block-start": 1,
+                "margin-inline-end": 1,
+                "margin-inline-start": 2,
+              },
+              "selectors": Array [],
             },
-            "selectors": Array [],
           },
         },
       }
@@ -128,13 +167,16 @@ describe('transform()', () => {
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "vertical-reset": Object {
-          "large": Object {
-            "properties": Object {
-              "margin-block-end": 0,
-              "margin-block-start": 0,
+        "breakpoints": Object {},
+        "spacing": Object {
+          "vertical-reset": Object {
+            "large": Object {
+              "properties": Object {
+                "margin-block-end": 0,
+                "margin-block-start": 0,
+              },
+              "selectors": Array [],
             },
-            "selectors": Array [],
           },
         },
       }
@@ -162,29 +204,32 @@ describe('transform()', () => {
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "vertical-reset": Object {
-          "default": Object {
-            "properties": Object {
-              "margin-block-end": 0,
-              "margin-block-start": 0,
+        "breakpoints": Object {},
+        "spacing": Object {
+          "vertical-reset": Object {
+            "default": Object {
+              "properties": Object {
+                "margin-block-end": 0,
+                "margin-block-start": 0,
+              },
+              "selectors": Array [],
             },
-            "selectors": Array [],
-          },
-          "large": Object {
-            "properties": Object {
-              "margin-block-end": 2,
-              "margin-block-start": 2,
-              "margin-inline-end": 2,
-              "margin-inline-start": 2,
+            "large": Object {
+              "properties": Object {
+                "margin-block-end": 2,
+                "margin-block-start": 2,
+                "margin-inline-end": 2,
+                "margin-inline-start": 2,
+              },
+              "selectors": Array [],
             },
-            "selectors": Array [],
-          },
-          "medium": Object {
-            "properties": Object {
-              "margin-inline-end": 1,
-              "margin-inline-start": 1,
+            "medium": Object {
+              "properties": Object {
+                "margin-inline-end": 1,
+                "margin-inline-start": 1,
+              },
+              "selectors": Array [],
             },
-            "selectors": Array [],
           },
         },
       }
@@ -206,15 +251,18 @@ describe('transform()', () => {
       })
     ).toMatchInlineSnapshot(`
       Object {
-        "vertical-reset": Object {
-          "default": Object {
-            "properties": Object {
-              "margin-block-end": 0,
-              "margin-block-start": 0,
+        "breakpoints": Object {},
+        "spacing": Object {
+          "vertical-reset": Object {
+            "default": Object {
+              "properties": Object {
+                "margin-block-end": 0,
+                "margin-block-start": 0,
+              },
+              "selectors": Array [
+                "#bruh",
+              ],
             },
-            "selectors": Array [
-              "#bruh",
-            ],
           },
         },
       }
@@ -241,17 +289,20 @@ test('can use multiple selectors', () => {
     })
   ).toMatchInlineSnapshot(`
     Object {
-      "vertical-reset": Object {
-        "default": Object {
-          "properties": Object {
-            "margin-block-end": 0,
-            "margin-block-start": 0,
+      "breakpoints": Object {},
+      "spacing": Object {
+        "vertical-reset": Object {
+          "default": Object {
+            "properties": Object {
+              "margin-block-end": 0,
+              "margin-block-start": 0,
+            },
+            "selectors": Array [
+              "#bruh",
+              "strong",
+              "&.something .compound[selector=\\"yeah\\"]",
+            ],
           },
-          "selectors": Array [
-            "#bruh",
-            "strong",
-            "&.something .compound[selector=\\"yeah\\"]",
-          ],
         },
       },
     }
