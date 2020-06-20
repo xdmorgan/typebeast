@@ -1,68 +1,259 @@
 const { transform } = require('./transform-spacing')
-const mock = require('../mocks/demo-site.json')
 
 describe('transform()', () => {
-  test('it works', async () => {
-    const spacing = transform(mock)
-    expect(spacing).toMatchInlineSnapshot(`
+  test('is optional', () => {
+    expect(transform({})).toEqual({})
+    expect(transform({ 'format-version': 1 })).toEqual({})
+    expect(transform({ spacing: {} })).toEqual({})
+  })
+  test('empty group', () => {
+    expect(
+      transform({
+        spacing: {
+          'vertical-reset': {},
+        },
+      })
+    ).toMatchInlineSnapshot(`
       Object {
-        "horizontal-reset": Object {
-          "default": Object {
-            "properties": Object {
-              "margin-inline-end": 0,
-              "margin-inline-start": 0,
+        "vertical-reset": Object {},
+      }
+    `)
+  })
+  test('individual spacings', () => {
+    expect(
+      transform({
+        spacing: {
+          'vertical-reset': {
+            breakpoints: {
+              default: {
+                'block-start': 1,
+                'block-end': 2,
+                'inline-start': 3,
+                'inline-end': 4,
+              },
             },
-            "selectors": Array [
-              "figure",
-              "blockquote",
-              "dd",
-            ],
           },
         },
-        "horizontal-rule": Object {
+      })
+    ).toMatchInlineSnapshot(`
+      Object {
+        "vertical-reset": Object {
           "default": Object {
             "properties": Object {
-              "margin-block-end": "3rem",
-              "margin-block-start": "3rem",
+              "margin-block-end": 2,
+              "margin-block-start": 1,
+              "margin-inline-end": 4,
+              "margin-inline-start": 3,
             },
-            "selectors": Array [
-              "hr",
-            ],
+            "selectors": Array [],
+          },
+        },
+      }
+    `)
+  })
+  test('shorthand spacings', () => {
+    expect(
+      transform({
+        spacing: {
+          'vertical-reset': {
+            breakpoints: {
+              default: {
+                block: 1,
+                inline: 2,
+              },
+            },
+          },
+        },
+      })
+    ).toMatchInlineSnapshot(`
+      Object {
+        "vertical-reset": Object {
+          "default": Object {
+            "properties": Object {
+              "margin-block-end": 1,
+              "margin-block-start": 1,
+              "margin-inline-end": 2,
+              "margin-inline-start": 2,
+            },
+            "selectors": Array [],
+          },
+        },
+      }
+    `)
+  })
+  test('individual takes precedence over shorthand spacing', () => {
+    expect(
+      transform({
+        spacing: {
+          'vertical-reset': {
+            breakpoints: {
+              default: {
+                block: 1,
+                'block-end': 2,
+                inline: 1,
+                'inline-start': 2,
+              },
+            },
+          },
+        },
+      })
+    ).toMatchInlineSnapshot(`
+      Object {
+        "vertical-reset": Object {
+          "default": Object {
+            "properties": Object {
+              "margin-block-end": 2,
+              "margin-block-start": 1,
+              "margin-inline-end": 1,
+              "margin-inline-start": 2,
+            },
+            "selectors": Array [],
+          },
+        },
+      }
+    `)
+  })
+  test('can omit default breakpoint', () => {
+    expect(
+      transform({
+        spacing: {
+          'vertical-reset': {
+            breakpoints: {
+              large: {
+                block: 0,
+              },
+            },
+          },
+        },
+      })
+    ).toMatchInlineSnapshot(`
+      Object {
+        "vertical-reset": Object {
+          "large": Object {
+            "properties": Object {
+              "margin-block-end": 0,
+              "margin-block-start": 0,
+            },
+            "selectors": Array [],
+          },
+        },
+      }
+    `)
+  })
+  test('can add multiple breakpoints', () => {
+    expect(
+      transform({
+        spacing: {
+          'vertical-reset': {
+            breakpoints: {
+              default: {
+                block: 0,
+              },
+              medium: {
+                inline: 1,
+              },
+              large: {
+                block: 2,
+                inline: 2,
+              },
+            },
+          },
+        },
+      })
+    ).toMatchInlineSnapshot(`
+      Object {
+        "vertical-reset": Object {
+          "default": Object {
+            "properties": Object {
+              "margin-block-end": 0,
+              "margin-block-start": 0,
+            },
+            "selectors": Array [],
           },
           "large": Object {
             "properties": Object {
-              "margin-block-end": "4rem",
-              "margin-block-start": "4rem",
+              "margin-block-end": 2,
+              "margin-block-start": 2,
+              "margin-inline-end": 2,
+              "margin-inline-start": 2,
             },
-            "selectors": Array [
-              "hr",
-            ],
+            "selectors": Array [],
+          },
+          "medium": Object {
+            "properties": Object {
+              "margin-inline-end": 1,
+              "margin-inline-start": 1,
+            },
+            "selectors": Array [],
           },
         },
-        "vertical-rhythm": Object {
+      }
+    `)
+  })
+  test('can use single selector', () => {
+    expect(
+      transform({
+        spacing: {
+          'vertical-reset': {
+            include: '#bruh',
+            breakpoints: {
+              default: {
+                block: 0,
+              },
+            },
+          },
+        },
+      })
+    ).toMatchInlineSnapshot(`
+      Object {
+        "vertical-reset": Object {
           "default": Object {
             "properties": Object {
               "margin-block-end": 0,
               "margin-block-start": 0,
             },
             "selectors": Array [
-              "h1",
-              "h2",
-              "h3",
-              "h4",
-              "h5",
-              "h6",
-              "p",
-              "ul",
-              "ol",
-              "dl",
-              "blockquote",
-              "figure",
-              "pre",
+              "#bruh",
             ],
           },
         },
       }
     `)
   })
+})
+test('can use multiple selectors', () => {
+  expect(
+    transform({
+      spacing: {
+        'vertical-reset': {
+          include: [
+            '#bruh',
+            'strong',
+            '&.something .compound[selector="yeah"]',
+          ],
+          breakpoints: {
+            default: {
+              block: 0,
+            },
+          },
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    Object {
+      "vertical-reset": Object {
+        "default": Object {
+          "properties": Object {
+            "margin-block-end": 0,
+            "margin-block-start": 0,
+          },
+          "selectors": Array [
+            "#bruh",
+            "strong",
+            "&.something .compound[selector=\\"yeah\\"]",
+          ],
+        },
+      },
+    }
+  `)
 })

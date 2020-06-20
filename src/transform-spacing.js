@@ -1,3 +1,5 @@
+const { ensureListOfSelectors } = require('./utils')
+
 function propertyByKey(props, key) {
   if (props[key] === undefined) return {}
   if (key === 'block') {
@@ -32,7 +34,7 @@ function getDataByBreakpoint(data) {
     (all, breakpointName) => ({
       ...all,
       [breakpointName]: {
-        selectors: data.include,
+        selectors: ensureListOfSelectors(data.include),
         properties: getProperties(data.breakpoints[breakpointName]),
       },
     }),
