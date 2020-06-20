@@ -3,34 +3,34 @@ const { breakpointToMediaQuery, objectToCssProperties } = require('./utils')
 
 const writeStyleDeclaration = ({ body, selectors, group }) => {
   return `
-  // ${group}
+  // group: ${group}
   ${selectors.join(', ')} {
     ${body};
   }`
 }
 
-function createDeclarationWriter({ transformed }) {
+function createDeclarationWriter(spacing) {
   return breakpointName =>
-    Object.keys(transformed)
-      .filter(styleName => transformed[styleName][breakpointName])
+    Object.keys(spacing)
+      .filter(styleName => spacing[styleName][breakpointName])
       .map(styleName => ({
         group: styleName,
-        selectors: transformed[styleName][breakpointName].selectors,
+        selectors: spacing[styleName][breakpointName].selectors,
         body: objectToCssProperties(
-          transformed[styleName][breakpointName].properties
+          spacing[styleName][breakpointName].properties
         ),
       }))
       .map(writeStyleDeclaration)
 }
 
-function write({ transformed, config }) {
-  const declarationWriter = createDeclarationWriter({ transformed })
+function write(transformed) {
+  const declarationWriter = createDeclarationWriter(transformed.spacing)
   const defaultDeclarations = declarationWriter('default')
-  const breakpointDeclarations = Object.keys(config.breakpoints).reduce(
+  const breakpointDeclarations = Object.keys(transformed.breakpoints).reduce(
     (acc, name) => [
       ...acc,
       '\n',
-      breakpointToMediaQuery(config.breakpoints[name]) + '{',
+      breakpointToMediaQuery(transformed.breakpoints[name]) + '{',
       ...declarationWriter(name),
       '}',
     ],
