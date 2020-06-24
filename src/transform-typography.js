@@ -1,16 +1,25 @@
-const settingsToParams = settings =>
-  Object.entries(settings)
-    .map(([k, v]) => `$${k}: ${v}`)
-    .join(',')
+const {
+  convertObjectToSassParams,
+  objectKeysToSassParams,
+  ensureListOfSelectors,
+} = require('./utils')
 
-const settingsToVars = settings =>
-  Object.keys(settings)
-    .map(k => `$${k}`)
-    .join(',')
+const SETTINGS_TO_SASS_PARAMS = {
+  family: '$family',
+  letter: '$letter',
+  line: '$line',
+  size: '$size',
+  style: '$style',
+  transform: '$transform',
+  weight: '$weight',
+}
 
 const writeMixinDefinition = ({ name, settings }) => `
-  @mixin ${name}(${settingsToParams(settings)}){
-    @include typebeast(${settingsToVars(settings)});
+  @mixin ${name}(${convertObjectToSassParams(
+  settings,
+  SETTINGS_TO_SASS_PARAMS
+)}){
+    @include typebeast(${objectKeysToSassParams(SETTINGS_TO_SASS_PARAMS)});
   }
 `
 
@@ -27,18 +36,6 @@ function createGetBlockDataGenerator(config) {
       },
     }
   }
-}
-
-// for ease of config, these may be strings (single value) or arrays (multiple)
-function ensureSelectorsAreArrays(selectors) {
-  return Array.isArray(selectors)
-    ? // if its an array use it
-      selectors
-    : selectors
-    ? // if its truthy its likely a string
-      [selectors]
-    : // otherwise who knows, forget it
-      []
 }
 
 function createSelectorScopeFormatter(scope) {
@@ -58,7 +55,7 @@ function createGetListOfSelectors(config) {
   const getSelectorsByName = name => config.wysiwyg.elements[name]
   return ({ styleName }) => [
     `.${typePrefix}-${styleName}`,
-    ...ensureSelectorsAreArrays(getSelectorsByName(styleName)).map(
+    ...ensureListOfSelectors(getSelectorsByName(styleName)).map(
       selectorScopeFormatter
     ),
   ]

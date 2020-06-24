@@ -17,6 +17,11 @@ exports.convertObjectToSassParams = (settings, map, defaults = {}) =>
     .filter(Boolean)
     .join(', ')
 
+exports.objectKeysToSassParams = settings =>
+  Object.keys(settings)
+    .map(k => `$${k}`)
+    .join(', ')
+
 // might be string or array, convert to an array then
 // filter(Boolean) to strip ['']
 exports.ensureListOfSelectors = sel =>
