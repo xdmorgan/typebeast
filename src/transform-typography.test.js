@@ -19,7 +19,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-caption-default($family: null, $letter: null, $line: 15, $size: 10, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-caption-default",
@@ -33,7 +33,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-caption-large($family: null, $letter: null, $line: null, $size: 12, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-caption-large",
@@ -54,7 +54,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-heading-1-default($family: Poppins, $letter: -0.0125em, $line: 35.2, $size: 32, $style: null, $transform: null, $weight: normal){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-heading-1-default",
@@ -71,7 +71,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-heading-1-large($family: null, $letter: null, $line: null, $size: 48, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-heading-1-large",
@@ -92,7 +92,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-heading-2-default($family: Poppins, $letter: null, $line: 30.8, $size: 28, $style: null, $transform: null, $weight: normal){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-heading-2-default",
@@ -108,7 +108,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-heading-2-large($family: null, $letter: null, $line: null, $size: 32, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-heading-2-large",
@@ -129,7 +129,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-heading-3-default($family: Poppins, $letter: null, $line: 22, $size: 20, $style: null, $transform: null, $weight: normal){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-heading-3-default",
@@ -145,7 +145,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-heading-3-large($family: null, $letter: null, $line: null, $size: 24, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-heading-3-large",
@@ -166,7 +166,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-heading-4-default($family: Poppins, $letter: null, $line: 19.2, $size: 16, $style: null, $transform: null, $weight: bold){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-heading-4-default",
@@ -182,7 +182,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-heading-4-large($family: null, $letter: null, $line: null, $size: 20, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-heading-4-large",
@@ -203,7 +203,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-heading-5-default($family: Poppins, $letter: null, $line: 15.6, $size: 13, $style: null, $transform: null, $weight: bold){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-heading-5-default",
@@ -219,7 +219,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-heading-5-large($family: null, $letter: null, $line: null, $size: 16, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-heading-5-large",
@@ -240,7 +240,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-heading-6-default($family: null, $letter: null, $line: 12, $size: 10, $style: null, $transform: uppercase, $weight: bold){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-heading-6-default",
@@ -256,7 +256,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-heading-6-large($family: null, $letter: null, $line: null, $size: 12, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-heading-6-large",
@@ -277,7 +277,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-lede-default($family: null, $letter: null, $line: 27, $size: 18, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-lede-default",
@@ -291,7 +291,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-lede-large($family: null, $letter: null, $line: null, $size: 24, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-lede-large",
@@ -313,7 +313,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-para-default($family: null, $letter: null, $line: 27.2, $size: 16, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-para-default",
@@ -327,7 +327,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-para-large($family: null, $letter: null, $line: null, $size: 18, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-para-large",
@@ -351,7 +351,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-small-default($family: null, $letter: null, $line: 23.8, $size: 14, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-small-default",
@@ -365,7 +365,7 @@ describe('Transform parsed config file to desired structure', () => {
               "mixin": Object {
                 "definition": "
         @mixin type-small-large($family: null, $letter: null, $line: null, $size: 16, $style: null, $transform: null, $weight: null){
-          @include typebeast($family,$letter,$line,$size,$style,$transform,$weight);
+          @include typebeast($family, $letter, $line, $size, $style, $transform, $weight);
         }
       ",
                 "name": "type-small-large",
