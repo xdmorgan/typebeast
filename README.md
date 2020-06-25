@@ -34,7 +34,7 @@ yarn typebeast # using yarn
 
 ## Config format (yml)
 
-See below for the full list of options or [see here](./typebeast.yml) for the full example used by [the demo site](https://typebeast-library.netlify.app)
+See below for the full list of options or [see here](./mocks/demo-site.yml) for the full example used by [the demo site](https://typebeast-library.netlify.app)
 
 ### Minimum
 
