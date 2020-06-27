@@ -22,7 +22,7 @@ function createDeclarationWriter({ data }) {
 function write({ data, config }) {
   const declarationWriter = createDeclarationWriter({ data })
   const defaultDeclarations = declarationWriter('default')
-  const breakpointDeclarations = Object.keys(config.breakpoints).reduce(
+  const breakpointDeclarations = Object.keys(config.breakpoints || {}).reduce(
     (acc, name) => [
       ...acc,
       '\n',
