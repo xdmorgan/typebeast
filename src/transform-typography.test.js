@@ -61,6 +61,7 @@ test('supports wysiwyg aliasing', () => {
         scope: 'wysiwyg',
         elements: {
           paragraph: ['p', 'ul', 'ol'],
+          lede: '&.wysiwyg--with-lede p:first-child',
           heading: 'h1',
           caption: ['figcaption', 'small'],
         },
@@ -68,6 +69,7 @@ test('supports wysiwyg aliasing', () => {
       prefixes: { typography: 'type' },
       typography: {
         paragraph: {},
+        lede: {},
         heading: {},
         caption: {},
       },
@@ -87,6 +89,13 @@ test('supports wysiwyg aliasing', () => {
         "selectors": Array [
           ".type-heading",
           ".wysiwyg h1",
+        ],
+      },
+      "lede": Object {
+        "breakpoints": Object {},
+        "selectors": Array [
+          ".type-lede",
+          ".wysiwyg.wysiwyg--with-lede p:first-child",
         ],
       },
       "paragraph": Object {
