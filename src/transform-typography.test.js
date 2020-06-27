@@ -1,12 +1,17 @@
 const { transform } = require('./transform-typography')
 const mock = require('../mocks/demo-site.json')
 
-// test('transform(): minimal config', () => {
-//   expect(transform({})).toEqual({})
-//   expect(transform({ 'format-version': 1 })).toEqual({})
-//   expect(transform({ typography: null })).toEqual({})
-//   expect(transform({ typography: {} })).toEqual({})
-// })
+const REQIURED_DEFAULTS = {
+  wysiwyg: { scope: 'wysiwyg' },
+  prefixes: { typography: 'type' },
+}
+
+test('transform(): minimal config', () => {
+  expect(transform({ ...REQIURED_DEFAULTS })).toEqual({})
+  expect(transform({ ...REQIURED_DEFAULTS, 'format-version': 1 })).toEqual({})
+  expect(transform({ ...REQIURED_DEFAULTS, typography: null })).toEqual({})
+  expect(transform({ ...REQIURED_DEFAULTS, typography: {} })).toEqual({})
+})
 
 describe('Transform parsed config file to desired structure', () => {
   test('Transform config', () => {
