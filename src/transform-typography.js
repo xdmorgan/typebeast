@@ -52,7 +52,7 @@ function createGetListOfSelectors(config) {
   const wizzyScope = config.wysiwyg.scope
   const typePrefix = config.prefixes.typography
   const selectorScopeFormatter = createSelectorScopeFormatter(wizzyScope)
-  const getSelectorsByName = name => config.wysiwyg.elements[name]
+  const getSelectorsByName = name => (config.wysiwyg.elements || {})[name]
   return ({ styleName }) => [
     `.${typePrefix}-${styleName}`,
     ...ensureListOfSelectors(getSelectorsByName(styleName)).map(
