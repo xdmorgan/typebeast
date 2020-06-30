@@ -14,7 +14,7 @@ test('empty input : empty output', () => {
   expect(transform({ ...defaults, typography: {} })).toEqual({})
 })
 
-test('supports cutomizable prefixes', () => {
+test('supports customizable prefixes', () => {
   expect(
     transform({
       wysiwyg: { scope: 'wysiwyg' },

@@ -1,67 +1,55 @@
 const { transform } = require('./transform-wysiwyg-spacing')
-const mock = require('../mocks/demo-site.json')
 
-describe('transform()', () => {
-  test('it works', async () => {
-    const wysiwyg = transform(mock)
-    expect(wysiwyg).toMatchInlineSnapshot(`
-      Object {
-        "breakpoints": Object {
-          "default": [Function],
-          "large": [Function],
+test('empty input : empty output', () => {
+  // these can be omitted from a minimally viable config, but if they're
+  // removed from the defaults.yml settings file this code will throw
+  const defaults = {
+    wysiwyg: { scope: 'wysiwyg' },
+    prefixes: { typography: 'type' },
+  }
+  expect(transform({ ...defaults })).toEqual({})
+  expect(transform({ ...defaults, 'format-version': 1 })).toEqual({})
+  expect(transform({ ...defaults, wysiwyg: null })).toEqual({})
+  expect(transform({ ...defaults, wysiwyg: {} })).toEqual({})
+})
+
+test('supports custom scope class', () => {
+  expect(
+    transform({
+      prefixes: { typography: 'type' },
+      wysiwyg: { scope: 'wysiwyg', spacing: { rhythm: {} } },
+    })
+  ).toMatchInlineSnapshot(`
+    Object {
+      "breakpoints": Object {
+        "default": [Function],
+      },
+      "groups": Object {
+        "rhythm": Object {
+          "breakpoints": Object {},
+          "selectors": "",
         },
-        "groups": Object {
-          "larger-headings": Object {
-            "breakpoints": Object {
-              "default": Object {
-                "margin-block-start": "3rem",
-              },
-              "large": Object {
-                "margin-block-start": "5rem",
-              },
-            },
-            "selectors": "h1, h2",
-          },
-          "other-content": Object {
-            "breakpoints": Object {
-              "default": Object {
-                "margin-block-end": "3rem",
-                "margin-block-start": "3rem",
-              },
-              "large": Object {
-                "margin-block-end": "4rem",
-                "margin-block-start": "4rem",
-              },
-            },
-            "selectors": "pre, iframe, figure, & > img, blockquote",
-          },
-          "smaller-headings": Object {
-            "breakpoints": Object {
-              "default": Object {
-                "margin-block-start": "2rem",
-              },
-              "large": Object {
-                "margin-block-start": "3rem",
-              },
-            },
-            "selectors": "h3, h4, h5, h6",
-          },
-          "vertical-rhythm": Object {
-            "breakpoints": Object {
-              "default": Object {
-                "margin-block-end": "1rem",
-                "margin-block-start": "1rem",
-              },
-              "large": Object {
-                "margin-block-end": "1.5rem",
-                "margin-block-start": "1.5rem",
-              },
-            },
-            "selectors": "h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, figure, pre",
-          },
+      },
+      "scope": ".wysiwyg",
+    }
+  `)
+  expect(
+    transform({
+      prefixes: { typography: 'type' },
+      wysiwyg: { scope: 'wizzy-wig', spacing: { rhythm: {} } },
+    })
+  ).toMatchInlineSnapshot(`
+    Object {
+      "breakpoints": Object {
+        "default": [Function],
+      },
+      "groups": Object {
+        "rhythm": Object {
+          "breakpoints": Object {},
+          "selectors": "",
         },
-        "scope": ".wysiwyg",
-      }
-    `)
-  })
+      },
+      "scope": ".wizzy-wig",
+    }
+  `)
 })
