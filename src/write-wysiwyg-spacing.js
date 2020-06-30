@@ -24,7 +24,7 @@ function getDelcarationsByBreakpoint({ breakpointName, groups }) {
     .join('\n')
 }
 
-function getBlocksByBreakpoint({ breakpoints, groups }) {
+function getBlocksByBreakpoint({ breakpoints = {}, groups = {} }) {
   return Object.keys(breakpoints).map(breakpointName =>
     breakpoints[breakpointName](`
       
@@ -38,7 +38,8 @@ function getBlocksByBreakpoint({ breakpoints, groups }) {
 }
 
 function write(transformed) {
-  if (!transformed) return ''
+  // can't have wizzy spacing without wizzy scope :thinksmart:
+  if (!transformed.scope) return ''
   const breakpoints = getBlocksByBreakpoint(transformed)
   return format(`${transformed.scope} { ${breakpoints.join('\n')} }`)
 }
