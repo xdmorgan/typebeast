@@ -1,3 +1,5 @@
+const { ensureListOfSelectors } = require('./utils')
+
 function getScopeFromConfig(config) {
   return '.' + config.wysiwyg.scope
 }
@@ -32,7 +34,7 @@ function getSpacingProperties(properties) {
 }
 
 function getBreakpointWritersFromConfig(config) {
-  return Object.entries(config.breakpoints).reduce(
+  return Object.entries(config.breakpoints || {}).reduce(
     (all, [name, size]) => ({
       ...all,
       [name]: body => `@include typebeast-break-min(${size}){ ${body} }`,
@@ -48,8 +50,8 @@ function getGroupsFromConfig(config) {
     (allGroups, [groupName, groupData]) => ({
       ...allGroups,
       [groupName]: {
-        selectors: groupData.include.join(', '),
-        breakpoints: Object.entries(groupData.breakpoints).reduce(
+        selectors: ensureListOfSelectors(groupData.include).join(', '),
+        breakpoints: Object.entries(groupData.breakpoints || {}).reduce(
           (allBreaks, [breakName, breakData]) => ({
             ...allBreaks,
             [breakName]: getSpacingProperties(breakData),
@@ -63,7 +65,7 @@ function getGroupsFromConfig(config) {
 }
 
 function transform(config) {
-  if (!config.wysiwyg || !config.wysiwyg.spacing) return null
+  if (!config.wysiwyg || !config.wysiwyg.spacing) return {}
   return {
     // '.classname'
     scope: getScopeFromConfig(config),
