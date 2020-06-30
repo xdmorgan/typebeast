@@ -1,5 +1,4 @@
 const { transform } = require('./transform-typography')
-const mock = require('../mocks/demo-site.json')
 
 test('empty input : empty output', () => {
   // these can be omitted from a minimall yviable config, but if they're
