@@ -13,7 +13,7 @@ test('write wysiwyg spacing rules for minimum config', async () => {
   `)
 })
 
-test('write wysiwyg spacing rules for minimum config', async () => {
+test('write wysiwyg spacing rules for kitchen sink config', async () => {
   expect(get(mox.kitchenSink)).toMatchInlineSnapshot(`
     Object {
       "mixins": "// h1-xxl
