@@ -50,11 +50,20 @@
 ) {
   color: $color;
   text-decoration-style: $style;
-  &:hover {
-    color: $hover;
+  @if $hover {
+    &:hover {
+      color: $hover;
+    }
   }
-  &:active {
-    color: $color;
+  @if $active {
+    &:active {
+      color: $active;
+    }
+  }
+  @if $visited {
+    &:visited {
+      color: $visited;
+    }
   }
 }
 
