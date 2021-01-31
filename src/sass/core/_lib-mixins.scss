@@ -55,14 +55,14 @@
       color: $visited;
     }
   }
-  @if $active {
-    &:active {
-      color: $active;
-    }
-  }
   @if $hover {
     &:hover {
       color: $hover;
+    }
+  }
+  @if $active {
+    &:active {
+      color: $active;
     }
   }
 }
