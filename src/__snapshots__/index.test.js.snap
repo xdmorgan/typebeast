@@ -232,12 +232,15 @@ hr {
 a,
 .type-link {
   color: #002b73; }
+  a:visited,
+  .type-link:visited {
+    color: #035aeb; }
   a:hover,
   .type-link:hover {
     color: #1755bb; }
   a:active,
   .type-link:active {
-    color: #002b73; }
+    color: #035aeb; }
 
 code,
 .type-code {
